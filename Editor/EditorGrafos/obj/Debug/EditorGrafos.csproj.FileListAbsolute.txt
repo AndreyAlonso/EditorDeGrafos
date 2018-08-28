@@ -1,0 +1,64 @@
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\C#\EditorGrafos\EditorGrafos\bin\Debug\EditorGrafos.exe.config
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\C#\EditorGrafos\EditorGrafos\bin\Debug\EditorGrafos.exe
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\C#\EditorGrafos\EditorGrafos\bin\Debug\EditorGrafos.pdb
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\C#\EditorGrafos\EditorGrafos\obj\Debug\EditorGrafos.Form1.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\C#\EditorGrafos\EditorGrafos\obj\Debug\EditorGrafos.Properties.Resources.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\C#\EditorGrafos\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.Cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\C#\EditorGrafos\EditorGrafos\obj\Debug\EditorGrafos.csproj.CoreCompileInputs.cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\C#\EditorGrafos\EditorGrafos\obj\Debug\EditorGrafos.exe
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\C#\EditorGrafos\EditorGrafos\obj\Debug\EditorGrafos.pdb
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\C#\EditorGrafos\EditorGrafos\obj\Debug\EditorGrafos.Configuracion.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\C#\EditorGrafos\EditorGrafos\obj\Debug\EditorGrafos.csprojAssemblyReference.cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos - copia\EditorGrafos\bin\Debug\EditorGrafos.exe.config
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos - copia\EditorGrafos\bin\Debug\EditorGrafos.exe
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos - copia\EditorGrafos\bin\Debug\EditorGrafos.pdb
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos - copia\EditorGrafos\obj\Debug\EditorGrafos.csprojAssemblyReference.cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos - copia\EditorGrafos\obj\Debug\EditorGrafos.Configuracion.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos - copia\EditorGrafos\obj\Debug\EditorGrafos.Form1.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos - copia\EditorGrafos\obj\Debug\EditorGrafos.Properties.Resources.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos - copia\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos - copia\EditorGrafos\obj\Debug\EditorGrafos.csproj.CoreCompileInputs.cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos - copia\EditorGrafos\obj\Debug\EditorGrafos.exe
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos - copia\EditorGrafos\obj\Debug\EditorGrafos.pdb
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Parpadea\EditorGrafos\bin\Debug\EditorGrafos.exe.config
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Parpadea\EditorGrafos\bin\Debug\EditorGrafos.exe
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Parpadea\EditorGrafos\bin\Debug\EditorGrafos.pdb
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Parpadea\EditorGrafos\obj\Debug\EditorGrafos.csprojAssemblyReference.cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Parpadea\EditorGrafos\obj\Debug\EditorGrafos.Configuracion.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Parpadea\EditorGrafos\obj\Debug\EditorGrafos.Form1.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Parpadea\EditorGrafos\obj\Debug\EditorGrafos.Properties.Resources.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Parpadea\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Parpadea\EditorGrafos\obj\Debug\EditorGrafos.csproj.CoreCompileInputs.cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Parpadea\EditorGrafos\obj\Debug\EditorGrafos.exe
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Parpadea\EditorGrafos\obj\Debug\EditorGrafos.pdb
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.csprojAssemblyReference.cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.Configuracion.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.EditorGrafo.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.Properties.Resources.resources
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.csproj.CoreCompileInputs.cache
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Chido\EditorGrafos\bin\Debug\EditorGrafos.exe.config
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Chido\EditorGrafos\bin\Debug\EditorGrafos.exe
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Chido\EditorGrafos\bin\Debug\EditorGrafos.pdb
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.exe
+C:\Users\artur\OneDrive\Documentos\UASLP\Visual 2018\Basura\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.pdb
+C:\Users\Andrey Hernandez\Downloads\GrafosArturo\EditorGrafos Chido\EditorGrafos\bin\Debug\EditorGrafos.exe.config
+C:\Users\Andrey Hernandez\Downloads\GrafosArturo\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.exe
+C:\Users\Andrey Hernandez\Downloads\GrafosArturo\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.pdb
+C:\Users\Andrey Hernandez\Downloads\GrafosArturo\EditorGrafos Chido\EditorGrafos\bin\Debug\EditorGrafos.exe
+C:\Users\Andrey Hernandez\Downloads\GrafosArturo\EditorGrafos Chido\EditorGrafos\bin\Debug\EditorGrafos.pdb
+C:\Users\Andrey Hernandez\Downloads\GrafosArturo\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.csprojResolveAssemblyReference.cache
+C:\Users\Andrey Hernandez\Downloads\GrafosArturo\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.Configuracion.resources
+C:\Users\Andrey Hernandez\Downloads\GrafosArturo\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.EditorGrafo.resources
+C:\Users\Andrey Hernandez\Downloads\GrafosArturo\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.Properties.Resources.resources
+C:\Users\Andrey Hernandez\Downloads\GrafosArturo\EditorGrafos Chido\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.Cache
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\bin\Debug\EditorGrafos.exe.config
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\obj\Debug\EditorGrafos.exe
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\obj\Debug\EditorGrafos.pdb
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\bin\Debug\EditorGrafos.exe
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\bin\Debug\EditorGrafos.pdb
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\obj\Debug\EditorGrafos.csprojResolveAssemblyReference.cache
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\obj\Debug\EditorGrafos.Configuracion.resources
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\obj\Debug\EditorGrafos.EditorGrafo.resources
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\obj\Debug\EditorGrafos.Properties.Resources.resources
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.Cache
