@@ -1,0 +1,49 @@
+Héctor Andrey Hernández Alonso
+
+20 de Agosto 2018
+Descripción:
+
+	- Interfaz:
+		Cambio de Iconos
+	-Metodos:
+		Complemento: (Pendiente)
+-------
+Rev.
+	Ya complementa pero NO funciona bien.
+	Hay que arreglar ipso Facto
+
+-----------------------------------------------------------------------------
+23 de Agosto 2018
+Descripción:
+	- Metodos:
+		Complento
+---------------
+Rev.
+	
+	Hay que direccionar a las carpetas: URGE!!!!
+	No reviso sino han entregado antecedente o lo anterior.
+	Tomar grafo NDir como default, antes de agregar aristas.
+
+
+----------------------------------------------------------------------------------------
+
+27 de Agosto 2018
+Descripción:
+	-Interfaz:
+		- Al abrir la carpeta envía a la carpeta Grafos.	OK
+		- Al guardar el archivo envía a la carpeta Grafos.	OK
+		- Al abrir el archivo, imprime el grafo siendo dirigido o no dirigido
+------------
+Rev.
+	No guarda atributos cuando es dirigida.
+	Arreglar todas esos detalles.
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+28 de Agosto 2018
+Descripción:
+	-Interfaz:
+		- Al abrir conserva sus propiedades.
+
+	

@@ -1,0 +1,6 @@
+-----
+23 Agosto 2018
+----
+
+*  Al abrir el grafo, que ponga la arista dirigida.
+* Complemento de dirigida

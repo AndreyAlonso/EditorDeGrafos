@@ -1,0 +1,41 @@
+
+            /*
+            int z = 0;
+            for(int x = 0; x < nuevo.Count; x++)
+            {
+                if(grafo[x].aristas.Count == 0)
+                {
+                    for(int y = 0; y < nuevo.Count; y++)
+                    {
+                        if (grafo[x].nombre != nuevo[y].nombre)
+                        {
+
+                            nnr = new Arista(0);
+                            nnr.origen = grafo[x];
+                            nnr.destino = grafo[y];
+                            grafo = nuevo;
+
+
+                        }
+                    }
+                }
+                else
+                {
+                    z = 0;
+                    for (int y = 0; y < grafo[x].aristas.Count;y++)
+                    {
+                        if (z < nuevo.Count - 1 && grafo[x].nombre == nuevo[z].nombre)
+                        {
+                            z++;
+                        }
+                        else
+                        {
+                            nnr = new Arista(0);
+                            nnr.origen = nuevo[x];
+                            nnr.destino = nuevo[z];
+                        }
+
+                    }
+                }
+            }
+            */

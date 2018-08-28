@@ -1,0 +1,86 @@
+
+                                Color       cNodo = grafo.cNodo;
+                                float       width = grafo.width;
+                                Color       cRelleno = grafo.cRelleno;
+                                int         radio = grafo.radio;
+                                Color       cArista = grafo.cArista;
+                                float       widthA = grafo.widthA;
+                                Color       colorFuente = grafo.colorFuente;
+                                string      nameF = grafo.nameF;
+                                float       sizeF= grafo.sizeF;
+                                FontStyle   styleF = grafo.styleF;
+                                int         numN = grafo.numN;
+                                int         nomb = grafo.nomb;
+                                Pen         penA = grafo.penA;
+ grafo = (GrafoDirigido)formatter.Deserialize(stream);
+
+                                grafo = new GrafoDirigido(grafo);
+
+                                grafo.penA.CustomEndCap = arrow;
+
+                                grafo.cNodo = cNodo;
+                                grafo.width = width;
+                                grafo.cRelleno = cRelleno;
+                                grafo.radio = radio;
+                                grafo.cArista = cArista;
+                                grafo.widthA = widthA;
+                                grafo.colorFuente = colorFuente;
+                                grafo.nameF = nameF;
+                                grafo.sizeF = sizeF;
+                                grafo.styleF = styleF;
+                                grafo.numN = numN;
+                                grafo.nomb = nomb;
+                                
+
+                                AristaNoDirigida.Enabled = false;
+
+
+
+
+                                // Se crean variables y se guardan
+                                /*
+                                Pen penN = new Pen(grafo.cNodo, grafo.width);
+                                SolidBrush brushN = new SolidBrush(grafo.cRelleno);
+                                Color cArista = grafo.penA.Color;
+                                Color cNodo = grafo.penN.Color;
+                               	
+                                float widthA = grafo.penA.Width;
+                                float widht = grafo.penN.Width;
+                                int radio = grafo.radio;
+                                Color cRelleno = grafo.brushN.Color;
+                                SolidBrush brushF = new SolidBrush(grafo.colorFuente);
+                                Font font  = new Font(grafo.nameF, grafo.sizeF, grafo.styleF);
+                                Color colorFuente = grafo.brushF.Color;
+                                string  nameF = grafo.font.Name;
+                                float sizeF = grafo.font.Size;
+                                FontStyle styleF = grafo.font.Style;
+                                */
+                                /*
+                                grafo.penN = penN;
+                                grafo.brushN = brushN;
+                                grafo.cRelleno = cRelleno;
+                                grafo.brushF = brushF;
+                                grafo.font = font;
+                                grafo.colorFuente = colorFuente;
+                                grafo.cNodo = cNodo;
+                                grafo.nameF = nameF;
+                                grafo.sizeF = sizeF;
+                                grafo.cArista = cArista;
+                                grafo.penA.Color = cArista;
+                                grafo.cArista = cArista;
+                                grafo.widthA = widthA;
+                                grafo.styleF = styleF;
+                                grafo.width = Width;
+                                grafo.radio = radio;
+                                
+                                */
+                                /*
+                                 
+                        grafo.colorFuente = grafo.brushF.Color;
+                        grafo.nameF = grafo.font.Name;
+                        grafo.sizeF = grafo.font.Size;
+                        grafo.styleF = grafo.font.Style;
+                                 */
+
+
+

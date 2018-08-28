@@ -1,0 +1,84 @@
+private void complemento(object sender, EventArgs e)
+        {
+            NodoP nn;
+  
+            Arista nnr;
+
+            Grafo nuevo = new Grafo();
+          //  grafo = new GrafoDirigido(grafo);
+           // nuevo = new GrafoDirigido(nuevo);
+            
+
+
+            
+            foreach(NodoP i in grafo)
+            {
+                nn = new NodoP(i.nombre,i.centro);
+                nuevo.Add(nn);
+            }
+
+                     
+            foreach(NodoP np in grafo)
+            {
+                if(np.aristas.Count == 0)
+                {
+                    for (int i = 0; i < grafo.Count; i++) 
+                    {
+                        if (nuevo[i].nombre != np.nombre)
+                        {
+                       //     foreach (NodoP a in nuevo)
+                        //    {
+                             //   if (a.nombre != np.nombre)
+                              //  {
+                                    nnr = new Arista(0);
+                                    nnr.origen = nuevo.Find(x => x.nombre.Equals(np.nombre));
+                                    nnr.destino = nuevo[i];
+
+                                    nuevo[i].aristas.Add(nnr);
+                             //       break;
+
+                             //   }
+                            //}
+                        }
+
+                    }
+                
+            }
+                
+            }
+          
+            
+            foreach(NodoP np in grafo)
+            {
+                foreach(Arista nr in np.aristas)
+                {
+                    foreach(NodoP comp in grafo)
+                    {
+                        if(comp.nombre != np.nombre)
+                        {
+                            if(nr.destino.nombre != comp.nombre)
+                            {
+                                foreach(NodoP aux in nuevo)
+                                {
+                                    if(aux.nombre == np.nombre)
+                                    {
+                                        nnr = new Arista(0);
+                                        nnr.origen  = aux;
+                                        nnr.destino = nuevo.Find(x => x.nombre.Equals(comp.nombre));
+                                        aux.aristas.Add(nnr);
+                                    }
+                                
+                                }
+                                                         
+                            
+                            }
+                        }
+                    }
+                }
+            }
+            
+            grafo = nuevo;
+            nuevo.ImprimirGrafo(g);
+            Form1_Paint(this, null);
+
+        }
