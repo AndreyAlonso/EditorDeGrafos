@@ -44,6 +44,6 @@ Rev.
 28 de Agosto 2018
 Descripción:
 	-Interfaz:
-		- Al abrir conserva sus propiedades.
+		- Al abrir conserva sus propiedades. (Pendiente)
 
 	
