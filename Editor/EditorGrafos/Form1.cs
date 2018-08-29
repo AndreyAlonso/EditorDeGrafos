@@ -437,25 +437,26 @@ namespace EditorGrafos
             switch(e.ClickedItem.AccessibleName)
             {
                 case "complemento":
-                    if(AristaNoDirigida.Enabled == true  && AristaDirigida.Enabled == true)
+                    if (AristaNoDirigida.Enabled == true && AristaDirigida.Enabled == true)
                     {
                         grafo = new GrafoNoDirigido(grafo);
                         grafo = grafo.complemento(g);
+                        AristaDirigida.Enabled = false;
                     }
                     else
-                    if (AristaDirigida.Enabled == true)
+                    if (AristaDirigida.Enabled == true && AristaNoDirigida.Enabled == false)
                     {
-                       // grafo.penA.CustomEndCap = arrow;
-                        
+                        // grafo.penA.CustomEndCap = arrow;
+
                         grafo = grafo.complemento(g);
                         grafo.penA.CustomEndCap = arrow;
                     }
-                    else
+                    else if (AristaDirigida.Enabled == false && AristaNoDirigida.Enabled == true)
                     {
                         grafo = grafo.complemento(g);
                     }
-                       
-                    
+
+                    grafo.numN = grafo.Count;
                     Form1_Paint(this, null);
                 break;
             }

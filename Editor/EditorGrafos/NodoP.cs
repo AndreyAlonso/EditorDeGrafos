@@ -17,7 +17,7 @@ namespace EditorGrafos
         private Point CENTRO;
         public Point centro { set { CENTRO = value; } get { return CENTRO; } }    
 
-        public NodoP(int n, Point p, Propiedad propiedades)
+        public NodoP(int n, Point p)
         {
             ARISTAS = new List<Arista>();
             NOMBRE = n;
