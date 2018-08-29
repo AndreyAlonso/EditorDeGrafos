@@ -17,6 +17,17 @@ namespace EditorGrafos
             {
                 this.Add(n);
             }
+            actualizaPropiedades(g);
+        }
+        public void actualizaPropiedades(Grafo g)
+        {
+            this.penN = new Pen(g.cNodo);
+            this.penA = new Pen(g.cArista);
+            this.width = g.width;
+            this.widthA = g.widthA;
+            this.font = g.font;
+            this.brushN = new SolidBrush(g.cRelleno);
+            //  this.brushF = new SolidBrush(g.)
         }
         #endregion
         #region complemento

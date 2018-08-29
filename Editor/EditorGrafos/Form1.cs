@@ -31,7 +31,23 @@ namespace EditorGrafos
         AdjustableArrowCap arrow;
 
         #endregion
+        #region Propiedades
+        int         radio;
+        int         nomb;
+        string      nameF;
+        Color       cRelleno;
+        Color       colorFuente;
+        Color       cNodo;
+        float       width;
+        float       widthA;
+        Color       cArista;
+        Pen         penN;
+        SolidBrush  brushN;
+        SolidBrush  brushF;
+        Font        font;
+        Pen         penA;
 
+        #endregion
         #region Principal
 
         public EditorGrafo()
@@ -58,20 +74,20 @@ namespace EditorGrafos
             Graphics ga = CreateGraphics();
             ga = Graphics.FromImage(bmp1);
             ga.Clear(BackColor);
-            
+
             if (bandF || band)
             {
                 switch (opcion)
                 {
                     case 1: // Crea Nodo
-                        
+
                         ga.FillEllipse(grafo.brushN, p1.X - grafo.radio, p1.Y - grafo.radio, grafo.radio * 2, grafo.radio * 2);
-                        ga.DrawEllipse(grafo.penN, p1.X - grafo.radio + (grafo.penN.Width /2), p1.Y - grafo.radio + (grafo.penN.Width / 2), grafo.radio * 2 - (grafo.penN.Width / 2), grafo.radio * 2 - (grafo.penN.Width / 2));
+                        ga.DrawEllipse(grafo.penN, p1.X - grafo.radio + (grafo.penN.Width / 2), p1.Y - grafo.radio + (grafo.penN.Width / 2), grafo.radio * 2 - (grafo.penN.Width / 2), grafo.radio * 2 - (grafo.penN.Width / 2));
                         if (grafo.numN >= 28 || grafo.edoNom || grafo.nomb >= 28)
                             ga.DrawString(nodoP.nombre.ToString(), grafo.font, grafo.brushF, p1.X - 6, p1.Y - 6);
                         else
                             ga.DrawString(((char)(nodoP.nombre + 64)).ToString(), grafo.font, grafo.brushF, p1.X - 6, p1.Y - 6);
-                    break;
+                        break;
 
                     case 2:
                         if (bandF)
@@ -84,7 +100,7 @@ namespace EditorGrafos
                         if (band)
                             ga.DrawLine(grafo.penA, grafo.BuscaInterseccion(nodoP.centro, p2), p2);
 
-                    break;
+                        break;
                     case 9:
                         if (bandF)
                         {
@@ -93,22 +109,22 @@ namespace EditorGrafos
                             else
                                 ga.DrawLine(grafo.penA, grafo.BuscaInterseccion(nodoP.centro, nodoAux.centro), grafo.BuscaInterseccion(nodoAux.centro, nodoP.centro));
                         }
-                        if(band)
+                        if (band)
                             ga.DrawLine(grafo.penA, grafo.BuscaInterseccion(nodoP.centro, p2), p2);
-                        
-                    break;
+
+                        break;
                 }
                 bandF = false;
             }
-                
-            if(bandI)
+
+            if (bandI)
             {
                 ga.Clear(BackColor);
                 grafo.ImprimirGrafo(ga);
                 bandI = false;
             }
-                
-            if(opcion == 6 || opcion == 7)
+
+            if (opcion == 6 || opcion == 7)
             {
                 ga.Clear(BackColor);
                 grafo.Clear();
@@ -120,8 +136,8 @@ namespace EditorGrafos
                     CambiaBotones(false);
                 }
             }
-            if(opcion != 6)
-                if(opcion != 7)
+            if (opcion != 6)
+                if (opcion != 7)
                     grafo.ImprimirGrafo(ga);
             g.DrawImage(bmp1, 0, 0);
         }
@@ -133,14 +149,14 @@ namespace EditorGrafos
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             p1 = e.Location;
-            switch(opcion)
+            switch (opcion)
             {
                 case 1:
-                    if(grafo.numN == 1)
+                    if (grafo.numN == 1)
                         CambiaBotones(true);
                     grafo.numN++;
-                    if(grafo.Count > 0)
-                        nodoP = new NodoP(grafo.Count-1, p1);
+                    if (grafo.Count > 0)
+                        nodoP = new NodoP(grafo.Count - 1, p1);
                     else
                         nodoP = new NodoP(grafo.numN - 1, p1);
                     grafo.Add(nodoP);
@@ -181,13 +197,13 @@ namespace EditorGrafos
 
                 case 8:
                     p1 = e.Location;
-                break;
+                    break;
             }
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.Button.Equals(MouseButtons.Left) && (opcion == 2 || opcion == 9) && bandA)
+            if (e.Button.Equals(MouseButtons.Left) && (opcion == 2 || opcion == 9) && bandA)
             {
                 p2 = e.Location;
                 Form1_Paint(this, null);
@@ -202,7 +218,7 @@ namespace EditorGrafos
                 Form1_Paint(this, null);
             }
 
-            if(e.Button.Equals(MouseButtons.Left) && opcion == 8)
+            if (e.Button.Equals(MouseButtons.Left) && opcion == 8)
             {
                 int distx, disty;
 
@@ -222,15 +238,15 @@ namespace EditorGrafos
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             if (bandA && band && (opcion == 2 || opcion == 9))
-            { 
+            {
                 p2 = e.Location;
                 nodoAux = grafo.BuscaNodo(p2);
-                if(nodoAux != null)
+                if (nodoAux != null)
                 {
                     if (opcion == 2)
                     {
                         AristaDirigida.Enabled = false;
-                        grafo = new GrafoNoDirigido(grafo);
+                        //  grafo = new GrafoNoDirigido(grafo);
                         nodoR = new Arista(rnd.Next(100));
                         nodoR.destino = nodoAux;
                         nodoR.origen = nodoP;
@@ -244,11 +260,11 @@ namespace EditorGrafos
 
                         nodoAux.aristas.Add(nodoR);
                     }
-                        
-                    else if(opcion == 9)
+
+                    else if (opcion == 9)
                     {
                         AristaNoDirigida.Enabled = false;
-                        grafo = new GrafoDirigido(grafo);
+                        //    grafo = new GrafoDirigido(grafo);
                         grafo.penA.CustomEndCap = arrow;
 
                         nodoR = new Arista(rnd.Next(100));
@@ -256,13 +272,13 @@ namespace EditorGrafos
                         nodoR.origen = nodoP;
 
                         nodoP.aristas.Add(nodoR);
-                       
-                        
-                        
-                       
+
+
+
+
 
                     }
-                    
+
                     bandF = true;
                     bandA = false;
                 }
@@ -271,14 +287,14 @@ namespace EditorGrafos
                     bandF = false;
                 }
             }
-           
-            if(opcion == 4)
+
+            if (opcion == 4)
             {
                 grafo.BorrarNodo(e.Location);
                 bandF = false;
             }
 
-            if(opcion == 5)
+            if (opcion == 5)
             {
                 grafo.BorrarArista(e.Location);
                 bandF = false;
@@ -300,44 +316,44 @@ namespace EditorGrafos
             bandF = false;
             bandI = false;
 
-            switch(e.ClickedItem.AccessibleName)
+            switch (e.ClickedItem.AccessibleName)
             {
                 case "CrearNodo":
                 case "MoverNodo":
                 case "BorrarNodo":
-                    
+
                     Nodo_Click(this, e);
-                   
-                break;
+
+                    break;
 
                 case "AristaDirigida":
                 case "AristaNoDirigida":
                 case "BorrarArista":
                     Arista_Click(this, e);
-                break;
+                    break;
 
                 case "Save":
                 case "Open":
                 case "Imprimir":
                     Archivo_Click(this, e);
-                break;
+                    break;
 
                 case "MoverGrafo":
                 case "BorrarGrafo":
                 case "EliminarGrafo":
                     Grafo_Click(this, e);
-                break;
+                    break;
 
                 case "Cambia":
                 case "Preferencias":
                     Configuracion_Clicked(this, e);
-                break;
+                    break;
             }
         }
-        
+
         private void Configuracion_Clicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            switch(e.ClickedItem.AccessibleName)
+            switch (e.ClickedItem.AccessibleName)
             {
                 case "Preferencias":
                     config = new Configuracion(grafo.width, grafo.widthA, grafo.radio, grafo.colorFuente, grafo.cArista, grafo.cRelleno, grafo.cNodo, grafo.font);
@@ -364,14 +380,50 @@ namespace EditorGrafos
 
                         if (AristaDirigida.Enabled && !AristaNoDirigida.Enabled)
                         {
-                            grafo.penA.CustomEndCap = arrow;
+
                             grafo = new GrafoDirigido(grafo);
-                            actualizaPropiedades();
-                            
-                            
+
+                            grafo.widthA = config.anchoArista;
+                            grafo.radio = config.radio;
+                            grafo.font = config.font;
+                            grafo.cRelleno = config.rellenoNodo;
+                            grafo.colorFuente = config.colorFuente;
+                            grafo.cNodo = config.ContornoNodo;
+                            grafo.width = config.anchoNodo;
+                            grafo.cArista = config.colorArista;
+                            grafo.penN = new Pen(grafo.cNodo, grafo.width);
+                            grafo.brushN = new SolidBrush(grafo.cRelleno);
+                            grafo.brushF = new SolidBrush(grafo.colorFuente);
+                            grafo.font = new Font(grafo.nameF, grafo.sizeF, grafo.styleF);
+                            grafo.penA = new Pen(grafo.cArista, grafo.widthA);
+
+                            /*
+                            grafo.font = config.font;
+                            grafo.penN = config.penN;
+                            grafo.penA = config.penA;
+                            grafo.brushN = config.brushN;
+                            grafo.brushF = config.brushF;
+                            grafo.radio = config.radio;
+
+                            grafo.cNodo = grafo.penN.Color;
+                            grafo.width = grafo.penN.Width;
+                            grafo.cRelleno = grafo.brushN.Color;
+
+                            grafo.cArista = grafo.penA.Color;
+                            grafo.widthA = grafo.penA.Width;
+                            grafo.penA.Width = grafo.penA.Width;
+                            grafo.colorFuente = grafo.brushF.Color;
+                            grafo.nameF = grafo.font.Name;
+                            grafo.sizeF = grafo.font.Size;
+                            grafo.styleF = grafo.font.Style;
+                            */
+                            grafo.penA.CustomEndCap = arrow;
+                            //actualizaPropiedades();
+
+
 
                         }
-                            
+
 
 
                         bandF = false;
@@ -391,19 +443,19 @@ namespace EditorGrafos
 
         private void Grafo_Click(object sender, ToolStripItemClickedEventArgs e)
         {
-            switch(e.ClickedItem.AccessibleName)
+            switch (e.ClickedItem.AccessibleName)
             {
                 case "MoverGrafo":
                     opcion = 8;
-                break;
+                    break;
 
                 case "BorrarGrafo":
                     opcion = 6;
-                break;
+                    break;
 
                 case "EliminarGrafo":
                     opcion = 7;
-                break;
+                    break;
             }
         }
 
@@ -422,47 +474,50 @@ namespace EditorGrafos
 
                 case "MoverNodo":
                     opcion = 3;
-                break;
+                    break;
 
                 case "BorrarNodo":
                     opcion = 4;
-                break;
+                    break;
             }
         }
 
-        
+
 
         private void metodosAdicionales(object sender, ToolStripItemClickedEventArgs e)
         {
-            switch(e.ClickedItem.AccessibleName)
+            switch (e.ClickedItem.AccessibleName)
             {
                 case "complemento":
+                    obtenPropiedades();
                     if (AristaNoDirigida.Enabled == true && AristaDirigida.Enabled == true)
                     {
                         grafo = new GrafoNoDirigido(grafo);
                         grafo = grafo.complemento(g);
+                        asignaPropiedades();
                         AristaDirigida.Enabled = false;
                     }
                     else
                     if (AristaDirigida.Enabled == true && AristaNoDirigida.Enabled == false)
                     {
-                        // grafo.penA.CustomEndCap = arrow;
-
                         grafo = grafo.complemento(g);
+                        asignaPropiedades();
                         grafo.penA.CustomEndCap = arrow;
                     }
                     else if (AristaDirigida.Enabled == false && AristaNoDirigida.Enabled == true)
                     {
                         grafo = grafo.complemento(g);
+                        asignaPropiedades();
                     }
 
                     grafo.numN = grafo.Count;
+                   
                     Form1_Paint(this, null);
                 break;
             }
         }
 
- 
+
 
         private void Arista_Click(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -475,17 +530,23 @@ namespace EditorGrafos
             {
                 case "AristaNoDirigida":
                     opcion = 2;
+                    obtenPropiedades();
                     grafo = new GrafoNoDirigido(grafo);
+                    asignaPropiedades();
+
                     break;
 
                 case "BorrarArista":
                     opcion = 5;
-                break;
+                    break;
 
                 case "AristaDirigida":
                     opcion = 9;
+                    obtenPropiedades();
                     grafo = new GrafoDirigido(grafo);
+                    asignaPropiedades();
                     grafo.penA.CustomEndCap = arrow;
+                    AristaNoDirigida.Enabled = false;
                     break;
             }
         }
@@ -499,9 +560,9 @@ namespace EditorGrafos
             int i = 0;
 
             IFormatter formatter = new BinaryFormatter();
-            String directorio    = Environment.CurrentDirectory + "..\\Grafos";
-           // directorio = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\Grafos"));
-            
+            String directorio = Environment.CurrentDirectory + "..\\Grafos";
+            //String directorio = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\\Grafos"));
+
 
 
             switch (e.ClickedItem.AccessibleName)
@@ -513,12 +574,12 @@ namespace EditorGrafos
                     if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         Stream stream = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
-                        if(AristaDirigida.Enabled == true && AristaNoDirigida.Enabled == false)
+                        if (AristaDirigida.Enabled == true && AristaNoDirigida.Enabled == false)
                         {
                             formatter.Serialize(stream, (GrafoDirigido)grafo);
-                           
+
                         }
-                        else if(AristaNoDirigida.Enabled == true && AristaDirigida.Enabled == false)
+                        else if (AristaNoDirigida.Enabled == true && AristaDirigida.Enabled == false)
                         {
                             formatter.Serialize(stream, (GrafoNoDirigido)grafo);
                         }
@@ -526,7 +587,7 @@ namespace EditorGrafos
                         {
                             formatter.Serialize(stream, (Grafo)grafo);
                         }
-                        
+
                         stream.Close();
                     }
                     break;
@@ -544,16 +605,16 @@ namespace EditorGrafos
                         Stream stream = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read, FileShare.None);
                         grafo = (Grafo)formatter.Deserialize(stream);
                         /*Algoritmo que determina si es dirigido, no dirigido, o solo tiene nodos*/
-                        foreach (NodoP np in grafo){
-                            foreach(Arista nr in np.aristas){
+                        foreach (NodoP np in grafo) {
+                            foreach (Arista nr in np.aristas) {
                                 A = nr.destino;
-                                foreach(Arista n in A.aristas){ 
-                                    if(n.destino == np) //Condición si nodo A apunta a B y B apunta a A
+                                foreach (Arista n in A.aristas) {
+                                    if (n.destino == np) //Condición si nodo A apunta a B y B apunta a A
                                     {
                                         band = true;
                                         break;
                                     }
-                                    else{
+                                    else {
                                         band = false;
                                         break;
                                     }
@@ -576,12 +637,12 @@ namespace EditorGrafos
                         }
                         else
                         {
-                            foreach(NodoP np in grafo){
-                                if(np.aristas.Count == 0){
+                            foreach (NodoP np in grafo) {
+                                if (np.aristas.Count == 0) {
                                     i++;
                                 }
                             }
-                            if(i == grafo.Count){ /* Si i es igual que el numero de nodos, entonces no tiene aristas el grafo*/
+                            if (i == grafo.Count) { /* Si i es igual que el numero de nodos, entonces no tiene aristas el grafo*/
                                 grafo = (Grafo)formatter.Deserialize(stream);
                                 AristaNoDirigida.Enabled = true;
                                 AristaDirigida.Enabled = true;
@@ -594,34 +655,21 @@ namespace EditorGrafos
                             }
                             else
                             {
-                                
+
                                 grafo = (GrafoDirigido)formatter.Deserialize(stream);
 
-                                /* Propiedades Guardades en variables temporales*/
-
-                                Pen         penN = new Pen(grafo.cNodo, grafo.width);
-                                SolidBrush  brushN = new SolidBrush(grafo.cRelleno);
-                                SolidBrush  brushF = new SolidBrush(grafo.colorFuente);
-                                Font        font = new Font(grafo.nameF, grafo.sizeF, grafo.styleF);
-                                Pen         penA = new Pen(grafo.cArista, grafo.width);
-                                
-                                /* Asiganción de variables al grafo */
+                                obtenPropiedades();
                                 grafo = new GrafoDirigido(grafo);
-
-                                grafo.penN = penN;
-                                grafo.brushN = brushN;
-                                grafo.brushF = brushF;
-                                grafo.font = font;
-                                grafo.penA = penA;
+                                asignaPropiedades();
                                 grafo.penA.CustomEndCap = arrow;
-                               
+
                                 AristaNoDirigida.Enabled = false;
                             }
                         }
 
                         stream.Close();
-                        
-                        
+
+
 
                         band = false;
                         bandA = false;
@@ -630,8 +678,8 @@ namespace EditorGrafos
 
                         MueveNodo.Enabled = true;
                         BorrarNodo.Enabled = true;
-                       // AristaNoDirigida.Enabled = true;
-                      //  AristaDirigida.Enabled = true;
+                        // AristaNoDirigida.Enabled = true;
+                        //  AristaDirigida.Enabled = true;
                         BorrarArista.Enabled = true;
                         MueveGrafo.Enabled = true;
                         BorrarGrafo.Enabled = true;
@@ -639,7 +687,7 @@ namespace EditorGrafos
                         Cambia.Enabled = true;
                         Invalidate();
                     }
-                break;
+                    break;
 
                 case "Imprimir":
                     opcion = 10;
@@ -648,8 +696,13 @@ namespace EditorGrafos
                     bandA = false;
                     bandI = true;
                     Invalidate();
-                break;
+                    break;
             }
+        }
+
+        private void datosGrafo(object sender, EventArgs e)
+        {
+            MessageBox.Show("cNodo " + grafo.cNodo + "\ncArista " + grafo.cArista);
         }
 
         #endregion
@@ -679,7 +732,7 @@ namespace EditorGrafos
                 return 1;
             }
 
-            if (grafo.numN > 27 && grafo.edoNom  && grafo.nomb > 27)
+            if (grafo.numN > 27 && grafo.edoNom && grafo.nomb > 27)
                 MessageBox.Show("No se puede cambiar el nombre de los nodos de numeros a letras porque hay demasiados nodos", "Error");
 
             if (grafo.numN <= 27 && !grafo.edoNom)
@@ -699,48 +752,46 @@ namespace EditorGrafos
         }
 
         #endregion
-        public void actualizaPropiedades()
+        #region MetodosPropiedades
+        public void obtenPropiedades()
         {
-           // grafo.penA.CustomEndCap = arrow;
-
-            grafo.font = config.font;
-            grafo.penN = config.penN;
-            grafo.penA = config.penA;
-            grafo.brushN = config.brushN;
-            grafo.brushF = config.brushF;
-            grafo.radio = config.radio;
-
-            grafo.cNodo = grafo.penN.Color;
-            grafo.width = grafo.penN.Width;
-            grafo.cRelleno = grafo.brushN.Color;
-
-            grafo.cArista = grafo.penA.Color;
-            grafo.widthA = grafo.penA.Width;
-
-            grafo.colorFuente = grafo.brushF.Color;
-            grafo.nameF = grafo.font.Name;
-            grafo.sizeF = grafo.font.Size;
-            grafo.styleF = grafo.font.Style;
+            radio = grafo.radio;
+            nomb = grafo.nomb;
+            nameF = grafo.nameF;
+            cRelleno = grafo.cRelleno;
+            colorFuente = grafo.colorFuente;
+            cNodo = grafo.cNodo;
+            width = grafo.width;
+            widthA = grafo.widthA;
+            cArista = grafo.cArista;
+            penN = new Pen(grafo.cNodo, grafo.width);
+            brushN = new SolidBrush(grafo.cRelleno);
+            brushF = new SolidBrush(grafo.colorFuente);
+            font = new Font(grafo.nameF, grafo.sizeF, grafo.styleF);
+            penA = new Pen(grafo.cArista, grafo.widthA);
         }
-        public void actualizaGrafo()
+        public void asignaPropiedades()
         {
-            Pen penN = new Pen(grafo.cNodo, grafo.width);
-            SolidBrush brushN = new SolidBrush(grafo.cRelleno);
-            SolidBrush brushF = new SolidBrush(grafo.colorFuente);
-            Font font = new Font(grafo.nameF, grafo.sizeF, grafo.styleF);
-            Pen penA = new Pen(grafo.cArista, grafo.width);
+            grafo.widthA = widthA;
+            grafo.radio = radio;
+            grafo.nomb = nomb;
+            grafo.nameF = nameF;
+            grafo.cRelleno = cRelleno;
+            grafo.colorFuente = colorFuente;
+            grafo.cNodo = cNodo;
+            grafo.width = width;
+            grafo.cArista = cArista;
+            grafo.penN = new Pen(grafo.cNodo, grafo.width);
+            grafo.brushN = new SolidBrush(grafo.cRelleno);
+            grafo.brushF = new SolidBrush(grafo.colorFuente);
+            grafo.font = new Font(grafo.nameF, grafo.sizeF, grafo.styleF);
+            grafo.penA = new Pen(grafo.cArista, grafo.widthA);
 
-            /* Asiganción de variables al grafo */
-            grafo = new GrafoDirigido(grafo);
-
-            grafo.penN = penN;
-            grafo.brushN = brushN;
-            grafo.brushF = brushF;
-            grafo.font = font;
-            grafo.penA = penA;
-            grafo.penA.CustomEndCap = arrow;
 
         }
-        
+        #endregion
+
+
+
     }
 }

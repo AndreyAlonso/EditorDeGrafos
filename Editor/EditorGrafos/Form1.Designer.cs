@@ -77,6 +77,7 @@
             this.Cambia = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -479,11 +480,22 @@
             this.toolStripButton2.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton2.Text = "Complemento del Grafo";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(794, 63);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(162, 48);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Propiedades Grafo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.datosGrafo);
+            // 
             // EditorGrafo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 661);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -553,6 +565,7 @@
         private System.Windows.Forms.ToolStripMenuItem aristaNoDirigidaToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
