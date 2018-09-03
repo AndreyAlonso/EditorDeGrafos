@@ -41,9 +41,13 @@ Rev.
 
 ----------------------------------------------------------------------------------------------------------------------
 
-28 de Agosto 2018
+03 de Septiembre 2018
 Descripción:
 	-Interfaz:
-		- Al abrir conserva sus propiedades. (Pendiente)
+		
+	-Metodos:
+		- Se crean metodos y botones para Grafos Especiales Kn, Cn, Wn.	
+
+	
 
 	

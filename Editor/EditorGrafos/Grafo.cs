@@ -245,5 +245,10 @@ namespace EditorGrafos
 
             }
         }
+        #region GrafosEspeciales
+        public virtual void grafoKn(int nodos, Graphics g) { }
+        public virtual void grafoCn(int nodos, Graphics g) { }
+        public virtual void grafoWn(int nodos, Graphics g) { }
+        #endregion
     }
 }
