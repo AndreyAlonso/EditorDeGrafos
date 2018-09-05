@@ -319,6 +319,9 @@ namespace EditorGrafos
             bandA = false;
             bandF = false;
             bandI = false;
+            numericUpDown1.Visible = false;
+            numericUpDown2.Visible = false;
+            numericUpDown3.Visible = false;
 
             switch (e.ClickedItem.AccessibleName)
             {
@@ -490,12 +493,14 @@ namespace EditorGrafos
 
         private void metodosAdicionales(object sender, ToolStripItemClickedEventArgs e)
         {
+            numericUpDown1.Visible = false;
+            numericUpDown2.Visible = false;
+            numericUpDown3.Visible = false;
+
             switch (e.ClickedItem.AccessibleName)
             {
                 case "complemento":
                     obtenPropiedades();
-
-
                     if (AristaNoDirigida.Enabled == true && AristaDirigida.Enabled == true)
                     {
                         grafo = new GrafoNoDirigido(grafo);
@@ -517,7 +522,7 @@ namespace EditorGrafos
                     }
 
                     grafo.numN = grafo.Count;
-                    grafo.ImprimirGrafo(g);
+                    //grafo.ImprimirGrafo(g);
                     Form1_Paint(this, null);
                     break;
                 case "preExamen_1":
@@ -768,31 +773,18 @@ namespace EditorGrafos
                     numericUpDown1.Show();
                     numericUpDown2.Hide();
                     numericUpDown3.Hide();
-                    numericUpDown1.Minimum = 1;
-                    numericUpDown1.Maximum = 100;
-                    numericUpDown1.Value = 1;
-                    numericKn(this, null);
                 break;
                 case "GrafoCn":
                     
                     numericUpDown1.Hide();
                     numericUpDown2.Show();
                     numericUpDown3.Hide();
-                    numericUpDown2.Minimum = 3;
-                    numericUpDown2.Maximum = 100;
-                    numericUpDown2.Value = 3;
-                    numericCn(this, null);
-                    
                     break;
                 case "GrafoWn":
                     
                     numericUpDown1.Hide();
                     numericUpDown2.Hide();
                     numericUpDown3.Show();
-                    numericUpDown3.Minimum = 3;
-                    numericUpDown3.Maximum = 100;
-                    numericUpDown3.Value = 3;
-                    numericWn(this, null);
                     break;
 
               
@@ -804,23 +796,27 @@ namespace EditorGrafos
         #region numericGrafosEspeciales
         private void numericKn(object sender, EventArgs e)
         {
-            obtenPropiedades();
-            grafo = new GrafoNoDirigido(grafo);
-            asignaPropiedades();
-            grafo.Clear();
-            Form1_Paint(this, null);
-            grafo.grafoKn((int)numericUpDown1.Value, g);
-
+            
+                obtenPropiedades();
+                grafo = new GrafoNoDirigido(grafo);
+                asignaPropiedades();
+                grafo.Clear();
+                grafo.grafoKn((int)numericUpDown1.Value, g);
+                Form1_Paint(this, null);
+            
+            
 
         }
         private void numericCn(object sender, EventArgs e)
         {
+
             obtenPropiedades();
             grafo = new GrafoNoDirigido(grafo);
             asignaPropiedades();
             grafo.Clear();
-            Form1_Paint(this, null);
+           
             grafo.grafoCn((int)numericUpDown2.Value, g);
+            Form1_Paint(this, null);
         }
 
         private void numericWn(object sender, EventArgs e)
@@ -829,8 +825,8 @@ namespace EditorGrafos
             grafo = new GrafoNoDirigido(grafo);
             asignaPropiedades();
             grafo.Clear();
-            Form1_Paint(this, null);
             grafo.grafoWn((int)numericUpDown3.Value, g);
+            Form1_Paint(this, null);
         }
         #endregion
 

@@ -16,7 +16,7 @@ Rev.
 23 de Agosto 2018
 Descripción:
 	- Metodos:
-		Complento
+		Complemento
 ---------------
 Rev.
 	
@@ -37,8 +37,6 @@ Descripción:
 Rev.
 	No guarda atributos cuando es dirigida.
 	Arreglar todas esos detalles.
-
-
 ----------------------------------------------------------------------------------------------------------------------
 
 03 de Septiembre 2018
@@ -47,6 +45,24 @@ Descripción:
 		
 	-Metodos:
 		- Se crean metodos y botones para Grafos Especiales Kn, Cn, Wn.	
+Rev.		
+	-No imprimir (dibujar)hasta que se le Acepte.
+	-OK		Chistosito!!!
+	PreExamen:			Imprimir el nombre cual tenga. 
+------------------------------------
+05 de Septiembre 2018
+
+Descripción:
+	-Interfaz:
+	-Metodos:
+		- Se dibujan grafos especiales hasta que esten completo
+--------
+Rev.
+	OK
+	Seguir con el nPartita.
+--------------------
+
+
 
 	
 

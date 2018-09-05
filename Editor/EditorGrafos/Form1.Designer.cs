@@ -57,34 +57,34 @@
             this.Preferencias = new System.Windows.Forms.ToolStripMenuItem();
             this.Nombre = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.Save = new System.Windows.Forms.ToolStripButton();
             this.Open = new System.Windows.Forms.ToolStripButton();
             this.Print = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.CrearNodo = new System.Windows.Forms.ToolStripButton();
             this.MueveNodo = new System.Windows.Forms.ToolStripButton();
             this.BorrarNodo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.AristaNoDirigida = new System.Windows.Forms.ToolStripButton();
             this.AristaDirigida = new System.Windows.Forms.ToolStripButton();
             this.BorrarArista = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MueveGrafo = new System.Windows.Forms.ToolStripButton();
-            this.BorrarGrafo = new System.Windows.Forms.ToolStripButton();
-            this.EliminarGrafo = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.Cambia = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.BorrarGrafo = new System.Windows.Forms.ToolStripButton();
+            this.EliminarGrafo = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -295,25 +295,178 @@
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Toolbar_Clicked);
             // 
+            // Save
+            // 
+            this.Save.AccessibleName = "Save";
+            this.Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Save.Image = ((System.Drawing.Image)(resources.GetObject("Save.Image")));
+            this.Save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(36, 36);
+            this.Save.Text = "Guardar en un archivo";
+            // 
+            // Open
+            // 
+            this.Open.AccessibleName = "Open";
+            this.Open.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Open.Image = ((System.Drawing.Image)(resources.GetObject("Open.Image")));
+            this.Open.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Open.Name = "Open";
+            this.Open.Size = new System.Drawing.Size(36, 36);
+            this.Open.Text = "toolStripButton1";
+            this.Open.ToolTipText = "Abrir desde un archivo";
+            // 
+            // Print
+            // 
+            this.Print.AccessibleName = "Imprimir";
+            this.Print.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Print.Image = ((System.Drawing.Image)(resources.GetObject("Print.Image")));
+            this.Print.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Print.Name = "Print";
+            this.Print.Size = new System.Drawing.Size(36, 36);
+            this.Print.Text = "toolStripButton4";
+            this.Print.ToolTipText = "Imprimir el grafo creado";
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // CrearNodo
+            // 
+            this.CrearNodo.AccessibleName = "CrearNodo";
+            this.CrearNodo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.CrearNodo.Image = ((System.Drawing.Image)(resources.GetObject("CrearNodo.Image")));
+            this.CrearNodo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CrearNodo.Name = "CrearNodo";
+            this.CrearNodo.Size = new System.Drawing.Size(36, 36);
+            this.CrearNodo.Text = "CrearNodo";
+            this.CrearNodo.ToolTipText = "Crea un nuevo nodo";
+            // 
+            // MueveNodo
+            // 
+            this.MueveNodo.AccessibleName = "MoverNodo";
+            this.MueveNodo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MueveNodo.Image = ((System.Drawing.Image)(resources.GetObject("MueveNodo.Image")));
+            this.MueveNodo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MueveNodo.Name = "MueveNodo";
+            this.MueveNodo.Size = new System.Drawing.Size(36, 36);
+            this.MueveNodo.Text = "toolStripButton1";
+            this.MueveNodo.ToolTipText = "Mueve un Nodo";
+            // 
+            // BorrarNodo
+            // 
+            this.BorrarNodo.AccessibleName = "BorrarNodo";
+            this.BorrarNodo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BorrarNodo.Image = ((System.Drawing.Image)(resources.GetObject("BorrarNodo.Image")));
+            this.BorrarNodo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BorrarNodo.Name = "BorrarNodo";
+            this.BorrarNodo.Size = new System.Drawing.Size(36, 36);
+            this.BorrarNodo.Text = "toolStripButton1";
+            this.BorrarNodo.ToolTipText = "Borra un Nodo";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
+            // AristaNoDirigida
+            // 
+            this.AristaNoDirigida.AccessibleName = "AristaNoDirigida";
+            this.AristaNoDirigida.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AristaNoDirigida.Image = ((System.Drawing.Image)(resources.GetObject("AristaNoDirigida.Image")));
+            this.AristaNoDirigida.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AristaNoDirigida.Name = "AristaNoDirigida";
+            this.AristaNoDirigida.Size = new System.Drawing.Size(36, 36);
+            this.AristaNoDirigida.Text = "toolStripButton2";
+            this.AristaNoDirigida.ToolTipText = "Crea una nueva Arista no dirigida";
+            // 
+            // AristaDirigida
+            // 
+            this.AristaDirigida.AccessibleName = "AristaDirigida";
+            this.AristaDirigida.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AristaDirigida.Image = ((System.Drawing.Image)(resources.GetObject("AristaDirigida.Image")));
+            this.AristaDirigida.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AristaDirigida.Name = "AristaDirigida";
+            this.AristaDirigida.Size = new System.Drawing.Size(36, 36);
+            this.AristaDirigida.Text = "toolStripButton2";
+            this.AristaDirigida.ToolTipText = "Crea una nueva Arista dirigida";
+            // 
+            // BorrarArista
+            // 
+            this.BorrarArista.AccessibleName = "BorrarArista";
+            this.BorrarArista.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BorrarArista.Image = ((System.Drawing.Image)(resources.GetObject("BorrarArista.Image")));
+            this.BorrarArista.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BorrarArista.Name = "BorrarArista";
+            this.BorrarArista.Size = new System.Drawing.Size(36, 36);
+            this.BorrarArista.Text = "toolStripButton1";
+            this.BorrarArista.ToolTipText = "Elimina una Arista";
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
             // 
+            // MueveGrafo
+            // 
+            this.MueveGrafo.AccessibleName = "MoverGrafo";
+            this.MueveGrafo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MueveGrafo.Image = ((System.Drawing.Image)(resources.GetObject("MueveGrafo.Image")));
+            this.MueveGrafo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MueveGrafo.Name = "MueveGrafo";
+            this.MueveGrafo.Size = new System.Drawing.Size(36, 36);
+            this.MueveGrafo.Text = "toolStripButton1";
+            this.MueveGrafo.ToolTipText = "Mueve el grafo completo";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.AccessibleName = "Preferencias";
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Abre el menu de configuracion del nodo";
+            // 
+            // Cambia
+            // 
+            this.Cambia.AccessibleName = "Cambia";
+            this.Cambia.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Cambia.Image = ((System.Drawing.Image)(resources.GetObject("Cambia.Image")));
+            this.Cambia.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Cambia.Name = "Cambia";
+            this.Cambia.Size = new System.Drawing.Size(36, 36);
+            this.Cambia.Text = "toolStripButton2";
+            this.Cambia.ToolTipText = "Cambia todos los nodos de letras a numeros y viceversa";
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 39);
+            // 
+            // BorrarGrafo
+            // 
+            this.BorrarGrafo.AccessibleName = "BorrarGrafo";
+            this.BorrarGrafo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BorrarGrafo.Image = ((System.Drawing.Image)(resources.GetObject("BorrarGrafo.Image")));
+            this.BorrarGrafo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BorrarGrafo.Name = "BorrarGrafo";
+            this.BorrarGrafo.Size = new System.Drawing.Size(36, 36);
+            this.BorrarGrafo.Text = "toolStripButton2";
+            this.BorrarGrafo.ToolTipText = "Borra el grafo del area cliente";
+            // 
+            // EliminarGrafo
+            // 
+            this.EliminarGrafo.AccessibleName = "EliminarGrafo";
+            this.EliminarGrafo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.EliminarGrafo.Image = ((System.Drawing.Image)(resources.GetObject("EliminarGrafo.Image")));
+            this.EliminarGrafo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EliminarGrafo.Name = "EliminarGrafo";
+            this.EliminarGrafo.Size = new System.Drawing.Size(36, 36);
+            this.EliminarGrafo.Text = "toolStripButton3";
+            this.EliminarGrafo.ToolTipText = "Elimina el grafo y crea uno nuevo";
             // 
             // toolStrip2
             // 
@@ -328,6 +481,28 @@
             this.toolStrip2.Text = "toolStrip2";
             this.toolStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.metodosAdicionales);
             // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.AccessibleName = "complemento";
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::EditorGrafos.Properties.Resources.favicon;
+            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(34, 36);
+            this.toolStripButton2.Text = "Complemento del Grafo";
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.AccessibleName = "preExamen_1";
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(34, 36);
+            this.toolStripButton6.Text = "Grados";
+            // 
             // toolStrip3
             // 
             this.toolStrip3.Dock = System.Windows.Forms.DockStyle.Right;
@@ -341,30 +516,6 @@
             this.toolStrip3.TabIndex = 4;
             this.toolStrip3.Text = "toolStrip3";
             this.toolStrip3.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.grafosEspeciales);
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(905, 80);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(39, 20);
-            this.numericUpDown1.TabIndex = 5;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericKn);
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(905, 123);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(39, 20);
-            this.numericUpDown2.TabIndex = 6;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericCn);
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Location = new System.Drawing.Point(905, 162);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(39, 20);
-            this.numericUpDown3.TabIndex = 7;
-            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericWn);
             // 
             // toolStripButton3
             // 
@@ -405,180 +556,59 @@
             this.toolStripButton5.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton5.Text = "Grafo Volante";
             // 
-            // toolStripButton2
+            // numericUpDown1
             // 
-            this.toolStripButton2.AccessibleName = "complemento";
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::EditorGrafos.Properties.Resources.favicon;
-            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(34, 36);
-            this.toolStripButton2.Text = "Complemento del Grafo";
+            this.numericUpDown1.Location = new System.Drawing.Point(905, 80);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDown1.TabIndex = 5;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericKn);
             // 
-            // Save
+            // numericUpDown2
             // 
-            this.Save.AccessibleName = "Save";
-            this.Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Save.Image = ((System.Drawing.Image)(resources.GetObject("Save.Image")));
-            this.Save.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(36, 36);
-            this.Save.Text = "Guardar en un archivo";
+            this.numericUpDown2.Location = new System.Drawing.Point(905, 123);
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDown2.TabIndex = 6;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericCn);
             // 
-            // Open
+            // numericUpDown3
             // 
-            this.Open.AccessibleName = "Open";
-            this.Open.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Open.Image = ((System.Drawing.Image)(resources.GetObject("Open.Image")));
-            this.Open.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(36, 36);
-            this.Open.Text = "toolStripButton1";
-            this.Open.ToolTipText = "Abrir desde un archivo";
-            // 
-            // Print
-            // 
-            this.Print.AccessibleName = "Imprimir";
-            this.Print.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Print.Image = ((System.Drawing.Image)(resources.GetObject("Print.Image")));
-            this.Print.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Print.Name = "Print";
-            this.Print.Size = new System.Drawing.Size(36, 36);
-            this.Print.Text = "toolStripButton4";
-            this.Print.ToolTipText = "Imprimir el grafo creado";
-            // 
-            // CrearNodo
-            // 
-            this.CrearNodo.AccessibleName = "CrearNodo";
-            this.CrearNodo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CrearNodo.Image = ((System.Drawing.Image)(resources.GetObject("CrearNodo.Image")));
-            this.CrearNodo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CrearNodo.Name = "CrearNodo";
-            this.CrearNodo.Size = new System.Drawing.Size(36, 36);
-            this.CrearNodo.Text = "CrearNodo";
-            this.CrearNodo.ToolTipText = "Crea un nuevo nodo";
-            // 
-            // MueveNodo
-            // 
-            this.MueveNodo.AccessibleName = "MoverNodo";
-            this.MueveNodo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MueveNodo.Image = ((System.Drawing.Image)(resources.GetObject("MueveNodo.Image")));
-            this.MueveNodo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MueveNodo.Name = "MueveNodo";
-            this.MueveNodo.Size = new System.Drawing.Size(36, 36);
-            this.MueveNodo.Text = "toolStripButton1";
-            this.MueveNodo.ToolTipText = "Mueve un Nodo";
-            // 
-            // BorrarNodo
-            // 
-            this.BorrarNodo.AccessibleName = "BorrarNodo";
-            this.BorrarNodo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.BorrarNodo.Image = ((System.Drawing.Image)(resources.GetObject("BorrarNodo.Image")));
-            this.BorrarNodo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BorrarNodo.Name = "BorrarNodo";
-            this.BorrarNodo.Size = new System.Drawing.Size(36, 36);
-            this.BorrarNodo.Text = "toolStripButton1";
-            this.BorrarNodo.ToolTipText = "Borra un Nodo";
-            // 
-            // AristaNoDirigida
-            // 
-            this.AristaNoDirigida.AccessibleName = "AristaNoDirigida";
-            this.AristaNoDirigida.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AristaNoDirigida.Image = ((System.Drawing.Image)(resources.GetObject("AristaNoDirigida.Image")));
-            this.AristaNoDirigida.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AristaNoDirigida.Name = "AristaNoDirigida";
-            this.AristaNoDirigida.Size = new System.Drawing.Size(36, 36);
-            this.AristaNoDirigida.Text = "toolStripButton2";
-            this.AristaNoDirigida.ToolTipText = "Crea una nueva Arista no dirigida";
-            // 
-            // AristaDirigida
-            // 
-            this.AristaDirigida.AccessibleName = "AristaDirigida";
-            this.AristaDirigida.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AristaDirigida.Image = ((System.Drawing.Image)(resources.GetObject("AristaDirigida.Image")));
-            this.AristaDirigida.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AristaDirigida.Name = "AristaDirigida";
-            this.AristaDirigida.Size = new System.Drawing.Size(36, 36);
-            this.AristaDirigida.Text = "toolStripButton2";
-            this.AristaDirigida.ToolTipText = "Crea una nueva Arista dirigida";
-            // 
-            // BorrarArista
-            // 
-            this.BorrarArista.AccessibleName = "BorrarArista";
-            this.BorrarArista.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.BorrarArista.Image = ((System.Drawing.Image)(resources.GetObject("BorrarArista.Image")));
-            this.BorrarArista.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BorrarArista.Name = "BorrarArista";
-            this.BorrarArista.Size = new System.Drawing.Size(36, 36);
-            this.BorrarArista.Text = "toolStripButton1";
-            this.BorrarArista.ToolTipText = "Elimina una Arista";
-            // 
-            // MueveGrafo
-            // 
-            this.MueveGrafo.AccessibleName = "MoverGrafo";
-            this.MueveGrafo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MueveGrafo.Image = ((System.Drawing.Image)(resources.GetObject("MueveGrafo.Image")));
-            this.MueveGrafo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MueveGrafo.Name = "MueveGrafo";
-            this.MueveGrafo.Size = new System.Drawing.Size(36, 36);
-            this.MueveGrafo.Text = "toolStripButton1";
-            this.MueveGrafo.ToolTipText = "Mueve el grafo completo";
-            // 
-            // BorrarGrafo
-            // 
-            this.BorrarGrafo.AccessibleName = "BorrarGrafo";
-            this.BorrarGrafo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.BorrarGrafo.Image = ((System.Drawing.Image)(resources.GetObject("BorrarGrafo.Image")));
-            this.BorrarGrafo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BorrarGrafo.Name = "BorrarGrafo";
-            this.BorrarGrafo.Size = new System.Drawing.Size(36, 36);
-            this.BorrarGrafo.Text = "toolStripButton2";
-            this.BorrarGrafo.ToolTipText = "Borra el grafo del area cliente";
-            // 
-            // EliminarGrafo
-            // 
-            this.EliminarGrafo.AccessibleName = "EliminarGrafo";
-            this.EliminarGrafo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.EliminarGrafo.Image = ((System.Drawing.Image)(resources.GetObject("EliminarGrafo.Image")));
-            this.EliminarGrafo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EliminarGrafo.Name = "EliminarGrafo";
-            this.EliminarGrafo.Size = new System.Drawing.Size(36, 36);
-            this.EliminarGrafo.Text = "toolStripButton3";
-            this.EliminarGrafo.ToolTipText = "Elimina el grafo y crea uno nuevo";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.AccessibleName = "Preferencias";
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.ToolTipText = "Abre el menu de configuracion del nodo";
-            // 
-            // Cambia
-            // 
-            this.Cambia.AccessibleName = "Cambia";
-            this.Cambia.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Cambia.Image = ((System.Drawing.Image)(resources.GetObject("Cambia.Image")));
-            this.Cambia.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Cambia.Name = "Cambia";
-            this.Cambia.Size = new System.Drawing.Size(36, 36);
-            this.Cambia.Text = "toolStripButton2";
-            this.Cambia.ToolTipText = "Cambia todos los nodos de letras a numeros y viceversa";
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.AccessibleName = "preExamen_1";
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
-            this.toolStripButton6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(34, 36);
-            this.toolStripButton6.Text = "Grados";
+            this.numericUpDown3.Location = new System.Drawing.Point(905, 162);
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDown3.TabIndex = 7;
+            this.numericUpDown3.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericWn);
             // 
             // EditorGrafo
             // 

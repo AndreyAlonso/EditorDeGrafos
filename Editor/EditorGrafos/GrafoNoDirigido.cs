@@ -137,7 +137,7 @@ namespace EditorGrafos
                     }
                 }
             }
-            this.ImprimirGrafo(g);
+            //this.ImprimirGrafo(g);
         }
         public override void grafoCn(int nodos, Graphics g)
         {
@@ -196,7 +196,7 @@ namespace EditorGrafos
             aux.origen = this[0];
             aux.destino = this[a-1];
             this[0].aristas.Add(aux);
-            this.ImprimirGrafo(g);
+           // this.ImprimirGrafo(g);
 
         }
         public override void grafoWn(int nodos, Graphics g)
@@ -261,8 +261,7 @@ namespace EditorGrafos
             Point center = new Point((int)centrox,(int) centroy);
             this.Add(new NodoP(nomb, center));
             a++;
-
-
+           
             foreach(NodoP np in this)
             {
                 if(np != this[a-1])
@@ -280,7 +279,7 @@ namespace EditorGrafos
                 }
                 
             }
-            this.ImprimirGrafo(g);
+            //this.ImprimirGrafo(g);
         }
         #endregion
     }

@@ -217,7 +217,7 @@ namespace EditorGrafos
         #region Metodos
         public virtual Grafo complemento(Graphics g)
         {            
-            this.ImprimirGrafo(g);   
+            //this.ImprimirGrafo(g);   
             return this;
         }
                     
