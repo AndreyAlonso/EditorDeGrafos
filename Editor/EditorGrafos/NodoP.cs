@@ -15,13 +15,22 @@ namespace EditorGrafos
         private int NOMBRE;
         public int nombre { set { NOMBRE = value; } get { return NOMBRE; } }
         private Point CENTRO;
-        public Point centro { set { CENTRO = value; } get { return CENTRO; } }    
-
+        public Point centro { set { CENTRO = value; } get { return CENTRO; } }
+        private Color COLOR;
+        public Color color { set { COLOR = value; }get { return COLOR; } }
+        public SolidBrush colorN { get; set; }
         public NodoP(int n, Point p)
         {
             ARISTAS = new List<Arista>();
             NOMBRE = n;
             CENTRO = p;
+        }
+        public NodoP(int n, Point p, Color colorc)
+        {
+            ARISTAS = new List<Arista>();
+            NOMBRE = n;
+            CENTRO = p;
+            colorN = new SolidBrush(colorc);
         }
     }
 }

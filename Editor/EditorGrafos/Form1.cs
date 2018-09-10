@@ -70,6 +70,7 @@ namespace EditorGrafos
             numericUpDown2.Hide();
             numericUpDown3.Hide();
             grafoEspecial = false;
+            nPartita.Enabled = false;
             CambiaBotones(false);
         }
 
@@ -156,7 +157,7 @@ namespace EditorGrafos
             switch (opcion)
             {
                 case 1:
-                    if (grafo.numN == 1)
+                    if (/*grafo.Count == 1 &&*/ grafo.numN == 1)
                         CambiaBotones(true);
                     grafo.numN++;
                     if (grafo.Count > 0)
@@ -477,6 +478,7 @@ namespace EditorGrafos
             {
                 case "CrearNodo":
                     opcion = 1;
+                    
                     break;
 
                 case "MoverNodo":
@@ -507,6 +509,7 @@ namespace EditorGrafos
                         grafo = grafo.complemento(g);
                         asignaPropiedades();
                         AristaDirigida.Enabled = false;
+                        
                     }
                     else
                     if (AristaDirigida.Enabled == true && AristaNoDirigida.Enabled == false)
@@ -537,6 +540,29 @@ namespace EditorGrafos
                     }
                     
                 break;
+                case "nPartita":
+                    List<List<int>> partita = new List<List<int>>(); 
+                    partita = grafo.nPartita(g);
+                    nPartita nPartita = new nPartita(partita,grafo);
+                    foreach (List<int> aux in partita)
+                    {
+                        foreach (int aux2 in aux)
+                        {
+                            foreach (NodoP np in grafo)
+                            {
+                                np.colorN = new SolidBrush(Color.Red);
+                                
+                                
+                            }
+                                
+
+                        }
+                        
+
+                    }
+                    Form1_Paint(this, null);
+                    nPartita.Show();
+                break;
             }
 
         }
@@ -557,6 +583,7 @@ namespace EditorGrafos
                     obtenPropiedades();
                     grafo = new GrafoNoDirigido(grafo);
                     asignaPropiedades();
+                    nPartita.Enabled = true;
 
                     break;
 
@@ -765,6 +792,7 @@ namespace EditorGrafos
             BorrarGrafo.Enabled = true;
             BorrarNodo.Enabled = true;
             BorrarArista.Enabled = true;
+            nPartita.Enabled = true;
 
             switch(e.ClickedItem.AccessibleName)
             {
@@ -802,6 +830,7 @@ namespace EditorGrafos
                 asignaPropiedades();
                 grafo.Clear();
                 grafo.grafoKn((int)numericUpDown1.Value, g);
+                grafo.numN = grafo.Count;
                 Form1_Paint(this, null);
             
             
@@ -816,6 +845,7 @@ namespace EditorGrafos
             grafo.Clear();
            
             grafo.grafoCn((int)numericUpDown2.Value, g);
+            grafo.numN = grafo.Count;
             Form1_Paint(this, null);
         }
 
@@ -826,7 +856,21 @@ namespace EditorGrafos
             asignaPropiedades();
             grafo.Clear();
             grafo.grafoWn((int)numericUpDown3.Value, g);
+            grafo.numN = grafo.Count;
             Form1_Paint(this, null);
+        }
+
+        private void colorea(object sender, EventArgs e)
+        {
+            NodoP aux2;
+            Grafo g2 = new Grafo();
+            foreach(NodoP aux in grafo)
+            {
+                aux2 = new NodoP(aux.nombre, aux.centro, Color.Red);
+                g2.Add(aux2);
+                
+            }
+            g2.ImprimirGrafo(g);
         }
         #endregion
 
@@ -870,8 +914,14 @@ namespace EditorGrafos
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            //grafo.ImprimirGrafo(g);
-            //g.DrawImage(bmp1, 0, 0);
+        
+            bmp1 = new Bitmap(ClientRectangle.Width, ClientRectangle.Height);
+            g = CreateGraphics();
+          //  SetClientSizeCore(ClientSize.Width, this.ClientSize.Height);
+            numericUpDown1.Location = new Point(toolStrip3.Location.X-toolStrip3.Width-5, numericUpDown1.Location.Y);
+            numericUpDown2.Location = new Point(toolStrip3.Location.X - toolStrip3.Width - 5, numericUpDown2.Location.Y);
+            numericUpDown3.Location = new Point(toolStrip3.Location.X - toolStrip3.Width - 5, numericUpDown3.Location.Y);
+            
         }
 
         #endregion

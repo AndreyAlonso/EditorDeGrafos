@@ -84,3 +84,4 @@ C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\PreExamen_1\Edi
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\PreExamen_1\Editor\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.Cache
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\PreExamen_1\Editor\EditorGrafos\obj\Debug\EditorGrafos.PreExamen.resources
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.PreExamen.resources
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.nPartita.resources

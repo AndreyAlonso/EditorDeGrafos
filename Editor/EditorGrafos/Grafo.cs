@@ -220,7 +220,8 @@ namespace EditorGrafos
             //this.ImprimirGrafo(g);   
             return this;
         }
-                    
+        public virtual List<List<int>> nPartita(Graphics g) { return new List<List<int>>(); }
+                        
         #endregion
 
 

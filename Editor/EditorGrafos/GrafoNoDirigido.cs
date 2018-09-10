@@ -86,6 +86,125 @@ namespace EditorGrafos
             return nuevo;
         }
         #endregion
+        #region nPartita
+        public override List<List<int>> nPartita(Graphics g)
+        {
+            bool band = false;
+            bool band2 = false;
+            bool band3 = false;
+            /*Hacer una lista de arreglos */
+            List<int> lista;
+            List<List<int>> partitas = new List<List<int>>();
+            /*Crear metodo para saber si existe el elemento */
+
+            lista = new List<int>();
+            foreach (NodoP np in this)
+            {
+                
+
+                foreach(Arista nr in np.aristas)
+                {
+                    lista = new List<int>();
+                    foreach (NodoP np2 in this)
+                    {
+                        if(nr.destino.nombre == np2.nombre)
+                        {
+                            band2 = true;
+                        }
+                        else
+                        {
+
+                            band = encuentraLista(lista, np2.nombre);
+                            if(band == false)
+                            {
+                                band3 = buscaRelacion(np, np2.nombre,this,lista);
+                                if(band3 == false)
+                                {
+                                    band2 = encuentraNombre(partitas,np2.nombre);
+                                    if(band2 == false)
+                                    {
+                                        lista.Add(np2.nombre);
+                                    }
+                                        
+                                        
+                                }
+                                   
+                                    
+                            }
+                               
+                        }
+                    }
+
+                }
+                if (lista.Count > 0)
+                {
+                    band2 = encuentraNombre(partitas, np.nombre);
+                    if(band2 == false)
+                        partitas.Add(lista);
+                }
+                    
+            }
+            return partitas;
+
+        }
+        public bool buscaRelacion(NodoP np,int nombre,Grafo g, List<int> lista)
+        {
+            bool existe = false;
+            foreach(NodoP aux in g)
+            {
+                foreach(int l in lista)
+                {
+                    if(l == aux.nombre)
+                    {
+                        foreach(Arista nr in aux.aristas)
+                        {
+                            if(nr.destino.nombre == nombre)
+                            {
+                                existe = true;
+                            }
+                        }
+                    }
+                }
+            }     
+            /* 
+            foreach(Arista nr in np.aristas)
+            {
+                if(nr.destino.nombre == nombre)
+                {
+                    existe = true;
+                }
+            }
+            */
+            return existe;
+        }
+        public bool encuentraLista(List<int> lista, int nombre)
+        {
+            bool existe = false;
+            foreach(int aux in lista)
+            {
+                if(aux == nombre)
+                {
+                    existe = true;
+                }
+            }
+            return existe;
+        }
+        public bool encuentraNombre(List<List<int>> partitas, int nombre)
+        {
+            bool existe = false;
+            foreach(List<int> aux in partitas)
+            {
+                foreach(int aux2 in aux)
+                {
+                   if(aux2 == nombre)
+                    {
+                        existe = true;
+                    }
+                }
+            }
+            return existe;
+        }
+        #endregion
         #region  GrafosEspeciales
         public override void grafoKn(int nodos, Graphics g)
         {

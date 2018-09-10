@@ -78,6 +78,7 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.nPartita = new System.Windows.Forms.ToolStripButton();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
@@ -85,6 +86,7 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -473,7 +475,8 @@
             this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton2,
-            this.toolStripButton6});
+            this.toolStripButton6,
+            this.nPartita});
             this.toolStrip2.Location = new System.Drawing.Point(0, 63);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(37, 598);
@@ -502,6 +505,17 @@
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton6.Text = "Grados";
+            // 
+            // nPartita
+            // 
+            this.nPartita.AccessibleName = "nPartita";
+            this.nPartita.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.nPartita.Image = ((System.Drawing.Image)(resources.GetObject("nPartita.Image")));
+            this.nPartita.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.nPartita.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.nPartita.Name = "nPartita";
+            this.nPartita.Size = new System.Drawing.Size(34, 36);
+            this.nPartita.Text = "n-Partita";
             // 
             // toolStrip3
             // 
@@ -567,6 +581,7 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(39, 20);
             this.numericUpDown1.TabIndex = 5;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
             0,
@@ -610,11 +625,22 @@
             0});
             this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericWn);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(714, 139);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Colorea nodo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.colorea);
+            // 
             // EditorGrafo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 661);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
@@ -702,6 +728,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripButton nPartita;
+        private System.Windows.Forms.Button button1;
     }
 }
 

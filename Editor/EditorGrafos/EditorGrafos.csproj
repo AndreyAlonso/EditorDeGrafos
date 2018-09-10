@@ -63,6 +63,12 @@
     <Compile Include="GrafoNoDirigido.cs" />
     <Compile Include="NodoP.cs" />
     <Compile Include="Arista.cs" />
+    <Compile Include="nPartita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nPartita.Designer.cs">
+      <DependentUpon>nPartita.cs</DependentUpon>
+    </Compile>
     <Compile Include="PreExamen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nPartita.resx">
+      <DependentUpon>nPartita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreExamen.resx">
       <DependentUpon>PreExamen.cs</DependentUpon>

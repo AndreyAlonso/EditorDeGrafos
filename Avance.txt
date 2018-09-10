@@ -60,7 +60,20 @@ Descripción:
 Rev.
 	OK
 	Seguir con el nPartita.
---------------------
+----------------------------------------------------------------------------------------------------------------------------
+
+10 de Septiembre 2018
+Descripción:
+	-Interfaz:
+		- Se añade boton "nP" para el manejo del n-Partita.
+	-Metodos:
+		- Se implementa algoritmo n-partita mostrando el numero y cada conjunto de nodos.
+		-Colorear los Nodos.
+-------------
+Rev.
+	-Ok
+	-Implementar detalles.
+	
 
 
 
