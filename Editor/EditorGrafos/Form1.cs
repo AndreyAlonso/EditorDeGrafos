@@ -24,7 +24,7 @@ namespace EditorGrafos
         Graphics g;
         int opcion;
         Bitmap bmp1;
-        bool band, bandF, bandA, bandI;
+        bool band, bandF, bandA, bandI, bpar;
         Point p1, p2;
         Random rnd = new Random();
         Configuracion config;
@@ -64,6 +64,7 @@ namespace EditorGrafos
             band = false;
             bandI = false;
             bandF = false;
+            bpar = false;
             arrow = new AdjustableArrowCap(5, 5);
 
             numericUpDown1.Hide();
@@ -84,17 +85,17 @@ namespace EditorGrafos
             {
                 switch (opcion)
                 {
-                    case 1: // Crea Nodo
-
+                    case 1:
                         ga.FillEllipse(grafo.brushN, p1.X - grafo.radio, p1.Y - grafo.radio, grafo.radio * 2, grafo.radio * 2);
                         ga.DrawEllipse(grafo.penN, p1.X - grafo.radio + (grafo.penN.Width / 2), p1.Y - grafo.radio + (grafo.penN.Width / 2), grafo.radio * 2 - (grafo.penN.Width / 2), grafo.radio * 2 - (grafo.penN.Width / 2));
-                        if (grafo.numN >= 28 || grafo.edoNom || grafo.nomb >= 28)
+                        if (grafo.numN >= 28 || grafo.edoNom)
                             ga.DrawString(nodoP.nombre.ToString(), grafo.font, grafo.brushF, p1.X - 6, p1.Y - 6);
                         else
                             ga.DrawString(((char)(nodoP.nombre + 64)).ToString(), grafo.font, grafo.brushF, p1.X - 6, p1.Y - 6);
                         break;
 
                     case 2:
+                    case 9:
                         if (bandF)
                         {
                             if (nodoP.Equals(nodoAux))
@@ -104,19 +105,6 @@ namespace EditorGrafos
                         }
                         if (band)
                             ga.DrawLine(grafo.penA, grafo.BuscaInterseccion(nodoP.centro, p2), p2);
-
-                        break;
-                    case 9:
-                        if (bandF)
-                        {
-                            if (nodoP.Equals(nodoAux)) // Oreja
-                                ga.DrawBezier(grafo.penA, nodoP.centro.X - 15, nodoP.centro.Y - 15, nodoP.centro.X - 20, nodoP.centro.Y - 60, nodoP.centro.X + 20, nodoP.centro.Y - 60, nodoP.centro.X + 15, nodoP.centro.Y - 15);
-                            else
-                                ga.DrawLine(grafo.penA, grafo.BuscaInterseccion(nodoP.centro, nodoAux.centro), grafo.BuscaInterseccion(nodoAux.centro, nodoP.centro));
-                        }
-                        if (band)
-                            ga.DrawLine(grafo.penA, grafo.BuscaInterseccion(nodoP.centro, p2), p2);
-
                         break;
                 }
                 bandF = false;
@@ -125,7 +113,7 @@ namespace EditorGrafos
             if (bandI)
             {
                 ga.Clear(BackColor);
-                grafo.ImprimirGrafo(ga);
+                grafo.ImprimirGrafo(ga,bpar);
                 bandI = false;
             }
 
@@ -143,8 +131,9 @@ namespace EditorGrafos
             }
             if (opcion != 6)
                 if (opcion != 7)
-                    grafo.ImprimirGrafo(ga);
+                    grafo.ImprimirGrafo(ga,bpar);
             g.DrawImage(bmp1, 0, 0);
+
         }
 
         #endregion 
@@ -323,7 +312,8 @@ namespace EditorGrafos
             numericUpDown1.Visible = false;
             numericUpDown2.Visible = false;
             numericUpDown3.Visible = false;
-
+            if (bpar)
+                grafo.ImprimirGrafo(g, bpar);
             switch (e.ClickedItem.AccessibleName)
             {
                 case "CrearNodo":
@@ -498,10 +488,18 @@ namespace EditorGrafos
             numericUpDown1.Visible = false;
             numericUpDown2.Visible = false;
             numericUpDown3.Visible = false;
+            int i = 0;
+            int j = 0;
+            bool vacio = false;
+
+            bool band = false;
+            Random rand = new Random();
 
             switch (e.ClickedItem.AccessibleName)
             {
                 case "complemento":
+                    bpar = false;
+                    
                     obtenPropiedades();
                     if (AristaNoDirigida.Enabled == true && AristaDirigida.Enabled == true)
                     {
@@ -541,29 +539,76 @@ namespace EditorGrafos
                     
                 break;
                 case "nPartita":
-                    List<List<int>> partita = new List<List<int>>(); 
-                    partita = grafo.nPartita(g);
-                    nPartita nPartita = new nPartita(partita,grafo);
-                    foreach (List<int> aux in partita)
+                    
+                    if(grafo.Count > 1)
                     {
-                        foreach (int aux2 in aux)
+                        foreach(NodoP np in grafo)
                         {
-                            foreach (NodoP np in grafo)
+                            if (np.aristas.Count == 0)
+                                vacio = true;
+                            else
+                                vacio = false;
+                        }
+                        if(vacio)
+                        {
+                            MessageBox.Show("El grafo debe de estar conectado");
+                        }
+                        else
+                        {
+                            bpar = true;
+
+                        List<List<int>> partita = new List<List<int>>();
+                        List<Color> color = coloreate();
+                        partita = grafo.nPartita(g);
+                        //grafo.ImprimirGrafo(g, bpar);
+                        nPartita nPartita = new nPartita(partita, grafo);
+                        
+
+                        i = rand.Next(0, color.Count);
+                        foreach (List<int> aux1 in partita)
+                        {
+                            foreach (int aux2 in aux1)
                             {
-                                np.colorN = new SolidBrush(Color.Red);
-                                
-                                
+                                grafo.Find(x => x.nombre.Equals(aux2)).colorN = new SolidBrush(color[i]);
+                                j = i;
+
                             }
-                                
+                            if (i < color.Count - 1)
+                                i++;
+                            else
+                                i = 0;
+
+                        }
+                        grafo.ImprimirGrafo(g, bpar);
+                        Form1_Paint(this, null);
+                        grafo.ImprimirGrafo(g, bpar);
+                        nPartita.Show();
 
                         }
                         
 
                     }
-                    Form1_Paint(this, null);
-                    nPartita.Show();
+                    
+                    
+                    
                 break;
             }
+
+        }
+        public List<Color> coloreate()
+        {
+            List<Color> color = new List<Color>();
+            color.Add(Color.Red);
+            color.Add(Color.Blue);
+            color.Add(Color.Green);
+            color.Add(Color.Yellow);
+            color.Add(Color.Violet);
+            color.Add(Color.DarkKhaki);
+            color.Add(Color.DarkOrange);
+            color.Add(Color.YellowGreen);
+            color.Add(Color.DarkCyan);
+
+            return color;
 
         }
 
@@ -610,6 +655,10 @@ namespace EditorGrafos
             bool band = false;
             int i = 0;
 
+            bpar = false;
+            if (bpar == false)
+                grafo.ImprimirGrafo(g,bpar);
+
             IFormatter formatter = new BinaryFormatter();
             String directorio = Environment.CurrentDirectory + "..\\Grafos";
             //String directorio = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\\Grafos"));
@@ -655,11 +704,11 @@ namespace EditorGrafos
                         AristaDirigida.Enabled = true;
                         Stream stream = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read, FileShare.None);
                         grafo = (Grafo)formatter.Deserialize(stream);
-                        /*Algoritmo que determina si es dirigido, no dirigido, o solo tiene nodos*/
-                        foreach (NodoP np in grafo) {
-                            foreach (Arista nr in np.aristas) {
-                                A = nr.destino;
-                                foreach (Arista n in A.aristas) {
+                        /* Algoritmo que determina si es dirigido, no dirigido, o solo tiene nodos */
+                        foreach (NodoP np in grafo) { /*Se recorren nodos del grafo*/
+                            foreach (Arista nr in np.aristas) { /* Se recorren las aristas de cada nodo */
+                                A = nr.destino; 
+                                foreach (Arista n in A.aristas) { /* Se recorren las aristas del nodo  */
                                     if (n.destino == np) //Condición si nodo A apunta a B y B apunta a A
                                     {
                                         band = true;
@@ -678,6 +727,7 @@ namespace EditorGrafos
                         if (band == true) // Si band es true, entonces es no dirigido
                         {
                             grafo = (GrafoNoDirigido)formatter.Deserialize(stream);
+                            grafo.bpar = false;
                             grafo.penA = new Pen(grafo.cArista, grafo.widthA);
                             AristaDirigida.Enabled = false;
                             grafo.penN = new Pen(grafo.cNodo, grafo.width);
@@ -686,7 +736,7 @@ namespace EditorGrafos
                             grafo.brushF = new SolidBrush(grafo.colorFuente);
                             grafo.font = new Font(grafo.nameF, grafo.sizeF, grafo.styleF);
                         }
-                        else
+                        else if(band == false)
                         {
                             foreach (NodoP np in grafo) {
                                 if (np.aristas.Count == 0) {
@@ -706,15 +756,41 @@ namespace EditorGrafos
                             }
                             else
                             {
+                                int TAM = 0;
+                                bool compara = false;
+                                foreach(NodoP np in grafo)
+                                {
+                                    TAM += np.aristas.Count;
+                                    if (np.aristas.Count == grafo.Count - 1)
+                                    {
+                                        compara = true;
+                                    }
 
-                                grafo = (GrafoDirigido)formatter.Deserialize(stream);
+                                    else if (TAM == grafo.Count * 2)
+                                        compara = true;
+                                    else
+                                        compara = false;
+                                }
+                                if(compara)
+                                {
+                                    grafo = (GrafoNoDirigido)formatter.Deserialize(stream);
+                                    obtenPropiedades();
+                                    grafo = new GrafoNoDirigido(grafo);
+                                    asignaPropiedades();
+                                    AristaNoDirigida.Enabled = true;
+                                    nPartita.Enabled = true;
+                                }
+                                else
+                                {
+                                    grafo = (GrafoDirigido)formatter.Deserialize(stream);
+                                    obtenPropiedades();
+                                    grafo = new GrafoDirigido(grafo);
+                                    asignaPropiedades();
+                                    grafo.penA.CustomEndCap = arrow;
+                                    AristaDirigida.Enabled = true;
 
-                                obtenPropiedades();
-                                grafo = new GrafoDirigido(grafo);
-                                asignaPropiedades();
-                                grafo.penA.CustomEndCap = arrow;
-
-                                AristaNoDirigida.Enabled = false;
+                                }
+                                
                             }
                         }
 
@@ -860,18 +936,7 @@ namespace EditorGrafos
             Form1_Paint(this, null);
         }
 
-        private void colorea(object sender, EventArgs e)
-        {
-            NodoP aux2;
-            Grafo g2 = new Grafo();
-            foreach(NodoP aux in grafo)
-            {
-                aux2 = new NodoP(aux.nombre, aux.centro, Color.Red);
-                g2.Add(aux2);
-                
-            }
-            g2.ImprimirGrafo(g);
-        }
+        
         #endregion
 
         #region Funciones Extras
@@ -955,6 +1020,7 @@ namespace EditorGrafos
             grafo.width = width;
             grafo.cArista = cArista;
             grafo.penN = new Pen(grafo.cNodo, grafo.width);
+           
             grafo.brushN = new SolidBrush(grafo.cRelleno);
             grafo.brushF = new SolidBrush(grafo.colorFuente);
             grafo.font = new Font(grafo.nameF, grafo.sizeF, grafo.styleF);

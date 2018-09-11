@@ -15,7 +15,7 @@ namespace EditorGrafos
         [NonSerialized] public SolidBrush brushN, brushF;
 
         private NodoP nodoP;
-
+        public bool bpar;
         private Color CNODO;
         public Color cNodo { set { CNODO = value; } get { return CNODO; } }
         private float WIDTH;
@@ -48,7 +48,7 @@ namespace EditorGrafos
         {
             numN = 1;
             edoNom = false;
-
+            bpar = false;
             RADIO = 25;
             CNODO = Color.Black;
             WIDTH = 1;
@@ -221,11 +221,59 @@ namespace EditorGrafos
             return this;
         }
         public virtual List<List<int>> nPartita(Graphics g) { return new List<List<int>>(); }
-                        
+
         #endregion
 
 
-        public  void ImprimirGrafo(Graphics g)
+        public void ImprimirGrafo(Graphics g, bool band)
+        {
+            bpar = band;   
+            if(bpar == false)
+            {
+                foreach (NodoP n in this)
+                {
+                    foreach (Arista nR in n.aristas)
+                    {
+                        if (nR.destino.Equals(n))
+                            g.DrawBezier(penA, n.centro.X - 15, n.centro.Y - 15, n.centro.X - 20, n.centro.Y - 60, n.centro.X + 20, n.centro.Y - 60, n.centro.X + 15, n.centro.Y - 15);
+                        else
+                            g.DrawLine(penA, BuscaInterseccion(n.centro, nR.destino.centro), BuscaInterseccion(nR.destino.centro, n.centro));
+                    }
+
+                    g.FillEllipse(brushN, n.centro.X - radio, n.centro.Y - radio, radio * 2, radio * 2);
+                    g.DrawEllipse(penN, n.centro.X - radio + (penN.Width / 2), n.centro.Y - radio + (penN.Width / 2), radio * 2 - (penN.Width / 2), radio * 2 - (penN.Width / 2));
+                    if (numN > 27 || edoNom)
+                        g.DrawString(n.nombre.ToString(), font, brushF, n.centro.X - 6, n.centro.Y - 6);
+                    else
+                        g.DrawString(((char)(n.nombre + 64)).ToString(), font, brushF, n.centro.X - 6, n.centro.Y - 6);
+
+                }
+
+            }
+            else
+            {
+                foreach (NodoP n in this)
+                {
+                    foreach (Arista nR in n.aristas)
+                    {
+                        if (nR.destino.Equals(n))
+                            g.DrawBezier(penA, n.centro.X - 15, n.centro.Y - 15, n.centro.X - 20, n.centro.Y - 60, n.centro.X + 20, n.centro.Y - 60, n.centro.X + 15, n.centro.Y - 15);
+                        else
+                            g.DrawLine(penA, BuscaInterseccion(n.centro, nR.destino.centro), BuscaInterseccion(nR.destino.centro, n.centro));
+                    }
+
+                    g.FillEllipse(n.colorN, n.centro.X - radio, n.centro.Y - radio, radio * 2, radio * 2);
+                    g.DrawEllipse(penN, n.centro.X - radio + (penN.Width / 2), n.centro.Y - radio + (penN.Width / 2), radio * 2 - (penN.Width / 2), radio * 2 - (penN.Width / 2));
+                    if (numN > 27 || edoNom)
+                        g.DrawString(n.nombre.ToString(), font, brushF, n.centro.X - 6, n.centro.Y - 6);
+                    else
+                        g.DrawString(((char)(n.nombre + 64)).ToString(), font, brushF, n.centro.X - 6, n.centro.Y - 6);
+
+                }
+            }
+            
+        }/*
+        public void ImprimirGrafo(Graphics g, int i)
         {
             foreach (NodoP n in this)
             {
@@ -237,7 +285,7 @@ namespace EditorGrafos
                         g.DrawLine(penA, BuscaInterseccion(n.centro, nR.destino.centro), BuscaInterseccion(nR.destino.centro, n.centro));
                 }
 
-                g.FillEllipse(brushN, n.centro.X - radio, n.centro.Y - radio, radio * 2, radio * 2);
+                g.FillEllipse(n.colorN, n.centro.X - radio, n.centro.Y - radio, radio * 2, radio * 2);
                 g.DrawEllipse(penN, n.centro.X - radio + (penN.Width / 2), n.centro.Y - radio + (penN.Width / 2), radio * 2 - (penN.Width / 2), radio * 2 - (penN.Width / 2));
                 if (numN > 27 || edoNom)
                     g.DrawString(n.nombre.ToString(), font, brushF, n.centro.X - 6, n.centro.Y - 6);
@@ -245,7 +293,9 @@ namespace EditorGrafos
                     g.DrawString(((char)(n.nombre + 64)).ToString(), font, brushF, n.centro.X - 6, n.centro.Y - 6);
 
             }
+
         }
+        */
         #region GrafosEspeciales
         public virtual void grafoKn(int nodos, Graphics g) { }
         public virtual void grafoCn(int nodos, Graphics g) { }

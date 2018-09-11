@@ -74,6 +74,12 @@ Rev.
 	-Ok
 	-Implementar detalles.
 	
+-----------------------------------------------------------------------------------------------------------------------------------
+
+11 de Septiembre 2018
+Descripción:
+	-Interfaz:
+		- Al realizar en n-Partita, colorea el grafo...
 
 
 

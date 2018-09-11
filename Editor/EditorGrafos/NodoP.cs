@@ -18,12 +18,15 @@ namespace EditorGrafos
         public Point centro { set { CENTRO = value; } get { return CENTRO; } }
         private Color COLOR;
         public Color color { set { COLOR = value; }get { return COLOR; } }
-        public SolidBrush colorN { get; set; }
+
+        [NonSerialized] private SolidBrush colornodo;
+        public SolidBrush colorN { set { colornodo = value; } get { return colornodo; } }
         public NodoP(int n, Point p)
         {
             ARISTAS = new List<Arista>();
             NOMBRE = n;
             CENTRO = p;
+            colorN = new SolidBrush(Color.White);
         }
         public NodoP(int n, Point p, Color colorc)
         {

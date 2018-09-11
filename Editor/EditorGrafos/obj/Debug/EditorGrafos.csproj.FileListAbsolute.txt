@@ -62,16 +62,6 @@ C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Edi
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\obj\Debug\EditorGrafos.EditorGrafo.resources
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\obj\Debug\EditorGrafos.Properties.Resources.resources
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos_2018\Editor de Grafos\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.Cache
-C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\bin\Debug\EditorGrafos.exe.config
-C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\bin\Debug\EditorGrafos.exe
-C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\bin\Debug\EditorGrafos.pdb
-C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.Configuracion.resources
-C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.EditorGrafo.resources
-C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.Properties.Resources.resources
-C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.Cache
-C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.exe
-C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.pdb
-C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.csprojResolveAssemblyReference.cache
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\PreExamen_1\Editor\EditorGrafos\bin\Debug\EditorGrafos.exe.config
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\PreExamen_1\Editor\EditorGrafos\obj\Debug\EditorGrafos.exe
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\PreExamen_1\Editor\EditorGrafos\obj\Debug\EditorGrafos.pdb
@@ -83,5 +73,14 @@ C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\PreExamen_1\Edi
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\PreExamen_1\Editor\EditorGrafos\obj\Debug\EditorGrafos.Properties.Resources.resources
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\PreExamen_1\Editor\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.Cache
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\PreExamen_1\Editor\EditorGrafos\obj\Debug\EditorGrafos.PreExamen.resources
-C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.PreExamen.resources
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\bin\Debug\EditorGrafos.exe.config
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\bin\Debug\EditorGrafos.exe
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\bin\Debug\EditorGrafos.pdb
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.Configuracion.resources
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.EditorGrafo.resources
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.nPartita.resources
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.PreExamen.resources
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.Properties.Resources.resources
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.Cache
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.exe
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.pdb
