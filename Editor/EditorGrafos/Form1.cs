@@ -539,56 +539,38 @@ namespace EditorGrafos
                     
                 break;
                 case "nPartita":
-                    
-                    if(grafo.Count > 1)
+                    bpar = true;
+
+                    List<List<int>> partita = new List<List<int>>();
+                    List<Color> color = coloreate();
+                    partita = grafo.nPartita(g);
+                    //grafo.ImprimirGrafo(g, bpar);
+                    nPartita nPartita = new nPartita(partita, grafo);
+
+                    i = rand.Next(0, color.Count);
+                    foreach (List<int> aux1 in partita)
                     {
-                        foreach(NodoP np in grafo)
+                        foreach (int aux2 in aux1)
                         {
-                            if (np.aristas.Count == 0)
-                                vacio = true;
-                            else
-                                vacio = false;
+                            grafo.Find(x => x.nombre.Equals(aux2)).colorN = new SolidBrush(color[i]);
+                            j = i;
+
                         }
-                        if(vacio)
-                        {
-                            MessageBox.Show("El grafo debe de estar conectado");
-                        }
+                        if (i < color.Count - 1)
+                            i++;
                         else
-                        {
-                            bpar = true;
-
-                        List<List<int>> partita = new List<List<int>>();
-                        List<Color> color = coloreate();
-                        partita = grafo.nPartita(g);
-                        //grafo.ImprimirGrafo(g, bpar);
-                        nPartita nPartita = new nPartita(partita, grafo);
-                        
-
-                        i = rand.Next(0, color.Count);
-                        foreach (List<int> aux1 in partita)
-                        {
-                            foreach (int aux2 in aux1)
-                            {
-                                grafo.Find(x => x.nombre.Equals(aux2)).colorN = new SolidBrush(color[i]);
-                                j = i;
-
-                            }
-                            if (i < color.Count - 1)
-                                i++;
-                            else
-                                i = 0;
-
-                        }
-                        grafo.ImprimirGrafo(g, bpar);
-                        Form1_Paint(this, null);
-                        grafo.ImprimirGrafo(g, bpar);
-                        nPartita.Show();
-
-                        }
-                        
+                            i = 0;
 
                     }
-                    
+                    grafo.ImprimirGrafo(g, bpar);
+                    Form1_Paint(this, null);
+                    grafo.ImprimirGrafo(g, bpar);
+                    nPartita.Show();
+
+                        
+                        
+
+                                        
                     
                     
                 break;

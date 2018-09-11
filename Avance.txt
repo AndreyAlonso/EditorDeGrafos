@@ -80,6 +80,18 @@ Rev.
 Descripción:
 	-Interfaz:
 		- Al realizar en n-Partita, colorea el grafo...
+		-Esta bien, pero si puede agregue en nombredel conjunto.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+12 de septiembre 2018
+
+Descripción:
+	-Interfaz:
+		- Al realizar el n-Partita cada conjunto lo muestra con un nombre:
+		- Si los nodos estan con letra entonces los conjuntos se mostraran con numero  {1,...n} 
+		- Si los nodos estan con numero entonces los conjuntos se mostraran con numero romano {I,II, ... C}
+
 
 
 

@@ -28,18 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Partita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.Conjunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Partita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Partita
-            // 
-            this.Partita.HeaderText = "Partita";
-            this.Partita.Name = "Partita";
-            this.Partita.Width = 200;
             // 
             // dataGridView1
             // 
@@ -47,6 +42,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Conjunto,
             this.Partita});
             this.dataGridView1.Location = new System.Drawing.Point(8, 12);
             this.dataGridView1.Name = "dataGridView1";
@@ -74,6 +70,18 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
             // 
+            // Conjunto
+            // 
+            this.Conjunto.HeaderText = "Conjunto";
+            this.Conjunto.Name = "Conjunto";
+            this.Conjunto.Width = 60;
+            // 
+            // Partita
+            // 
+            this.Partita.HeaderText = "Partita";
+            this.Partita.Name = "Partita";
+            this.Partita.Width = 140;
+            // 
             // nPartita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -92,10 +100,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn Partita;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Conjunto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Partita;
     }
 }
