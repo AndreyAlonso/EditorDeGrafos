@@ -312,8 +312,7 @@ namespace EditorGrafos
             numericUpDown1.Visible = false;
             numericUpDown2.Visible = false;
             numericUpDown3.Visible = false;
-            if (bpar)
-                grafo.ImprimirGrafo(g, bpar);
+            
             switch (e.ClickedItem.AccessibleName)
             {
                 case "CrearNodo":
@@ -562,9 +561,9 @@ namespace EditorGrafos
                             i = 0;
 
                     }
-                    grafo.ImprimirGrafo(g, bpar);
-                    Form1_Paint(this, null);
-                    grafo.ImprimirGrafo(g, bpar);
+                   // grafo.ImprimirGrafo(g, bpar);
+                   // Form1_Paint(this, null);
+                  //  grafo.ImprimirGrafo(g, bpar);
                     nPartita.Show();
 
                         
