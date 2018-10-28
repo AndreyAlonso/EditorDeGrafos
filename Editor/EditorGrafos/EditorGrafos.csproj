@@ -61,6 +61,18 @@
     <Compile Include="Grafo.cs" />
     <Compile Include="GrafoDirigido.cs" />
     <Compile Include="GrafoNoDirigido.cs" />
+    <Compile Include="MatrizInfinita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MatrizInfinita.Designer.cs">
+      <DependentUpon>MatrizInfinita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MuestraCadena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MuestraCadena.Designer.cs">
+      <DependentUpon>MuestraCadena.cs</DependentUpon>
+    </Compile>
     <Compile Include="NodoP.cs" />
     <Compile Include="Arista.cs" />
     <Compile Include="nPartita.cs">
@@ -84,6 +96,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatrizInfinita.resx">
+      <DependentUpon>MatrizInfinita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MuestraCadena.resx">
+      <DependentUpon>MuestraCadena.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="nPartita.resx">
       <DependentUpon>nPartita.cs</DependentUpon>

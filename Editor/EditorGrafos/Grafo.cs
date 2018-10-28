@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EditorGrafos
@@ -252,6 +253,7 @@ namespace EditorGrafos
             }
             else
             {
+               // Thread.Sleep(1000);
                 foreach (NodoP n in this)
                 {
                     foreach (Arista nR in n.aristas)
@@ -259,7 +261,7 @@ namespace EditorGrafos
                         if (nR.destino.Equals(n))
                             g.DrawBezier(penA, n.centro.X - 15, n.centro.Y - 15, n.centro.X - 20, n.centro.Y - 60, n.centro.X + 20, n.centro.Y - 60, n.centro.X + 15, n.centro.Y - 15);
                         else
-                            g.DrawLine(penA, BuscaInterseccion(n.centro, nR.destino.centro), BuscaInterseccion(nR.destino.centro, n.centro));
+                            g.DrawLine(nR.colorA, BuscaInterseccion(n.centro, nR.destino.centro), BuscaInterseccion(nR.destino.centro, n.centro));
                     }
 
                     g.FillEllipse(n.colorN, n.centro.X - radio, n.centro.Y - radio, radio * 2, radio * 2);
@@ -300,6 +302,15 @@ namespace EditorGrafos
         public virtual void grafoKn(int nodos, Graphics g) { }
         public virtual void grafoCn(int nodos, Graphics g) { }
         public virtual void grafoWn(int nodos, Graphics g) { }
+        public virtual List<int> nodoPendiente() { return  new List<int>(); }
+        public virtual List<int> verticeCut() { return new List<int>(); }
+
+        public virtual List<NodoP> circuitoEuleriano() { return new List<NodoP>();}
+        public virtual List<NodoP> caminoEuleriano(Graphics g) { return new List<NodoP>(); }
+        public virtual void pintaEuler(Graphics g, List<NodoP> listaNodos) { }
+        public virtual void coloreate() { }
+        public virtual int warner(Graphics g, NodoP pNodo) { return 0; }
+
         #endregion
     }
 }

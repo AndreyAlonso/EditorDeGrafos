@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EditorGrafos
 {
     [Serializable]
-    class GrafoNoDirigido:Grafo
+    class GrafoNoDirigido : Grafo
     {
         #region Constructor
         public GrafoNoDirigido(Grafo g)
@@ -100,14 +101,14 @@ namespace EditorGrafos
             lista = new List<int>();
             foreach (NodoP np in this)
             {
-                
 
-                foreach(Arista nr in np.aristas)
+
+                foreach (Arista nr in np.aristas)
                 {
                     lista = new List<int>();
                     foreach (NodoP np2 in this)
                     {
-                        if(nr.destino.nombre == np2.nombre)
+                        if (nr.destino.nombre == np2.nombre)
                         {
                             band2 = true;
                         }
@@ -115,23 +116,23 @@ namespace EditorGrafos
                         {
 
                             band = encuentraLista(lista, np2.nombre);
-                            if(band == false)
+                            if (band == false)
                             {
-                                band3 = buscaRelacion(np, np2.nombre,this,lista);
-                                if(band3 == false)
+                                band3 = buscaRelacion(np, np2.nombre, this, lista);
+                                if (band3 == false)
                                 {
-                                    band2 = encuentraNombre(partitas,np2.nombre);
-                                    if(band2 == false)
+                                    band2 = encuentraNombre(partitas, np2.nombre);
+                                    if (band2 == false)
                                     {
                                         lista.Add(np2.nombre);
                                     }
-                                        
-                                        
+
+
                                 }
-                                   
-                                    
+
+
                             }
-                               
+
                         }
                     }
 
@@ -139,33 +140,93 @@ namespace EditorGrafos
                 if (lista.Count > 0)
                 {
                     band2 = encuentraNombre(partitas, np.nombre);
-                    if(band2 == false)
+                    if (band2 == false)
                         partitas.Add(lista);
                 }
-                    
+
             }
             return partitas;
 
         }
-        public bool buscaRelacion(NodoP np,int nombre,Grafo g, List<int> lista)
+        public  List<List<int>> nPartitaG(Graphics g, Grafo actual)
+        {
+            bool band = false;
+            bool band2 = false;
+            bool band3 = false;
+            /*Hacer una lista de arreglos */
+            List<int> lista;
+            List<List<int>> partitas = new List<List<int>>();
+            /*Crear metodo para saber si existe el elemento */
+
+            lista = new List<int>();
+            foreach (NodoP np in actual)
+            {
+
+
+                foreach (Arista nr in np.aristas)
+                {
+                    lista = new List<int>();
+                    foreach (NodoP np2 in actual)
+                    {
+                        if (nr.destino.nombre == np2.nombre)
+                        {
+                            band2 = true;
+                        }
+                        else
+                        {
+
+                            band = encuentraLista(lista, np2.nombre);
+                            if (band == false)
+                            {
+                                band3 = buscaRelacion(np, np2.nombre, actual, lista);
+                                if (band3 == false)
+                                {
+                                    band2 = encuentraNombre(partitas, np2.nombre);
+                                    if (band2 == false)
+                                    {
+                                        lista.Add(np2.nombre);
+                                    }
+
+
+                                }
+
+
+                            }
+
+                        }
+                    }
+
+                }
+                if (lista.Count > 0)
+                {
+                    band2 = encuentraNombre(partitas, np.nombre);
+                    if (band2 == false)
+                        partitas.Add(lista);
+                }
+
+            }
+            return partitas;
+
+        }
+        public bool buscaRelacion(NodoP np, int nombre, Grafo g, List<int> lista)
         {
             bool existe = false;
-            foreach(NodoP aux in g)
+            foreach (NodoP aux in g)
             {
-                foreach(int l in lista)
+                foreach (int l in lista)
                 {
-                    if(l == aux.nombre)
+                    if (l == aux.nombre)
                     {
-                        foreach(Arista nr in aux.aristas)
+                        foreach (Arista nr in aux.aristas)
                         {
-                            if(nr.destino.nombre == nombre)
+                            if (nr.destino.nombre == nombre)
                             {
                                 existe = true;
                             }
                         }
                     }
                 }
-            }     
+            }
             /* 
             foreach(Arista nr in np.aristas)
             {
@@ -180,9 +241,9 @@ namespace EditorGrafos
         public bool encuentraLista(List<int> lista, int nombre)
         {
             bool existe = false;
-            foreach(int aux in lista)
+            foreach (int aux in lista)
             {
-                if(aux == nombre)
+                if (aux == nombre)
                 {
                     existe = true;
                 }
@@ -192,11 +253,11 @@ namespace EditorGrafos
         public bool encuentraNombre(List<List<int>> partitas, int nombre)
         {
             bool existe = false;
-            foreach(List<int> aux in partitas)
+            foreach (List<int> aux in partitas)
             {
-                foreach(int aux2 in aux)
+                foreach (int aux2 in aux)
                 {
-                   if(aux2 == nombre)
+                    if (aux2 == nombre)
                     {
                         existe = true;
                     }
@@ -221,19 +282,19 @@ namespace EditorGrafos
 
             for (a = 0; a < nodos; a++)
             {
-                if (a == 0){
-                    posx  = (int)(centrox - (distancia * Math.Cos((90 * Math.PI) / 180.0)));
-                    posy  = (int)(centroy - (distancia * Math.Sin((90 * Math.PI) / 180.0)));
+                if (a == 0) {
+                    posx = (int)(centrox - (distancia * Math.Cos((90 * Math.PI) / 180.0)));
+                    posy = (int)(centroy - (distancia * Math.Sin((90 * Math.PI) / 180.0)));
                     pos.X = (int)posx;
                     pos.Y = (int)posy;
                     angulo = 90;
                 }
-                else{
+                else {
 
                     angulo = (float)(angulo + angulo2);
                     posx = (int)(centrox - distancia * Math.Cos((angulo * Math.PI) / 180.0));
                     posy = (int)(centroy - distancia * Math.Sin((angulo * Math.PI) / 180.0));
-                    pos.X= (int) posx;
+                    pos.X = (int)posx;
                     pos.Y = (int)posy;
                 }
                 this.Add(new NodoP(nomb, pos));
@@ -262,7 +323,7 @@ namespace EditorGrafos
         {
             double posx, posy;
             double centrox, centroy, distancia, angulo, angulo2;
-            int nomb = 1,a;
+            int nomb = 1, a;
             Arista aux;
             Point pos = new Point(200, 200);
             centrox = 400;
@@ -292,15 +353,15 @@ namespace EditorGrafos
                 }
                 this.Add(new NodoP(nomb, pos));
                 nomb++;
-                if (nomb > 27){
+                if (nomb > 27) {
                     this.edoNom = true;
                 }
-                if ( a > 0)
+                if (a > 0)
                 {
                     aux = new Arista(0);
-                    aux.origen = this[a-1];
+                    aux.origen = this[a - 1];
                     aux.destino = this[a];
-                    this[a-1].aristas.Add(aux);
+                    this[a - 1].aristas.Add(aux);
                     aux = new Arista(0);
                     aux.origen = this[a];
                     aux.destino = this[a - 1];
@@ -308,15 +369,98 @@ namespace EditorGrafos
                 }
             }
             aux = new Arista(0);
-            aux.origen = this[a-1];
+            aux.origen = this[a - 1];
             aux.destino = this[0];
-            this[a-1].aristas.Add(aux);
+            this[a - 1].aristas.Add(aux);
             aux = new Arista(0);
             aux.origen = this[0];
-            aux.destino = this[a-1];
+            aux.destino = this[a - 1];
             this[0].aristas.Add(aux);
-           // this.ImprimirGrafo(g);
+            // this.ImprimirGrafo(g);
 
+        }
+        public override List<int> nodoPendiente()
+        {
+            List<int> pendiente = new List<int>();
+
+            foreach (NodoP np in this)
+            {
+                if (np.aristas.Count == 1)
+                {
+                    pendiente.Add(np.nombre);
+                }
+            }
+            return pendiente;
+        }
+        public override List<int> verticeCut()
+        {
+            List<int> cut = new List<int>();
+            Arista nBand;
+            Arista nBand2;
+            bool band = false;
+            foreach (NodoP np in this)
+            {
+
+                foreach (NodoP aux in this)
+                {
+                    if (aux != np)
+                    {
+                        nBand = np.aristas.Find(x => x.destino.Equals(aux));
+
+                        if (nBand == null) {
+                            int cont = 0;
+                            foreach (Arista nr in np.aristas) {
+                                foreach (Arista nn in nr.destino.aristas)
+                                {
+                                    if (nn.destino == aux)
+                                    {
+
+                                        cont++;
+                                    }
+                                }
+                            }
+                            if (cont == 1)
+                            {
+                                cut.Add(aux.nombre);
+                            }
+
+
+                        }
+
+                    }
+
+
+                }
+
+
+
+
+
+            }
+            return cut;
+        }
+        public bool buscaSigRelacion(NodoP nodo, NodoP actual)
+        {
+            bool band = false;
+
+
+
+            foreach (NodoP aux in this)
+            {
+
+                if (aux == actual)
+                {
+                    foreach (Arista nr in aux.aristas)
+                    {
+                        if (nr.destino == nodo)
+                            band = true;
+                        else
+                            band = false;
+                    }
+                }
+
+            }
+            return band;
         }
         public override void grafoWn(int nodos, Graphics g)
         {
@@ -376,14 +520,14 @@ namespace EditorGrafos
             aux.origen = this[0];
             aux.destino = this[a - 1];
             this[0].aristas.Add(aux);
-            
-            Point center = new Point((int)centrox,(int) centroy);
+
+            Point center = new Point((int)centrox, (int)centroy);
             this.Add(new NodoP(nomb, center));
             a++;
-           
-            foreach(NodoP np in this)
+
+            foreach (NodoP np in this)
             {
-                if(np != this[a-1])
+                if (np != this[a - 1])
                 {
                     aux = new Arista(0);
                     aux.origen = np;
@@ -393,12 +537,437 @@ namespace EditorGrafos
                     aux = new Arista(0);
                     aux.origen = this[a - 1];
                     aux.destino = np;
-                    this[a-1].aristas.Add(aux);
+                    this[a - 1].aristas.Add(aux);
 
+                }
+
+            }
+            //this.ImprimirGrafo(g);
+        }
+        #endregion
+
+
+        #region CIRCUTO Y CAMINO EULERIANO
+        public override void pintaEuler(Graphics g,List<NodoP> nodos)
+        {
+            coloreate();
+            ImprimirGrafo(g, true);
+            for(int i = 0; i < nodos.Count; i++)
+            {
+                NodoP aux = this.Find(x => x.Equals(nodos[i]));
+                if(aux!=null)
+                {
+                    aux.colorN = new SolidBrush(Color.LightBlue);
+                    ImprimirGrafo(g, true);
+                    if( i < nodos.Count-1)
+                    {
+                        Arista aux2 = aux.aristas.Find(x => x.destino.Equals(nodos[i + 1]));
+                        if (aux2 != null)
+                        {
+                            aux2.colorA = new Pen(Color.Red, 5);
+
+                        }
+                    }
+                    
+                    ImprimirGrafo(g, true);
+                    Thread.Sleep(700);
+                }
+            }
+            
+
+        }
+        public override void coloreate()
+        {
+            foreach (NodoP np in this)
+            {
+                np.colorN = new SolidBrush(Color.White);
+                foreach (Arista E in np.aristas)
+                {
+                    E.colorA = new Pen(Color.Black, 1);
+                }
+            }
+       
+        }
+        // ***************************************************************************************************** CIRCUITO EULERIANO
+        public override List<NodoP> circuitoEuleriano()
+        {
+            List<NodoP> circuito = new List<NodoP>();
+            string cad = "";
+            List<Arista> caminos = new List<Arista>();
+            int nodos = 0;
+            NodoP aux;
+            NodoP primero;
+            Random srand;
+            srand = new Random();
+            coloreate();
+            aux = this[0];
+            primero = aux;
+            int j = 0;
+            Arista compara;
+            int grado = 0;
+            foreach (NodoP np in this) {
+                grado = grado + np.aristas.Count;
+            }
+            j = 0;
+            while (nodos < grado/2)// grado / 2)
+            {
+                j = srand.Next(0, aux.aristas.Count);
+                compara = caminos.Find(x => x.Equals(aux.aristas[j]));
+                if (compara == null)
+                {
+                    caminos.Add(aux.aristas[j]);
+                    Arista invertida = buscaInvertida(aux, aux.aristas[j].destino);
+                    caminos.Add(invertida);
+                    circuito.Add(aux);
+                    aux = aux.aristas[j].destino;
+                    nodos++;
+                   
+                }
+                if(nodos == grado)
+                {
+                    break;
                 }
                 
             }
-            //this.ImprimirGrafo(g);
+            circuito.Add(aux);
+           // circuito.Add(primero);
+
+            return circuito;
+
+        }
+        public void pintaGrafoDefault()
+        {
+            foreach(NodoP np in this)
+            {
+                foreach(Arista nr in np.aristas)
+                {
+                    nr.colorA = new Pen(Color.Black,1);
+                }
+                np.colorN = new SolidBrush(Color.White);
+                
+            }
+
+        }
+        // ********************************************************************************************************************CAMNINO EULERIANO
+        public override List<NodoP> caminoEuleriano(Graphics g)
+        {
+
+            string cad = "";
+            List<NodoP> cirucuto = new List<NodoP>();
+            List<Arista> caminos = new List<Arista>();
+            int pos = 0;
+            int nodos = 0;
+            NodoP aux;
+            pintaGrafoDefault();
+
+            foreach (NodoP np in this)
+            {
+                np.colorN = new SolidBrush(Color.White);
+                foreach (Arista E in np.aristas)
+                {
+                    E.colorA = new Pen(Color.Black, 1);
+                }
+            }
+            Random srand;
+            srand = new Random();
+
+            foreach (NodoP np in this)
+            {
+                if (np.aristas.Count % 2 != 0 && np.aristas.Count > 0)
+                {
+                    break;
+                }
+                pos++;
+            }
+
+            aux = this[pos];
+            int j = 0;
+            Arista compara;
+            int grado = 0;
+            NodoP anterior;
+            foreach (NodoP np in this)
+            {
+                grado = grado + np.aristas.Count;
+            }
+            j = 0;
+            while (nodos  < grado/2)
+            {
+                j = srand.Next(0, aux.aristas.Count);
+                compara = caminos.Find(x => x.Equals(aux.aristas[j]));
+                if(compara == null)
+                {
+                    anterior = aux;
+                    caminos.Add(aux.aristas[j]);
+                    Arista invertida = buscaInvertida(aux,aux.aristas[j].destino);
+                    caminos.Add(invertida);
+                    cirucuto.Add(aux);     
+                    aux = aux.aristas[j].destino;
+                    nodos++;
+                }
+                
+            }
+            cad += (char)(aux.nombre + 64);
+            cirucuto.Add(aux);
+            return cirucuto; 
+        }
+        private Arista buscaInvertida(NodoP origen, NodoP destino)
+        {
+            foreach(Arista nr in destino.aristas)
+            {
+                if(nr.destino == origen)
+                {
+                    return nr;
+                }
+            }
+            return null;
+        }
+        #endregion
+        #region  Algoritmo Warner
+        public void eliminaNodo(Grafo grafo,NodoP p)
+        {
+            NodoP nodoP;
+            List<Arista> l = new List<Arista>();
+            nodoP = p;
+            if (nodoP != null)
+            {
+                //nodoP.aristas.Clear();
+                foreach (NodoP n in grafo)
+                {
+                    foreach (Arista nr in n.aristas)
+                    {
+                        if (nr.destino.nombre == nodoP.nombre)
+                        {
+                            n.aristas.Remove(nr);
+
+                            break;
+                        }
+                            
+                    }
+                    foreach (Arista nr in n.aristas)
+                    {
+                        if (nr.origen.nombre == nodoP.nombre)
+                        {
+                            n.aristas.Remove(nr);
+
+                            break;
+                        }
+
+                    }
+
+                }
+                grafo.Remove(nodoP);
+                grafo.RemoveAt(nodoP.nombre - 1);
+            }
+           
+        }
+
+        public override int warner(Graphics g, NodoP pNodo)
+        {
+            Grafo copia = new Grafo();
+            Grafo K5, K33;
+            NodoP aux;
+            NodoP elimina;
+            Arista arista;
+            bool band;
+            List<List<int>> partita = new List<List<int>>();
+            
+            foreach(NodoP np in this){
+                aux = new NodoP(np.nombre, np.centro);
+                foreach(Arista nr in np.aristas)
+                {
+                    arista = new Arista(0);
+                    arista.destino = nr.destino;
+                    arista.origen = nr.origen;
+                    aux.aristas.Add(arista);
+                }
+                copia.Add(aux);
+            }
+
+            eliminaNodo(copia, pNodo);
+
+            if (copia.Count >= 6)
+            {
+                if (copia.Count == 6){
+                    // verificar si todas tienen el mismo grafo
+                    int grado = copia[0].aristas.Count;
+                    bool bandera = false;
+                    foreach (NodoP np in copia)
+                    {
+                        if (grado == np.aristas.Count)
+                        {
+                            bandera = true;
+                        }
+                        else
+                        {
+                            bandera = false;
+                            break;
+                        }
+                    }
+                    if (bandera)
+                    {
+                        partita = nPartitaG(g, copia);
+                        if (partita.Count == 2)
+                        {
+                            return 2;
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                // compara con un K5
+                K5 = creaKn(5);
+                //K33 = creaKmn(3,3);
+                band = isomorfico(copia, K5);
+                if (band == true)
+                {
+                    return 1;
+                }
+                else
+                {
+                    //se verifica con un K33
+
+
+                    return 0;
+                }
+            }
+            return 0;
+               
+        }
+        public Grafo creaKmn(int v, int e)
+        {
+            Grafo nuevo = new Grafo();
+            NodoP aux;
+            List<NodoP> dominio = new List<NodoP>();
+            List<NodoP> rango = new List<NodoP>();
+            int j = v;
+            for(int i = 0; i < v; i++)
+            {
+                aux = new NodoP(i,new Point());
+                dominio.Add(aux);
+            }
+            for(int i = 0; i < e; i++)
+            {
+                aux = new NodoP(j, new Point());
+                rango.Add(aux);
+                j++;
+            }
+            // AGREGAR REALCIONES 
+            foreach(NodoP np in dominio)
+                nuevo.Add(np);
+            foreach (NodoP np in rango)
+                nuevo.Add(np);
+            
+       
+       
+
+
+            return nuevo;
+        }
+        // ALGORITMO ENCARGADO DE ENCONTRAR SI 2 GRAFOS SON ISOMORFICOS
+        public bool isomorfico(Grafo actual, Grafo compara)
+        {
+            bool band = false;
+            int nodosA = 0;
+            int nodosC = 0;
+            int gradoA = 0;
+            int gradoC = 0;
+            foreach(NodoP np in actual)
+            {
+                nodosA++;
+                gradoA += np.aristas.Count;
+            }
+            foreach(NodoP np in compara)
+            {
+                nodosC++;
+                gradoC += np.aristas.Count;
+            }
+            
+            if(nodosA == nodosC)
+            {
+                if(gradoC == gradoA)
+                {
+                    return true;
+                }
+
+            }
+            return band;
+        }
+        public Grafo creaKn(int nodos)
+        {
+            Grafo grafo = new Grafo();
+            double posx, posy;
+            double centrox, centroy, distancia, angulo, angulo2;
+            int nomb = 1, a;
+            Arista aux;
+            Point pos = new Point(200, 200);
+            centrox = 400;
+            centroy = 400;
+            distancia = 220;
+            angulo = 10;
+            angulo2 = (double)(360 / (double)nodos);
+
+            for (a = 0; a < nodos; a++)
+            {
+                if (a == 0)
+                {
+                    posx = (int)(centrox - (distancia * Math.Cos((90 * Math.PI) / 180.0)));
+                    posy = (int)(centroy - (distancia * Math.Sin((90 * Math.PI) / 180.0)));
+                    pos.X = (int)posx;
+                    pos.Y = (int)posy;
+                    angulo = 90;
+                }
+                else
+                {
+
+                    angulo = (float)(angulo + angulo2);
+                    posx = (int)(centrox - distancia * Math.Cos((angulo * Math.PI) / 180.0));
+                    posy = (int)(centroy - distancia * Math.Sin((angulo * Math.PI) / 180.0));
+                    pos.X = (int)posx;
+                    pos.Y = (int)posy;
+                }
+                grafo.Add(new NodoP(nomb, pos));
+                nomb++;
+                if (nomb > 27)
+                {
+                    grafo.edoNom = true;
+                }
+            }
+            foreach (NodoP np in grafo)
+            {
+                foreach (NodoP np2 in grafo)
+                {
+                    if (np != np2)
+                    {
+                        aux = new Arista(0);
+                        aux.origen = np;
+                        aux.destino = np2;
+                        np.aristas.Add(aux);
+                    }
+                }
+            }
+            return grafo;
+        }
+        // Metodo encargado de encontrar si dos nodos estan en la misma posición
+        public NodoP nodoIgual(Grafo grafo)
+        {
+            NodoP igual = null;
+            NodoP compara;
+            igual = grafo[0];
+            foreach(NodoP np in grafo)
+            {
+                if(np != igual)
+                {
+                    compara = grafo.Find(x => x.centro.Equals(igual.centro));
+                    if (compara != null && compara != np)
+                    {
+                        return igual;
+                    }
+                }
+                
+            }
+            return igual;
         }
         #endregion
     }

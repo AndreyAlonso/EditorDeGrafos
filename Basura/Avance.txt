@@ -107,26 +107,16 @@ Descripcion:
 24 de Septiembre 2018
 Descripción:
 	Interfaz:
-	-Ventana Matriz Infinita	OK
+	-Ventana Matriz Infinita
 	
 	Metodos:
 	- Se realiza la operación del nodo para obtener su matriz n hasta 10 
-------------
-Rev.
-	OK
-	Continuar con Euler.
-
-----------------------------------------------------------------------------------------------------------------------------------------------
-02 de Ocutubre 2018 / No se olvida
-
-Descripción:
-	Interfaz:
-	-Boton de Euler para calcular si tiene camino o circuito
-
-	Metodos:
-	Se crean los metodos caminoEuleriano y circuitoEuleriano, pinta el grafo y muestra un string con la info
 
 
 
+
+
+
+	
 
 	

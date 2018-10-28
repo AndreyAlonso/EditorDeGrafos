@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,7 +20,8 @@ namespace EditorGrafos
         #region Inicialziacion
 
         Grafo grafo;
-        NodoP nodoP, nodoAux;
+        NodoP nodoP, nodoAux, nodoW;
+        bool activa;
         Arista nodoR;
         Graphics g;
         int opcion;
@@ -32,20 +34,20 @@ namespace EditorGrafos
         bool grafoEspecial;
         #endregion
         #region Propiedades
-        int         radio;
-        int         nomb;
-        string      nameF;
-        Color       cRelleno;
-        Color       colorFuente;
-        Color       cNodo;
-        float       width;
-        float       widthA;
-        Color       cArista;
-        Pen         penN;
-        SolidBrush  brushN;
-        SolidBrush  brushF;
-        Font        font;
-        Pen         penA;
+        int radio;
+        int nomb;
+        string nameF;
+        Color cRelleno;
+        Color colorFuente;
+        Color cNodo;
+        float width;
+        float widthA;
+        Color cArista;
+        Pen penN;
+        SolidBrush brushN;
+        SolidBrush brushF;
+        Font font;
+        Pen penA;
 
         #endregion
         #region Principal
@@ -113,7 +115,7 @@ namespace EditorGrafos
             if (bandI)
             {
                 ga.Clear(BackColor);
-                grafo.ImprimirGrafo(ga,bpar);
+                grafo.ImprimirGrafo(ga, bpar);
                 bandI = false;
             }
 
@@ -126,12 +128,13 @@ namespace EditorGrafos
                 if (opcion == 7)
                 {
                     grafo = new Grafo();
+                    MatrizInfinita.Enabled = false;
                     CambiaBotones(false);
                 }
             }
             if (opcion != 6)
                 if (opcion != 7)
-                    grafo.ImprimirGrafo(ga,bpar);
+                    grafo.ImprimirGrafo(ga, bpar);
             g.DrawImage(bmp1, 0, 0);
 
         }
@@ -143,6 +146,12 @@ namespace EditorGrafos
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             p1 = e.Location;
+            if (activa)
+            {
+                nodoW = grafo.BuscaNodo(p1);
+                activa = false;
+            }
+
             switch (opcion)
             {
                 case 1:
@@ -191,6 +200,8 @@ namespace EditorGrafos
 
                 case 8:
                     p1 = e.Location;
+
+                    warnerButton.Enabled = true;
                     break;
             }
         }
@@ -200,6 +211,7 @@ namespace EditorGrafos
             if (e.Button.Equals(MouseButtons.Left) && (opcion == 2 || opcion == 9) && bandA)
             {
                 p2 = e.Location;
+
                 Form1_Paint(this, null);
             }
 
@@ -231,10 +243,12 @@ namespace EditorGrafos
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
+            activa = true;
             if (bandA && band && (opcion == 2 || opcion == 9))
             {
                 p2 = e.Location;
                 nodoAux = grafo.BuscaNodo(p2);
+
                 if (nodoAux != null)
                 {
                     if (opcion == 2)
@@ -294,6 +308,7 @@ namespace EditorGrafos
                 bandF = false;
             }
 
+
             band = false;
             bandA = false;
             Form1_Paint(this, null);
@@ -312,13 +327,16 @@ namespace EditorGrafos
             numericUpDown1.Visible = false;
             numericUpDown2.Visible = false;
             numericUpDown3.Visible = false;
-            
+            MatrizInfinita.Enabled = true;
+            warnerButton.Enabled = true;
+            euleriano.Enabled = true;
+            nodoPendiente.Enabled = true;
             switch (e.ClickedItem.AccessibleName)
             {
                 case "CrearNodo":
                 case "MoverNodo":
                 case "BorrarNodo":
-
+                    bpar = false;
                     Nodo_Click(this, e);
 
                     break;
@@ -440,10 +458,14 @@ namespace EditorGrafos
 
         private void Grafo_Click(object sender, ToolStripItemClickedEventArgs e)
         {
+
             switch (e.ClickedItem.AccessibleName)
             {
+
                 case "MoverGrafo":
                     opcion = 8;
+
+                    warnerButton.Enabled = true;
                     break;
 
                 case "BorrarGrafo":
@@ -452,10 +474,11 @@ namespace EditorGrafos
 
                 case "EliminarGrafo":
                     opcion = 7;
+                    warnerButton.Enabled = false;
                     break;
             }
         }
-
+        MuestraCadena muestra;
         private void Nodo_Click(object sender, ToolStripItemClickedEventArgs e)
         {
             band = false;
@@ -467,7 +490,7 @@ namespace EditorGrafos
             {
                 case "CrearNodo":
                     opcion = 1;
-                    
+                    activa = true;
                     break;
 
                 case "MoverNodo":
@@ -481,7 +504,7 @@ namespace EditorGrafos
         }
 
 
-
+        List<NodoP> circuito;
         private void metodosAdicionales(object sender, ToolStripItemClickedEventArgs e)
         {
             numericUpDown1.Visible = false;
@@ -498,7 +521,7 @@ namespace EditorGrafos
             {
                 case "complemento":
                     bpar = false;
-                    
+
                     obtenPropiedades();
                     if (AristaNoDirigida.Enabled == true && AristaDirigida.Enabled == true)
                     {
@@ -506,7 +529,7 @@ namespace EditorGrafos
                         grafo = grafo.complemento(g);
                         asignaPropiedades();
                         AristaDirigida.Enabled = false;
-                        
+
                     }
                     else
                     if (AristaDirigida.Enabled == true && AristaNoDirigida.Enabled == false)
@@ -526,7 +549,7 @@ namespace EditorGrafos
                     Form1_Paint(this, null);
                     break;
                 case "preExamen_1":
-                    if(AristaNoDirigida.Enabled == true && AristaDirigida.Enabled == false)
+                    if (AristaNoDirigida.Enabled == true && AristaDirigida.Enabled == false)
                     {
                         PreExamen pre = new PreExamen(grafo);
                         pre.Show();
@@ -535,8 +558,8 @@ namespace EditorGrafos
                     {
                         MessageBox.Show("Tiene que ser grafo no  dirigido");
                     }
-                    
-                break;
+
+                    break;
                 case "nPartita":
                     bpar = true;
 
@@ -561,21 +584,114 @@ namespace EditorGrafos
                             i = 0;
 
                     }
-                   // grafo.ImprimirGrafo(g, bpar);
-                   // Form1_Paint(this, null);
-                  //  grafo.ImprimirGrafo(g, bpar);
+                    // grafo.ImprimirGrafo(g, bpar);
+                    // Form1_Paint(this, null);
+                    //  grafo.ImprimirGrafo(g, bpar);
                     nPartita.Show();
+                    break;
+                case "MatrizInfinita":
 
-                        
-                        
-
-                                        
-                    
-                    
+                    MatrizInfinita matriz = new MatrizInfinita(grafo);
+                    matriz.Show();
+                    break;
+                case "nodoPendiente":
+                    List<int> pendientes = new List<int>();
+                    List<int> cut = new List<int>();
+                    grafo = new GrafoNoDirigido(grafo);
+                    bpar = true;
+                    pendientes = grafo.nodoPendiente();
+                    //  cut = grafo.verticeCut();
+                    foreach (int aux1 in pendientes)
+                    {
+                        grafo.Find(x => x.nombre.Equals(aux1)).colorN = new SolidBrush(Color.Red);
+                        grafo.Find(x => x.nombre.Equals(aux1)).aristas[0].destino.colorN = new SolidBrush(Color.Green);
+                        grafo.Find(x => x.nombre.Equals(aux1)).aristas[0].colorA = new Pen(new SolidBrush(Color.Blue));
+                        grafo.Find(x => x.nombre.Equals(aux1)).aristas[0].destino.aristas[0].colorA = new Pen(new SolidBrush(Color.Blue));
+                    }
+                    foreach (int nodo in cut)
+                    {
+                        grafo.Find(x => x.nombre.Equals(nodo)).colorN = new SolidBrush(Color.Green);
+                    }
+                    bpar = true;
+                    break;
+                case "Euleriano":
+                    Euler();
                 break;
+                case "warner":
+                    int warner;
+                    warner = grafo.warner(g, nodoW);
+                    if (warner == 1)
+                    {
+                        MessageBox.Show("Tiene un K5");
+                    }
+                    else if (warner == 2)
+                        MessageBox.Show("Tiene un K3,3");
+                    else
+                        MessageBox.Show("No tiene K5 ni K3,3");
+                    break;
+
+
             }
 
         }
+        public void Euler()
+        {
+            bool camino = false;
+            string cadena = "";
+            int pares = 0;
+            int impares = 0;
+            List<Arista> caminos;
+            List<NodoP> circuit;
+
+            foreach (NodoP np in grafo){
+                if (np.aristas.Count % 2 == 0){
+                    pares++;
+                }
+                if (np.aristas.Count % 2 != 0){
+                    impares++;
+                }
+            }
+            if (pares == grafo.Count) // SI TODOS LOS NODOS SON DE GRADO PAR ENTONCES TIENE CIRCUITO EULERIANO
+            {
+                circuit = grafo.circuitoEuleriano();
+                circuito = circuit;
+                foreach (NodoP np in circuit){
+                    cadena += (char)(np.nombre + 64) + " >> ";
+                }
+                
+                bpar = true;
+                muestra = new MuestraCadena("Circuito Euleriano", cadena, timer1);
+                muestra.Show();
+                muestra.timer1.Tick += Timer1_Tick;
+            }
+
+            else if (impares == 2) // SI TIENE DOS NODOS DE GRADO IMPAR, ENTONCES TIENE CAMINO EULERIANO
+            {
+                circuit = grafo.caminoEuleriano(g);
+                foreach (NodoP np in circuit)
+                {
+                    cadena += (char)(np.nombre + 64) + " >> ";
+                }
+                bpar = true;
+                circuito = circuit;
+                MuestraCadena muestra = new MuestraCadena("Camino Euleriano", cadena, timer1);
+                muestra.Show();
+                muestra.timer1.Tick += Timer1_Tick;
+            }
+            else
+                MessageBox.Show("No tiene camino ni circuito Euleriano");
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            
+            grafo.pintaEuler(g, circuito);
+            timer1.Enabled = false;
+            muestra.timer1.Enabled = false;
+            muestra.button1.Enabled = false;
+            
+        }
+
         public List<Color> coloreate()
         {
             List<Color> color = new List<Color>();
@@ -763,9 +879,9 @@ namespace EditorGrafos
                                 }
                                 else
                                 {
-                                    grafo = (GrafoDirigido)formatter.Deserialize(stream);
+                                    grafo = (GrafoNoDirigido)formatter.Deserialize(stream);
                                     obtenPropiedades();
-                                    grafo = new GrafoDirigido(grafo);
+                                    grafo = new GrafoNoDirigido(grafo);
                                     asignaPropiedades();
                                     grafo.penA.CustomEndCap = arrow;
                                     AristaDirigida.Enabled = true;
@@ -812,33 +928,6 @@ namespace EditorGrafos
 
         private void grafosEspeciales(object sender, ToolStripItemClickedEventArgs e)
         {
-            /*
-            if(grafo.Count == 0)
-            {
-                grafo = new Grafo();
-                opcion = 0;
-                g = CreateGraphics();
-                bmp1 = new Bitmap(ClientSize.Width, ClientSize.Height);
-                band = false;
-                bandI = false;
-                bandF = false;
-                arrow = new AdjustableArrowCap(5, 5);
-
-                numericUpDown1.Hide();
-                numericUpDown2.Hide();
-                numericUpDown3.Hide();
-                grafoEspecial = false;
-                CambiaBotones(false);
-            }
-            */
-            /*
-           
-            foreach(NodoP x in grafo)
-            {
-                x.aristas.Clear();
-            }
-            grafo.Clear();
-            */
             AristaNoDirigida.Enabled = true;
             AristaDirigida.Enabled = false;
             MueveNodo.Enabled = true;
@@ -850,8 +939,13 @@ namespace EditorGrafos
             BorrarNodo.Enabled = true;
             BorrarArista.Enabled = true;
             nPartita.Enabled = true;
+            MatrizInfinita.Enabled = true;
+            euleriano.Enabled = true;
+            nodoPendiente.Enabled = true;
+            opcion = 1;
+            activa = true;
 
-            switch(e.ClickedItem.AccessibleName)
+            switch (e.ClickedItem.AccessibleName)
             {
                 case "GrafoKn":
                     
@@ -893,6 +987,12 @@ namespace EditorGrafos
             
 
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           
+        }
+
         private void numericCn(object sender, EventArgs e)
         {
 
@@ -905,6 +1005,8 @@ namespace EditorGrafos
             grafo.numN = grafo.Count;
             Form1_Paint(this, null);
         }
+
+        
 
         private void numericWn(object sender, EventArgs e)
         {
@@ -960,9 +1062,15 @@ namespace EditorGrafos
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-        
-            bmp1 = new Bitmap(ClientRectangle.Width, ClientRectangle.Height);
-            g = CreateGraphics();
+            try
+            {
+                bmp1 = new Bitmap(ClientRectangle.Width, ClientRectangle.Height);
+                g = CreateGraphics();
+            }
+            catch
+            {
+
+            }
           //  SetClientSizeCore(ClientSize.Width, this.ClientSize.Height);
             numericUpDown1.Location = new Point(toolStrip3.Location.X-toolStrip3.Width-5, numericUpDown1.Location.Y);
             numericUpDown2.Location = new Point(toolStrip3.Location.X - toolStrip3.Width - 5, numericUpDown2.Location.Y);

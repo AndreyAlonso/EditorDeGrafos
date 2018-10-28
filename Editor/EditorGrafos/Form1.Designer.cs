@@ -33,6 +33,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditorGrafo));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -70,15 +71,20 @@
             this.BorrarArista = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MueveGrafo = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.Cambia = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.BorrarGrafo = new System.Windows.Forms.ToolStripButton();
             this.EliminarGrafo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.nPartita = new System.Windows.Forms.ToolStripButton();
+            this.MatrizInfinita = new System.Windows.Forms.ToolStripButton();
+            this.nodoPendiente = new System.Windows.Forms.ToolStripButton();
+            this.euleriano = new System.Windows.Forms.ToolStripButton();
+            this.warnerButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
@@ -86,6 +92,7 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -284,11 +291,12 @@
             this.BorrarArista,
             this.toolStripSeparator3,
             this.MueveGrafo,
-            this.toolStripButton1,
             this.Cambia,
             this.toolStripSeparator4,
             this.BorrarGrafo,
-            this.EliminarGrafo});
+            this.EliminarGrafo,
+            this.toolStripSeparator5,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(984, 39);
@@ -420,17 +428,6 @@
             this.MueveGrafo.Text = "toolStripButton1";
             this.MueveGrafo.ToolTipText = "Mueve el grafo completo";
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.AccessibleName = "Preferencias";
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.ToolTipText = "Abre el menu de configuracion del nodo";
-            // 
             // Cambia
             // 
             this.Cambia.AccessibleName = "Cambia";
@@ -469,13 +466,33 @@
             this.EliminarGrafo.Text = "toolStripButton3";
             this.EliminarGrafo.ToolTipText = "Elimina el grafo y crea uno nuevo";
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.AccessibleName = "Preferencias";
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Abre el menu de configuracion del nodo";
+            // 
             // toolStrip2
             // 
             this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton2,
             this.toolStripButton6,
-            this.nPartita});
+            this.nPartita,
+            this.MatrizInfinita,
+            this.nodoPendiente,
+            this.euleriano,
+            this.warnerButton});
             this.toolStrip2.Location = new System.Drawing.Point(0, 63);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(37, 598);
@@ -515,6 +532,55 @@
             this.nPartita.Name = "nPartita";
             this.nPartita.Size = new System.Drawing.Size(34, 36);
             this.nPartita.Text = "n-Partita";
+            // 
+            // MatrizInfinita
+            // 
+            this.MatrizInfinita.AccessibleName = "MatrizInfinita";
+            this.MatrizInfinita.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MatrizInfinita.Enabled = false;
+            this.MatrizInfinita.Image = ((System.Drawing.Image)(resources.GetObject("MatrizInfinita.Image")));
+            this.MatrizInfinita.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.MatrizInfinita.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.MatrizInfinita.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MatrizInfinita.Name = "MatrizInfinita";
+            this.MatrizInfinita.Size = new System.Drawing.Size(34, 36);
+            this.MatrizInfinita.Text = "Matriz Infinita";
+            // 
+            // nodoPendiente
+            // 
+            this.nodoPendiente.AccessibleName = "nodoPendiente";
+            this.nodoPendiente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.nodoPendiente.Enabled = false;
+            this.nodoPendiente.Image = ((System.Drawing.Image)(resources.GetObject("nodoPendiente.Image")));
+            this.nodoPendiente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.nodoPendiente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.nodoPendiente.Name = "nodoPendiente";
+            this.nodoPendiente.Size = new System.Drawing.Size(34, 36);
+            this.nodoPendiente.Text = "Vertice cut";
+            // 
+            // euleriano
+            // 
+            this.euleriano.AccessibleName = "Euleriano";
+            this.euleriano.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.euleriano.Enabled = false;
+            this.euleriano.Image = ((System.Drawing.Image)(resources.GetObject("euleriano.Image")));
+            this.euleriano.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.euleriano.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.euleriano.Name = "euleriano";
+            this.euleriano.Size = new System.Drawing.Size(34, 36);
+            this.euleriano.Text = "Circuto/Camino Euleriano";
+            // 
+            // warnerButton
+            // 
+            this.warnerButton.AccessibleName = "warner";
+            this.warnerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.warnerButton.Enabled = false;
+            this.warnerButton.Image = ((System.Drawing.Image)(resources.GetObject("warnerButton.Image")));
+            this.warnerButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.warnerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.warnerButton.Name = "warnerButton";
+            this.warnerButton.Size = new System.Drawing.Size(34, 36);
+            this.warnerButton.Text = "Warner";
             // 
             // toolStrip3
             // 
@@ -624,6 +690,10 @@
             0});
             this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericWn);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // EditorGrafo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -717,6 +787,12 @@
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripButton nPartita;
+        private System.Windows.Forms.ToolStripButton MatrizInfinita;
+        private System.Windows.Forms.ToolStripButton nodoPendiente;
+        private System.Windows.Forms.ToolStripButton warnerButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.ToolStripButton euleriano;
     }
 }
 
