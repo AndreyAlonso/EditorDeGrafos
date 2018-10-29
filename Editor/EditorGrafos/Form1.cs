@@ -363,9 +363,22 @@ namespace EditorGrafos
                 case "Preferencias":
                     Configuracion_Clicked(this, e);
                     break;
+                case "agregaPeso":
+                    agregaPesoArista();
+                break;
+
             }
         }
+        private void agregaPesoArista()
+        {
+            Costo costo = new Costo(grafo);
+            if(costo.ShowDialog() == DialogResult.OK)
+            {
 
+            }
+
+
+        }
         private void Configuracion_Clicked(object sender, ToolStripItemClickedEventArgs e)
         {
             switch (e.ClickedItem.AccessibleName)

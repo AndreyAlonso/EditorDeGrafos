@@ -52,6 +52,12 @@
     <Compile Include="Configuracion.Designer.cs">
       <DependentUpon>Configuracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Costo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Costo.Designer.cs">
+      <DependentUpon>Costo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     <Compile Include="Romano.cs" />
     <EmbeddedResource Include="Configuracion.resx">
       <DependentUpon>Configuracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Costo.resx">
+      <DependentUpon>Costo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

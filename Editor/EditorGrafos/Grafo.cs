@@ -311,6 +311,8 @@ namespace EditorGrafos
         public virtual void coloreate() { }
         public virtual int warner(Graphics g, NodoP pNodo) { return 0; }
 
+         
+
         #endregion
     }
 }
