@@ -569,8 +569,9 @@ namespace EditorGrafos
                         }
                     }
                     
-                    ImprimirGrafo(g, true);
+                    
                     Thread.Sleep(700);
+                    ImprimirGrafo(g, true);
                 }
             }
             
@@ -580,11 +581,19 @@ namespace EditorGrafos
         {
             foreach (NodoP np in this)
             {
-                np.colorN = new SolidBrush(Color.White);
-                foreach (Arista E in np.aristas)
+                try
                 {
-                    E.colorA = new Pen(Color.Black, 1);
+                    np.colorN = new SolidBrush(Color.White);
+                    foreach (Arista E in np.aristas)
+                    {
+                        E.colorA = new Pen(Color.Black, 1);
+                    }
                 }
+                catch
+                {
+                    break;
+                }
+                
             }
        
         }
@@ -600,6 +609,7 @@ namespace EditorGrafos
             Random srand;
             srand = new Random();
             coloreate();
+            int ariA = 0; 
             aux = this[0];
             primero = aux;
             int j = 0;
@@ -609,25 +619,46 @@ namespace EditorGrafos
                 grado = grado + np.aristas.Count;
             }
             j = 0;
-            while (nodos < grado/2)// grado / 2)
+            caminos.Clear();
+            circuito.Clear();
+            while (nodos < grado)// grado / 2)
             {
                 j = srand.Next(0, aux.aristas.Count);
                 compara = caminos.Find(x => x.Equals(aux.aristas[j]));
+                if (aux.aristas[j].destino == this[0])
+                    ariA++;
+
+
                 if (compara == null)
                 {
+
                     caminos.Add(aux.aristas[j]);
                     Arista invertida = buscaInvertida(aux, aux.aristas[j].destino);
                     caminos.Add(invertida);
                     circuito.Add(aux);
                     aux = aux.aristas[j].destino;
-                    nodos++;
-                   
+                    nodos += 2;
                 }
-                if(nodos == grado)
+                else
+                    ariA++;
+                if (ariA > 1000)
                 {
-                    break;
+                    caminos.Clear();
+                    circuito.Clear();
+                    nodos = 0;
+                    ariA = 0;
                 }
+                    
+
                 
+                
+           
+
+
+
+
+
+
             }
             circuito.Add(aux);
            // circuito.Add(primero);
@@ -649,7 +680,7 @@ namespace EditorGrafos
 
         }
         // ********************************************************************************************************************CAMNINO EULERIANO
-        public override List<NodoP> caminoEuleriano(Graphics g)
+        public override List<NodoP> caminoEuleriano()
         {
 
             string cad = "";
@@ -658,7 +689,7 @@ namespace EditorGrafos
             int pos = 0;
             int nodos = 0;
             NodoP aux;
-            pintaGrafoDefault();
+           // pintaGrafoDefault();
 
             foreach (NodoP np in this)
             {

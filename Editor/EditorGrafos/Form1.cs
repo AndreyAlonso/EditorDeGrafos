@@ -51,6 +51,9 @@ namespace EditorGrafos
 
         #endregion
         #region Principal
+        // VARIABLES EXTRAS
+        MuestraCadena muestra;
+
 
         public EditorGrafo()
         {
@@ -68,7 +71,7 @@ namespace EditorGrafos
             bandF = false;
             bpar = false;
             arrow = new AdjustableArrowCap(5, 5);
-
+            timer1.Enabled = false;
             numericUpDown1.Hide();
             numericUpDown2.Hide();
             numericUpDown3.Hide();
@@ -491,7 +494,7 @@ namespace EditorGrafos
                     break;
             }
         }
-        MuestraCadena muestra;
+        
         private void Nodo_Click(object sender, ToolStripItemClickedEventArgs e)
         {
             band = false;
@@ -673,23 +676,24 @@ namespace EditorGrafos
                 }
                 
                 bpar = true;
-                muestra = new MuestraCadena("Circuito Euleriano", cadena, timer1);
+                muestra = new MuestraCadena("Circuito Euleriano", cadena);
                 muestra.Show();
                 muestra.timer1.Tick += Timer1_Tick;
             }
 
             else if (impares == 2) // SI TIENE DOS NODOS DE GRADO IMPAR, ENTONCES TIENE CAMINO EULERIANO
             {
-                circuit = grafo.caminoEuleriano(g);
+                circuit = grafo.caminoEuleriano();
+                circuito = circuit;
                 foreach (NodoP np in circuit)
                 {
                     cadena += (char)(np.nombre + 64) + " >> ";
                 }
                 bpar = true;
-                circuito = circuit;
-                MuestraCadena muestra = new MuestraCadena("Camino Euleriano", cadena, timer1);
+                muestra = new MuestraCadena("Camino Euleriano", cadena);
                 muestra.Show();
                 muestra.timer1.Tick += Timer1_Tick;
+                
             }
             else
                 MessageBox.Show("No tiene camino ni circuito Euleriano");
@@ -697,12 +701,17 @@ namespace EditorGrafos
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            
             grafo.pintaEuler(g, circuito);
+
             timer1.Enabled = false;
-            muestra.timer1.Enabled = false;
-            muestra.button1.Enabled = false;
             
+            if (muestra != null)
+            {
+                muestra.button1.Enabled = false;
+                muestra.timer1.Enabled = false;
+                
+            }
+             
         }
 
         public List<Color> coloreate()
@@ -1001,10 +1010,7 @@ namespace EditorGrafos
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-           
-        }
+
 
         private void numericCn(object sender, EventArgs e)
         {

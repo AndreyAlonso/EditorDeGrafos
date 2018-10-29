@@ -16,7 +16,7 @@ namespace EditorGrafos
         string nombre;
         string cadena;
         public bool band;
-        public MuestraCadena(string nombre, string cadena, System.Windows.Forms.Timer timer)
+        public MuestraCadena(string nombre, string cadena)
         {
             this.nombre = nombre;
             this.cadena = cadena;

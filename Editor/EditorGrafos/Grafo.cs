@@ -306,7 +306,7 @@ namespace EditorGrafos
         public virtual List<int> verticeCut() { return new List<int>(); }
 
         public virtual List<NodoP> circuitoEuleriano() { return new List<NodoP>();}
-        public virtual List<NodoP> caminoEuleriano(Graphics g) { return new List<NodoP>(); }
+        public virtual List<NodoP> caminoEuleriano() { return new List<NodoP>(); }
         public virtual void pintaEuler(Graphics g, List<NodoP> listaNodos) { }
         public virtual void coloreate() { }
         public virtual int warner(Graphics g, NodoP pNodo) { return 0; }
