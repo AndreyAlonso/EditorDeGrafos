@@ -16,6 +16,7 @@ namespace EditorGrafos
         string nombre;
         string cadena;
         public bool band;
+
         public MuestraCadena(string nombre, string cadena)
         {
             this.nombre = nombre;
@@ -29,15 +30,31 @@ namespace EditorGrafos
            
             label1.Text = nombre;
             textBox1.Text = cadena;
-            band = false;
+            band = true;
           
            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            timer1.Enabled = true;
+            if (band)
+            {
+                button1.Text = "Pause";
+                timer1.Enabled = true;
+                band = false;
+            }
+            else{
+                button1.Text = "Play";
+                timer1.Enabled = false;
+                band = true;
+            }
             
+           
+            
+        }
+
+        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
+        { 
         }
 
         public bool activa()
@@ -54,6 +71,11 @@ namespace EditorGrafos
         private void timer1_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
+        {
+            timer1.Interval = Convert.ToInt32(numericUpDown1.Value) * 100;
         }
     }
 }

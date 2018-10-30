@@ -693,16 +693,74 @@ namespace EditorGrafos
                 muestra = new MuestraCadena("Camino Euleriano", cadena);
                 muestra.Show();
                 muestra.timer1.Tick += Timer1_Tick;
+               
                 
             }
             else
                 MessageBox.Show("No tiene camino ni circuito Euleriano");
         }
 
+        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        int tope = 1;
+
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            grafo.pintaEuler(g, circuito);
+          //  grafo.coloreate();
+          //  asignaPropiedades();
+            
+            if (tope > circuito.Count)
+            {
+                asignaPropiedades();
+                foreach(NodoP np in grafo)
+                {
+                    foreach(Arista nr in np.aristas)
+                    {
+                        np.colorN = new SolidBrush(Color.White);
+                        nr.colorA = new Pen(Color.Black, 1);
+                    }
+                }
+                grafo.coloreate();
+                tope = 0;
+             //   grafo.ImprimirGrafo(g, false);
+              //  muestra.timer1.Enabled = false;
+                Form1_Paint(this, null);
+                
+            }
+            else
+            {
+                for (int i = 0; i < tope; i++)
+                {
+                    NodoP aux = grafo.Find(x => x.Equals(circuito[i]));
+                    if (aux != null)
+                    {
+                        aux.colorN = new SolidBrush(Color.LightBlue);
+                        grafo.ImprimirGrafo(g, true);
+                        if (i < circuito.Count - 1)
+                        {
+                            Arista aux2 = aux.aristas.Find(x => x.destino.Equals(circuito[i + 1]));
+                            if (aux2 != null)
+                            {
+                                aux2.colorA = new Pen(Color.Red, 5);
 
+                            }
+                        }
+
+
+                        //    Thread.Sleep(timer1.Interval);
+                        grafo.ImprimirGrafo(g, true);
+                    }
+
+                }
+            }
+            
+            tope++;
+
+
+            /*
             timer1.Enabled = false;
             
             if (muestra != null)
@@ -711,7 +769,8 @@ namespace EditorGrafos
                 muestra.timer1.Enabled = false;
                 
             }
-             
+            */
+
         }
 
         public List<Color> coloreate()
