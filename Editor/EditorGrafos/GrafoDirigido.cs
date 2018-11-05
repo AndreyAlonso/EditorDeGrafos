@@ -13,7 +13,7 @@ namespace EditorGrafos
         private Grafo grafo;
         List<List<int>> renglones = new List<List<int>>();
         List<int> renglon = new List<int>();
-        List<NodoP> pila = new List<NodoP>();
+        [NonSerialized]List<NodoP> pila = new List<NodoP>();
         List<NodoP> caminos;
         List<List<NodoP>> DK = new List<List<NodoP>>();
         Pila p;

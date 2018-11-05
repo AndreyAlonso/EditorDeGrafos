@@ -14,6 +14,7 @@ namespace EditorGrafos
         [NonSerialized] public Font font;
         [NonSerialized] public Pen penA, penN;
         [NonSerialized] public SolidBrush brushN, brushF;
+        public int tipo { get; set; }
 
         private NodoP nodoP;
         public bool bpar;
@@ -45,8 +46,13 @@ namespace EditorGrafos
 
         public int nomb { get; set; }
 
+        // TIPO
+        // 1 GRAFO
+        // 2 NO DIRIGIDO
+        // 3 DIRIGIDO
         public Grafo()
         {
+        
             numN = 1;
             edoNom = false;
             bpar = false;

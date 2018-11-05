@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EditorGrafos
 {
+    [Serializable]
     class Pila
     {
         private List<NodoP> nodos;
