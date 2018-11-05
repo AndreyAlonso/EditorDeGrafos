@@ -58,6 +58,12 @@
     <Compile Include="Costo.Designer.cs">
       <DependentUpon>Costo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dijkstra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dijkstra.Designer.cs">
+      <DependentUpon>Dijkstra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,7 @@
     <Compile Include="nPartita.Designer.cs">
       <DependentUpon>nPartita.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pila.cs" />
     <Compile Include="PreExamen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Costo.resx">
       <DependentUpon>Costo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dijkstra.resx">
+      <DependentUpon>Dijkstra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

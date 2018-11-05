@@ -79,12 +79,15 @@ namespace EditorGrafos
             nPartita.Enabled = false;
             CambiaBotones(false);
         }
-
+        
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            
+            
             Graphics ga = CreateGraphics();
             ga = Graphics.FromImage(bmp1);
             ga.Clear(BackColor);
+            
 
             if (bandF || band)
             {
@@ -327,6 +330,7 @@ namespace EditorGrafos
             bandA = false;
             bandF = false;
             bandI = false;
+           
             numericUpDown1.Visible = false;
             numericUpDown2.Visible = false;
             numericUpDown3.Visible = false;
@@ -334,14 +338,17 @@ namespace EditorGrafos
             warnerButton.Enabled = true;
             euleriano.Enabled = true;
             nodoPendiente.Enabled = true;
+            quitaPesos();
             switch (e.ClickedItem.AccessibleName)
             {
+                 
                 case "CrearNodo":
                 case "MoverNodo":
                 case "BorrarNodo":
+                    
                     bpar = false;
                     Nodo_Click(this, e);
-
+                    
                     break;
 
                 case "AristaDirigida":
@@ -377,10 +384,44 @@ namespace EditorGrafos
             Costo costo = new Costo(grafo);
             if(costo.ShowDialog() == DialogResult.OK)
             {
-
+                dijkstra.Enabled = true;
+                muestraPeso();
             }
 
 
+        }
+        private void muestraPeso()
+        {
+            
+           
+            
+
+            if(dijkstra.Enabled == true || agregaPeso.Enabled == true)
+            {
+                int pmx, pmy;
+
+                Label label;
+                foreach (NodoP np in grafo)
+                {
+                    foreach (Arista nr in np.aristas)
+                    {
+                        pmx = (nr.origen.centro.X + nr.destino.centro.X) / 2;
+                        pmy = (nr.origen.centro.Y + nr.destino.centro.Y) / 2;
+                        pmy += 7;
+                        pmy -= 7;
+                        label = new Label();
+                        label.Name = "peso";
+                        label.Visible = true;
+                        label.Width = 20;
+                        label.Location = new Point(pmx, pmy);
+                        label.Text = nr.peso.ToString();
+                        Controls.Add(label);
+
+
+                    }
+                }
+            }
+            
         }
         private void Configuracion_Clicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -501,7 +542,7 @@ namespace EditorGrafos
             bandA = false;
             bandF = false;
             bandI = false;
-
+           
             switch (e.ClickedItem.AccessibleName)
             {
                 case "CrearNodo":
@@ -616,6 +657,8 @@ namespace EditorGrafos
                     grafo = new GrafoNoDirigido(grafo);
                     bpar = true;
                     pendientes = grafo.nodoPendiente();
+                    if (pendientes.Count == 0)
+                        MessageBox.Show("No tiene nodo Pendiente");
                     //  cut = grafo.verticeCut();
                     foreach (int aux1 in pendientes)
                     {
@@ -644,11 +687,31 @@ namespace EditorGrafos
                         MessageBox.Show("Tiene un K3,3");
                     else
                         MessageBox.Show("No tiene K5 ni K3,3");
-                    break;
+                break;
+                case "dijkstra":
+                    algoritmoDijkstra();
+                break;
 
 
             }
 
+        }
+        public void algoritmoDijkstra()
+        {
+            
+            if(AristaNoDirigida.Enabled == false && AristaDirigida.Enabled == true)
+            {
+                Dijkstra dk = new Dijkstra(grafo);
+                muestraPeso();
+                if(dk.ShowDialog() == DialogResult.OK)
+                {
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("Dijkstra es para GRAFOS DIRIGIDOS");
+            }
         }
         public void Euler()
         {
@@ -725,8 +788,7 @@ namespace EditorGrafos
                 }
                 grafo.coloreate();
                 tope = 0;
-             //   grafo.ImprimirGrafo(g, false);
-              //  muestra.timer1.Enabled = false;
+            
                 Form1_Paint(this, null);
                 
             }
@@ -748,9 +810,6 @@ namespace EditorGrafos
 
                             }
                         }
-
-
-                        //    Thread.Sleep(timer1.Interval);
                         grafo.ImprimirGrafo(g, true);
                     }
 
@@ -758,18 +817,6 @@ namespace EditorGrafos
             }
             
             tope++;
-
-
-            /*
-            timer1.Enabled = false;
-            
-            if (muestra != null)
-            {
-                muestra.button1.Enabled = false;
-                muestra.timer1.Enabled = false;
-                
-            }
-            */
 
         }
 
@@ -821,6 +868,7 @@ namespace EditorGrafos
                     asignaPropiedades();
                     grafo.penA.CustomEndCap = arrow;
                     AristaNoDirigida.Enabled = false;
+                    agregaPeso.Enabled = true;
                     break;
             }
         }
@@ -960,12 +1008,13 @@ namespace EditorGrafos
                                 }
                                 else
                                 {
-                                    grafo = (GrafoNoDirigido)formatter.Deserialize(stream);
+                                    grafo = (GrafoDirigido)formatter.Deserialize(stream);
                                     obtenPropiedades();
-                                    grafo = new GrafoNoDirigido(grafo);
+                                    grafo = new GrafoDirigido(grafo);
                                     asignaPropiedades();
                                     grafo.penA.CustomEndCap = arrow;
                                     AristaDirigida.Enabled = true;
+                                    AristaNoDirigida.Enabled = false;
 
                                 }
                                 
@@ -1023,6 +1072,7 @@ namespace EditorGrafos
             MatrizInfinita.Enabled = true;
             euleriano.Enabled = true;
             nodoPendiente.Enabled = true;
+            agregaPeso.Enabled = true;
             opcion = 1;
             activa = true;
 
@@ -1068,7 +1118,6 @@ namespace EditorGrafos
             
 
         }
-
 
 
         private void numericCn(object sender, EventArgs e)
@@ -1156,6 +1205,7 @@ namespace EditorGrafos
             
         }
 
+
         #endregion
         #region MetodosPropiedades
         public void obtenPropiedades()
@@ -1196,6 +1246,21 @@ namespace EditorGrafos
 
         }
         #endregion
+
+        public void quitaPesos()
+        {
+            List<Control> control = new List<Control>();
+            foreach (Control c in Controls)
+            {
+                if (c.Name == "peso")
+                {
+                    control.Add(c);
+
+                }
+            }
+            foreach (Control c in control)
+                Controls.Remove(c);
+        }
 
 
 

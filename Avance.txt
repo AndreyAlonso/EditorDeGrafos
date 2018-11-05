@@ -127,6 +127,35 @@ Descripción:
 	Se crean los metodos caminoEuleriano y circuitoEuleriano, pinta el grafo y muestra un string con la info
 
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+23 de Octubre 2018
+
+
+Descripción:
+	Interfaz	OK
+	Boton Euler	OK
+	Boton Warner	OK
+
+	Metodos
+	-Euler: Muestra si tiene un circuito o un camino, primero muestra la cadena y despues lo imprime
+	-Warner: 	Demuestra si tiene un K5 o K33
+----------
+Rev.
+	Dejar el dialogo con el circuito/camino mientras simula.
+
+
+........................................................
+01 Noviembre 2018
+
+Descripción:
+	Interfaz:
+	Se corrige circuito Euleriano! 
+	Se implementa ventana para agregar peso al grafo!
+
+
 
 
 	

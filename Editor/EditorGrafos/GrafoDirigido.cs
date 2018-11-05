@@ -11,9 +11,16 @@ namespace EditorGrafos
     class GrafoDirigido:Grafo
     {
         private Grafo grafo;
+        List<List<int>> renglones = new List<List<int>>();
+        List<int> renglon = new List<int>();
+        List<NodoP> pila = new List<NodoP>();
+        List<NodoP> caminos;
+        List<List<NodoP>> DK = new List<List<NodoP>>();
+        Pila p;
+        int peso;
         public GrafoDirigido(Grafo g)
         {
-
+           
             grafo = g;
             foreach (NodoP n in g)
             {
@@ -21,6 +28,8 @@ namespace EditorGrafos
                
             }
             actualizaPropiedades(g);
+
+
             
             
                
@@ -105,6 +114,157 @@ namespace EditorGrafos
 
             return nuevo;
         }
+        #region ALGORTIMO DE DIJKSTRA
+       
+        public List<List<NodoP>> dijkstra()
+        {
+            NodoP aux;
+            NodoP primero = this[0];
+            caminos = new List<NodoP>();
+            pila.Add(primero);
+            p = new Pila();
+            p.push(primero);
+            foreach (NodoP np in this) // RECORRE NODO  (RENGLON)
+            {
+                p.vaciaPila();
+                renglon.Clear();
+                p.push(primero);
+                
+                
+               
+                foreach (NodoP np2 in this) // RECORRE NODOS POR SEGUNDA VEZ (COLUMNA)
+                {
+                    caminos.Clear();
+                    caminos.Add(primero);
+                    peso = 0;
+                    if (np != np2) // PARA QUE SE EVITEN OREJAS 
+                    {
+                        generaRenglon(np, np2);
+                        renglon.Add(peso);
+                        DK.Add(caminos);
+
+                    }
+                    else
+                        renglon.Add(0);
+                }
+                break;
+                
+
+
+            }
+            return DK;
+
+        }
+        public List<int> damePesos()
+        {
+            return renglon;
+        }
+        
+        private void generaRenglon(NodoP inicio, NodoP fin)
+        {
+            NodoP aux = null;
+            if(p.tope+1 > 0)
+                aux = encuentraMenor(inicio); 
+            if(aux != null) // VALIDACIÓN SI ENCONTRO EL PESO MENOR
+            {
+                
+                pila.Add(aux);
+                p.push(aux);
+                if(aux != fin && aux.aristas.Count == 0)
+                {
+                    aux = encuentraMenor(inicio, p.ultimo());
+                    p.pop();
+                    
+                        
+                }
+                foreach (Arista nr in inicio.aristas) // CICLO QUE RECORRE LAS RELACIONES DEL NODO INICIO
+                {
+                    if (nr.destino == aux) // CUANDO ENCUENTRA A LA ARISTA CON MENOR PESO
+                    {
+                        
+                        peso += nr.peso;
+                        NodoP existe = caminos.Find(x => x.Equals(aux));
+                        if (existe == null)
+                            caminos.Add(nr.destino);
+                        if (aux == fin) // SI EL NODO CON MENOR PESO EL ES NODO FIN
+                        {
+
+                            break;
+                        }
+                        else
+                        { 
+                            generaRenglon(aux, fin); // SI NO ECUENTRA EL NODO, AVANZA AL SIGUIENTE 
+                        }
+                        
+                       
+                    }
+
+                }
+            }
+           
+
+        }
+
+        private NodoP encuentraMenor(NodoP actual)
+        {
+            NodoP aux = null;
+            if (actual != null)
+            {
+                if (actual.aristas.Count > 0)
+                {
+                    int menor = actual.aristas[0].peso;
+                    aux = actual.aristas[0].destino;
+                    for (int i = 0; i < actual.aristas.Count; i++)
+                    {
+                        if (actual.aristas[i].peso < menor)
+                        {
+                            menor = actual.aristas[i].peso;
+                            aux = actual.aristas[i].destino;
+                        }
+                    }
+                }
+            }
+           
+            
+            
+            return aux;
+        }
+        private NodoP encuentraMenor(NodoP actual, NodoP ignora)
+        {
+            if (actual == null)
+                return null;
+            NodoP aux = null;
+            if (actual.aristas.Count > 0)
+            {
+                int menor = 0;
+                for(int i = 0; i < actual.aristas.Count; i++)
+                {
+                    if (actual.aristas[i].destino != ignora)
+                    {
+                        menor = actual.aristas[i].peso;
+                        aux = actual.aristas[i].destino;
+                    }
+                        
+                }
+                
+                for (int i = 0; i < actual.aristas.Count; i++)
+                {
+                    if(actual.aristas[i].destino != ignora)
+                    {
+                        if (actual.aristas[i].peso < menor)
+                        {
+                            menor = actual.aristas[i].peso;
+                            aux = actual.aristas[i].destino;
+                        }
+                    }
+                    
+                }
+            }
+
+            return aux;
+        }
+        #endregion
         /*fIN CLASE*/
     }
+
 }
