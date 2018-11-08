@@ -95,6 +95,7 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.mPeso = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -135,21 +136,21 @@
             // 
             this.saveToolStripMenuItem.AccessibleName = "Save";
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.AccessibleName = "Open";
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // Imprimir
             // 
             this.Imprimir.AccessibleName = "Imprimir";
             this.Imprimir.Name = "Imprimir";
-            this.Imprimir.Size = new System.Drawing.Size(120, 22);
+            this.Imprimir.Size = new System.Drawing.Size(152, 22);
             this.Imprimir.Text = "Imprimir";
             // 
             // grafoToolStripMenuItem
@@ -299,7 +300,8 @@
             this.EliminarGrafo,
             this.toolStripSeparator5,
             this.toolStripButton1,
-            this.agregaPeso});
+            this.agregaPeso,
+            this.mPeso});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(984, 39);
@@ -390,7 +392,7 @@
             this.AristaNoDirigida.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AristaNoDirigida.Name = "AristaNoDirigida";
             this.AristaNoDirigida.Size = new System.Drawing.Size(36, 36);
-            this.AristaNoDirigida.Text = "toolStripButton2";
+            this.AristaNoDirigida.Text = "Arista No Dirigida";
             this.AristaNoDirigida.ToolTipText = "Crea una nueva Arista no dirigida";
             // 
             // AristaDirigida
@@ -488,13 +490,15 @@
             // agregaPeso
             // 
             this.agregaPeso.AccessibleName = "agregaPeso";
-            this.agregaPeso.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.agregaPeso.BackColor = System.Drawing.Color.Gray;
+            this.agregaPeso.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.agregaPeso.Enabled = false;
-            this.agregaPeso.Image = ((System.Drawing.Image)(resources.GetObject("agregaPeso.Image")));
-            this.agregaPeso.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.agregaPeso.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.agregaPeso.ForeColor = System.Drawing.Color.White;
+            this.agregaPeso.ImageTransparentColor = System.Drawing.Color.Red;
             this.agregaPeso.Name = "agregaPeso";
-            this.agregaPeso.Size = new System.Drawing.Size(36, 36);
-            this.agregaPeso.Text = "agregaPeso";
+            this.agregaPeso.Size = new System.Drawing.Size(46, 36);
+            this.agregaPeso.Text = "Peso";
             // 
             // toolStrip2
             // 
@@ -716,6 +720,16 @@
             0});
             this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericWn);
             // 
+            // mPeso
+            // 
+            this.mPeso.AccessibleName = "muestraPeso";
+            this.mPeso.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mPeso.Image = ((System.Drawing.Image)(resources.GetObject("mPeso.Image")));
+            this.mPeso.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mPeso.Name = "mPeso";
+            this.mPeso.Size = new System.Drawing.Size(36, 36);
+            this.mPeso.Text = "muestra Pesos";
+            // 
             // EditorGrafo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -817,6 +831,7 @@
         public System.Windows.Forms.ToolStripButton euleriano;
         private System.Windows.Forms.ToolStripButton agregaPeso;
         private System.Windows.Forms.ToolStripButton dijkstra;
+        private System.Windows.Forms.ToolStripButton mPeso;
     }
 }
 

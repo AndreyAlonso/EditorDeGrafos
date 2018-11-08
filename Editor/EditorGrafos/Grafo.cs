@@ -98,6 +98,65 @@ namespace EditorGrafos
             }
         }
 
+        public Arista encuentraArista(Point p)
+        {
+            double m, b, y;
+            double xp, yp, xn, yn, xnr, ynr;
+            xp = p.X;
+            yp = p.Y;
+            int sensibilidad = 2;
+            Arista temp = null;
+
+            foreach (NodoP n in this)
+            {
+                foreach (Arista nr in n.aristas)
+                {
+                    xn = n.centro.X;
+                    yn = n.centro.Y;
+                    xnr = nr.destino.centro.X;
+                    ynr = nr.destino.centro.Y;
+
+                    if (n.Equals(nr.destino))
+                    {
+                        NodoP nAux = BuscaNodo(p);
+                        if (nAux != null && nAux.Equals(n))
+                        {
+                            //n.aristas.Remove(nr);
+                            temp = nr;
+                            return temp;
+                        }
+                    }
+
+                    if ((xnr - xn) == 0)
+                    {
+                        if ((yp < yn && yp > ynr) || (yp > yn && yp < ynr))
+                        {
+                            if ((xp < xnr + sensibilidad && xp > xn - sensibilidad) || (xp > xnr - sensibilidad && xp < xn + sensibilidad))
+                            {
+                                //n.aristas.Remove(nr);
+                                temp = nr;
+                                return temp;
+                            }
+                        }
+                    }
+
+                    m = (ynr - yn) / (xnr - xn);
+                    b = yn - (m * xn);
+                    y = m * xp + b;
+
+                    if (yp >= y - sensibilidad && yp <= y + sensibilidad)
+                    {
+                        if ((xp < xnr + sensibilidad && xp > xn - sensibilidad) || (xp > xnr - sensibilidad && xp < xn + sensibilidad))
+                        {
+                           
+                            return nr;
+
+                        }
+                    }
+                }
+            }
+            return null;
+        }
         public void BorrarNodo(Point p)
         {
             List<Arista> l = new List<Arista>();
