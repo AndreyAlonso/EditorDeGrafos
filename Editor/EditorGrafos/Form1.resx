@@ -429,6 +429,16 @@
         AABJRU5ErkJggg==
 </value>
   </data>
+  <data name="kruskal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADpSURBVFhHxZSBCYQwEAStKwWlnlSTZlLM6fvex2RXhRP2
+        DwaOibsgBpdt7M9QqYRKJVQqoVIJlUqoVEKlEiqVUKnEl2SlWZ+a+0Op2Plon/08kjnOO75clWWrh/Jp
+        Jb3IAL7wsjw1jUWRDOALlqVBbPN7wzcZwJeprLXxG9KiSAbwZSqDaVbSEAxmAF+eyrZpxdIQjmQAX0jZ
+        JzzdqJrP4UgG8GUuq5ZvfTQD+DKFThdovtnP/4G7DODLdRn+WPxyRTKAL3dl+EbfyxXJ9PMDEGqoVEKl
+        EiqVUKmESiVUKqFSCZVKqBSx2ArJ7z2pfXa18AAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="toolStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>618, 17</value>
   </metadata>

@@ -82,6 +82,7 @@ namespace EditorGrafos
             mPeso.Enabled = false;
             CambiaBotones(false);
             deshabilitaBotones();
+            kruskal.Enabled = false;
         }
         
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -462,6 +463,7 @@ namespace EditorGrafos
             if(costo.ShowDialog() == DialogResult.OK)
             {
                 dijkstra.Enabled = true;
+                kruskal.Enabled = true;
                 muestraPeso();
             }
 
@@ -469,7 +471,7 @@ namespace EditorGrafos
         }
         private void muestraPeso()
         {
-            if(dijkstra.Enabled == true || agregaPeso.Enabled == true)
+            if(dijkstra.Enabled == true || agregaPeso.Enabled == true || kruskal.Enabled == true)
             {
                 int pmx, pmy;
 
@@ -783,6 +785,9 @@ namespace EditorGrafos
                 case "dijkstra":
                     algoritmoDijkstra();
                 break;
+                case "kruskal":
+                    MessageBox.Show("Algortimo de Kruskal");
+                break;
 
 
             }
@@ -969,8 +974,11 @@ namespace EditorGrafos
                     AristaNoDirigida.Enabled = false;
                     agregaPeso.Enabled = true;
                     dijkstra.Enabled = true;
+                    kruskal.Enabled = true;
                     mPeso.Enabled = true;
+                    toolStripButton2.Enabled = true;
                     
+
                     break;
                 case "agregaPeso":
                     opcion = 41;
@@ -1043,6 +1051,7 @@ namespace EditorGrafos
                             AristaDirigida.Enabled = false;
                             euleriano.Enabled = true;
                             dijkstra.Enabled = false;
+                            kruskal.Enabled = false;
 
 
                         }
@@ -1058,6 +1067,7 @@ namespace EditorGrafos
                             dijkstra.Enabled = true;
                             mPeso.Enabled = true;
                             agregaPeso.Enabled = true;
+                            kruskal.Enabled = true;
                         }
 
                         stream.Close();

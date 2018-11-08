@@ -96,6 +96,7 @@
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.mPeso = new System.Windows.Forms.ToolStripButton();
+            this.kruskal = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -511,7 +512,8 @@
             this.nodoPendiente,
             this.euleriano,
             this.warnerButton,
-            this.dijkstra});
+            this.dijkstra,
+            this.kruskal});
             this.toolStrip2.Location = new System.Drawing.Point(0, 63);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(37, 598);
@@ -730,6 +732,17 @@
             this.mPeso.Size = new System.Drawing.Size(36, 36);
             this.mPeso.Text = "muestra Pesos";
             // 
+            // kruskal
+            // 
+            this.kruskal.AccessibleName = "kruskal";
+            this.kruskal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.kruskal.Image = ((System.Drawing.Image)(resources.GetObject("kruskal.Image")));
+            this.kruskal.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.kruskal.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kruskal.Name = "kruskal";
+            this.kruskal.Size = new System.Drawing.Size(34, 36);
+            this.kruskal.Text = "Kruskal";
+            // 
             // EditorGrafo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -832,6 +845,7 @@
         private System.Windows.Forms.ToolStripButton agregaPeso;
         private System.Windows.Forms.ToolStripButton dijkstra;
         private System.Windows.Forms.ToolStripButton mPeso;
+        private System.Windows.Forms.ToolStripButton kruskal;
     }
 }
 
