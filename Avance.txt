@@ -157,5 +157,21 @@ Descripción:
 
 
 
+--------------------------------------------------
+05 Noviembre 2018
+Descripción:
+	Interfaz:
+	-Boton Peso:
+	-Permite agregar pesos  a las aristas del grafo
+	-Los pesos se visualizan en el grafo
+
+	Boton DK
+	- Se implementa ventana de Dijktra
+
+	Metodos:
+	Dijkstra
+	Se usa el metodo de dijkstra para encontrar el camino mas corto del nodo A a todos los demás
+ 
+
 
 	

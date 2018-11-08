@@ -18,12 +18,14 @@ namespace EditorGrafos
         public Dijkstra(Grafo grafo)
         {
             g = new GrafoDirigido(grafo);
-
-            DK = g.dijkstra();
-            pesos = g.damePesos();
+           
+         //   pesos = g.damePesos();
             InitializeComponent();
             inicializaCombo();
-            generaTabla();
+            comboBox1.SelectedIndex = 0;
+
+          //  generaTabla();
+           
        
         }
         private void inicializaCombo()
@@ -35,7 +37,8 @@ namespace EditorGrafos
         }
         private void generaTabla()
         {
-
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
             
             //dataGridView1.Columns.Add("A", "A");
             for (int i = 0; i < g.Count; i++)
@@ -45,15 +48,39 @@ namespace EditorGrafos
                 
             }
             dataGridView1.Rows.Add();
-            for(int i = 0; i < dataGridView1.Columns.Count; i++)
+            if (pesos != null)
             {
-                dataGridView1.Rows[0].Cells[i].Value = pesos[i];
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                {
+                    if(pesos[i] == 10000)
+                       dataGridView1.Rows[0].Cells[i].Value = "Infinito";
+                    else
+                        dataGridView1.Rows[0].Cells[i].Value = pesos[i];
+
+                }
             }
+            
         }
         
         private void Dijkstra_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            NodoP aux;
+            foreach(NodoP np in g)
+            {
+                if (np.nombre == Convert.ToInt32((char)(Convert.ToChar(comboBox1.Text) - 64)))
+                {
+                    aux = np;
+                    DK = g.dijkstra(aux);
+                    pesos = g.damePesos();
+                    generaTabla();
+                }
+            }
+            
         }
     }
 }

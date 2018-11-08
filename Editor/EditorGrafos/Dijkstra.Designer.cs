@@ -45,7 +45,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(76, 25);
             this.comboBox1.TabIndex = 0;
-            this.comboBox1.Visible = false;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -56,7 +56,6 @@
             this.label1.Size = new System.Drawing.Size(116, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Selecciona nodo";
-            this.label1.Visible = false;
             // 
             // groupBox1
             // 
