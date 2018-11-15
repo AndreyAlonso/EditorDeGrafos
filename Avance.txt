@@ -158,7 +158,7 @@ Descripción:
 
 
 --------------------------------------------------
-05 Noviembre 2018
+08 Noviembre 2018
 Descripción:
 	Interfaz:
 	-Boton Peso:
@@ -166,12 +166,17 @@ Descripción:
 	-Los pesos se visualizan en el grafo
 
 	Boton DK
-	- Se implementa ventana de Dijktra
+	- Se implementa ventana de Dijktra	Para el peso
 
 	Metodos:
 	Dijkstra
-	Se usa el metodo de dijkstra para encontrar el camino mas corto del nodo A a todos los demás
- 
+	Se usa el metodo de dijkstra para encontrar el camino mas corto del nodo origen a todos los demás
+ -------------------
+Rev.
+	Archivos de prueba en carpetas, desde al inicio se les dijo.
+ 	Dijktra. Para el peso solo un icono de opción.
+	Actualizar el peso al mover grafo o nodos
+	
 
 
 	

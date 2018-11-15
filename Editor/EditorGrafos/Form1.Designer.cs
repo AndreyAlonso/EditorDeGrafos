@@ -87,6 +87,7 @@
             this.euleriano = new System.Windows.Forms.ToolStripButton();
             this.warnerButton = new System.Windows.Forms.ToolStripButton();
             this.dijkstra = new System.Windows.Forms.ToolStripButton();
+            this.kruskal = new System.Windows.Forms.ToolStripButton();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
@@ -95,8 +96,6 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.mPeso = new System.Windows.Forms.ToolStripButton();
-            this.kruskal = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -137,21 +136,21 @@
             // 
             this.saveToolStripMenuItem.AccessibleName = "Save";
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.AccessibleName = "Open";
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // Imprimir
             // 
             this.Imprimir.AccessibleName = "Imprimir";
             this.Imprimir.Name = "Imprimir";
-            this.Imprimir.Size = new System.Drawing.Size(152, 22);
+            this.Imprimir.Size = new System.Drawing.Size(120, 22);
             this.Imprimir.Text = "Imprimir";
             // 
             // grafoToolStripMenuItem
@@ -301,8 +300,7 @@
             this.EliminarGrafo,
             this.toolStripSeparator5,
             this.toolStripButton1,
-            this.agregaPeso,
-            this.mPeso});
+            this.agregaPeso});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(984, 39);
@@ -614,6 +612,17 @@
             this.dijkstra.Size = new System.Drawing.Size(34, 36);
             this.dijkstra.Text = "Dijkstra";
             // 
+            // kruskal
+            // 
+            this.kruskal.AccessibleName = "kruskal";
+            this.kruskal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.kruskal.Image = ((System.Drawing.Image)(resources.GetObject("kruskal.Image")));
+            this.kruskal.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.kruskal.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kruskal.Name = "kruskal";
+            this.kruskal.Size = new System.Drawing.Size(34, 36);
+            this.kruskal.Text = "Kruskal";
+            // 
             // toolStrip3
             // 
             this.toolStrip3.Dock = System.Windows.Forms.DockStyle.Right;
@@ -722,27 +731,6 @@
             0});
             this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericWn);
             // 
-            // mPeso
-            // 
-            this.mPeso.AccessibleName = "muestraPeso";
-            this.mPeso.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mPeso.Image = ((System.Drawing.Image)(resources.GetObject("mPeso.Image")));
-            this.mPeso.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.mPeso.Name = "mPeso";
-            this.mPeso.Size = new System.Drawing.Size(36, 36);
-            this.mPeso.Text = "muestra Pesos";
-            // 
-            // kruskal
-            // 
-            this.kruskal.AccessibleName = "kruskal";
-            this.kruskal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.kruskal.Image = ((System.Drawing.Image)(resources.GetObject("kruskal.Image")));
-            this.kruskal.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.kruskal.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kruskal.Name = "kruskal";
-            this.kruskal.Size = new System.Drawing.Size(34, 36);
-            this.kruskal.Text = "Kruskal";
-            // 
             // EditorGrafo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -844,7 +832,6 @@
         public System.Windows.Forms.ToolStripButton euleriano;
         private System.Windows.Forms.ToolStripButton agregaPeso;
         private System.Windows.Forms.ToolStripButton dijkstra;
-        private System.Windows.Forms.ToolStripButton mPeso;
         private System.Windows.Forms.ToolStripButton kruskal;
     }
 }

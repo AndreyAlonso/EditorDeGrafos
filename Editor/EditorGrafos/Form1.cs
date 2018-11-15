@@ -79,7 +79,7 @@ namespace EditorGrafos
             numericUpDown3.Hide();
             grafoEspecial = false;
             nPartita.Enabled = false;
-            mPeso.Enabled = false;
+           
             CambiaBotones(false);
             deshabilitaBotones();
             kruskal.Enabled = false;
@@ -219,10 +219,11 @@ namespace EditorGrafos
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
+            
             if (e.Button.Equals(MouseButtons.Left) && (opcion == 2 || opcion == 9) && bandA)
             {
                 p2 = e.Location;
-
+                
                 Form1_Paint(this, null);
             }
 
@@ -232,7 +233,10 @@ namespace EditorGrafos
                 bandF = false;
                 bandI = true;
                 nodoP.centro = e.Location;
+                quitaPesos();
+                quitaNumeric();
                 Form1_Paint(this, null);
+                muestraPeso();
             }
 
             if (e.Button.Equals(MouseButtons.Left) && opcion == 8)
@@ -243,23 +247,38 @@ namespace EditorGrafos
                 disty = e.Location.Y - p1.Y;
                 grafo.MueveGrafo(distx, disty);
                 p1 = e.Location;
-
+                if (intercambiaColor == true)
+                    quitaPesos();
                 bandI = true;
                 band = false;
                 bandF = false;
                 bandA = false;
+                muestraPeso();
                 Form1_Paint(this, null);
+
+            }
+            if (opcion == 41) // agregar Peso a Arista
+            {
+
+               // quitaPesos();
+              //  quitaNumeric();
+                //asignaPesos(e.Location);
+               // muestraPeso();
+                //bandF = false;
+
             }
         }
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             activa = true;
+            
+                //asignaPesos(e.Location);
             if (bandA && band && (opcion == 2 || opcion == 9))
             {
                 p2 = e.Location;
                 nodoAux = grafo.BuscaNodo(p2);
-
+                
                 if (nodoAux != null)
                 {
                     if (opcion == 2)
@@ -292,7 +311,7 @@ namespace EditorGrafos
 
                         nodoP.aristas.Add(nodoR);
 
-
+                        
 
 
 
@@ -316,13 +335,18 @@ namespace EditorGrafos
             if (opcion == 5)
             {
                 grafo.BorrarArista(e.Location);
+                quitaNumeric();
+                quitaPesos();
+                muestraPeso();
                 bandF = false;
             }
-            if(opcion == 41) // agregar Peso a Arista
+            if(opcion == 41 || intercambiaColor == true) // agregar Peso a Arista
             {
 
+                quitaPesos();
                 quitaNumeric();
                 asignaPesos(e.Location);
+                muestraPeso();
                 bandF = false;
 
             }
@@ -340,7 +364,7 @@ namespace EditorGrafos
         {
             int pmx, pmy; // PUNTO MEDIO EN X Y PUNTO MEDIO EN Y 
             
-             temp = grafo.encuentraArista(p);
+             temp = grafo.encuentraArista(p);     
             if(temp != null)
             {
             //    MessageBox.Show("Nodo Origen " + temp.origen.nombre + "\nNodo Destino " + temp.destino.nombre);
@@ -393,7 +417,6 @@ namespace EditorGrafos
             warnerButton.Enabled = true;
             euleriano.Enabled = true;
             nodoPendiente.Enabled = true;
-            quitaPesos();
             quitaNumeric();
             
             switch (e.ClickedItem.AccessibleName)
@@ -431,17 +454,20 @@ namespace EditorGrafos
                     Configuracion_Clicked(this, e);
                     break;
                 case "muestraPeso":
-                    quitaNumeric();
-                    quitaPesos();
-                    muestraPeso();
+                    
                 break;
                 case "agregaPeso":
                     //ACTIVAR BOOL DE PESO ARISTA
+                    
                     if (intercambiaColor == true)
                     {
                         agregaPeso.BackColor = Color.Gray;
                         opcion = 190;
                         intercambiaColor = false;
+
+                        quitaPesos();
+                      //  quitaNumeric();
+                        
                     }
                         
                     else
@@ -449,6 +475,9 @@ namespace EditorGrafos
                         agregaPeso.BackColor = Color.Blue;
                         Arista_Click(this, e);
                         intercambiaColor = true;
+                        muestraPeso();
+                     //   quitaPesos();
+
                     }
                         
                     
@@ -471,6 +500,7 @@ namespace EditorGrafos
         }
         private void muestraPeso()
         {
+            if(intercambiaColor == true)
             if(dijkstra.Enabled == true || agregaPeso.Enabled == true || kruskal.Enabled == true)
             {
                 int pmx, pmy;
@@ -602,14 +632,14 @@ namespace EditorGrafos
 
                 case "BorrarGrafo":
                     opcion = 6;
-                    mPeso.Enabled = false;
+                 
                     agregaPeso.Enabled = false;
                     break;
 
                 case "EliminarGrafo":
                     opcion = 7;
                     warnerButton.Enabled = false;
-                    mPeso.Enabled = false;
+                   
                     agregaPeso.Enabled = false;
                     deshabilitaBotones();
                     break;
@@ -975,7 +1005,7 @@ namespace EditorGrafos
                     agregaPeso.Enabled = true;
                     dijkstra.Enabled = true;
                     kruskal.Enabled = true;
-                    mPeso.Enabled = true;
+                
                     toolStripButton2.Enabled = true;
                     
 
@@ -1065,7 +1095,7 @@ namespace EditorGrafos
                             grafo.penA.CustomEndCap = arrow;
                             euleriano.Enabled = false;
                             dijkstra.Enabled = true;
-                            mPeso.Enabled = true;
+                     
                             agregaPeso.Enabled = true;
                             kruskal.Enabled = true;
                         }
