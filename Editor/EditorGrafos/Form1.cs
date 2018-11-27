@@ -464,7 +464,7 @@ namespace EditorGrafos
                         agregaPeso.BackColor = Color.Gray;
                         opcion = 190;
                         intercambiaColor = false;
-
+                        kruskal.Enabled = false;
                         quitaPesos();
                       //  quitaNumeric();
                         
@@ -475,6 +475,7 @@ namespace EditorGrafos
                         agregaPeso.BackColor = Color.Blue;
                         Arista_Click(this, e);
                         intercambiaColor = true;
+                        kruskal.Enabled = true;
                         muestraPeso();
                      //   quitaPesos();
 
@@ -639,7 +640,8 @@ namespace EditorGrafos
                 case "EliminarGrafo":
                     opcion = 7;
                     warnerButton.Enabled = false;
-                   
+                    quitaNumeric();
+                    quitaPesos();
                     agregaPeso.Enabled = false;
                     deshabilitaBotones();
                     break;
@@ -817,9 +819,35 @@ namespace EditorGrafos
                 break;
                 case "kruskal":
                     MessageBox.Show("Algortimo de Kruskal");
+                    algoritmoKruskal();
                 break;
 
 
+            }
+
+        }
+        public void algoritmoKruskal()
+        {
+            GrafoNoDirigido grafoK = new GrafoNoDirigido(grafo);
+            List<List<NodoP>> componentes = grafoK.kruskal();
+            List<Arista> rel = new List<Arista>();
+            Arista temp;
+            foreach(List<NodoP> np in componentes)
+            {
+
+                for(int i = 0; i < np.Count; i++)
+                {
+                    temp = new Arista(0);
+                    temp.origen = np[i];
+                    i++;
+                    temp.destino = np[i];
+                    rel.Add(temp);
+                }
+               
+            }
+            foreach(Arista nr in rel)
+            {
+                MessageBox.Show("Origen " + nr.origen.nombre + " Destino " + nr.destino.nombre);
             }
 
         }
@@ -987,6 +1015,7 @@ namespace EditorGrafos
                     toolStripButton6.Enabled = true;
                     euleriano.Enabled = true;
                     MatrizInfinita.Enabled = true;
+                    agregaPeso.Enabled = true;
                     break;
 
                 case "BorrarArista":
@@ -1082,7 +1111,7 @@ namespace EditorGrafos
                             euleriano.Enabled = true;
                             dijkstra.Enabled = false;
                             kruskal.Enabled = false;
-
+                            agregaPeso.Enabled = true;
 
                         }
                         else if(grafo.tipo == 3) // GRAFO DIRIGIDO

@@ -980,6 +980,154 @@ namespace EditorGrafos
             }
             return grafo;
         }
+        public List<List<NodoP>> kruskal()
+        {
+            // 1) Crear lista de aristas y lista de listas que serviran como las componentes
+            List<Arista> temp;
+            List<NodoP> nodos;
+            List<List<NodoP>> comp = new List<List<NodoP>>();
+            int i = 0;
+            List<List<Arista>> componentes = new List<List<Arista>>();
+            
+            // 2) Agregar TODAS las relaciones del grafo a la lista relaciones
+            List<Arista> relaciones = new List<Arista>();
+            foreach(NodoP np in this){
+                foreach (Arista nr in np.aristas){
+                    if(nr.peso != 0)
+                        relaciones.Add(nr);
+                }
+            }
+    //        int i;
+            // Ordena la lista por peso
+            relaciones = relaciones.OrderBy(x => x.peso).ToList();
+
+            // 3) Se procede a recorrer la lista de relaciones
+            foreach(Arista nr in relaciones)
+            {
+                if(nr == relaciones[0])
+                {
+                    nodos = new List<NodoP>();
+                    temp = new List<Arista>();
+                    temp.Add(nr);
+                    componentes.Add(temp);
+                    nodos.Add(nr.origen);
+                    nodos.Add(nr.destino);
+                    comp.Add(nodos);
+                }
+                else
+                {
+                    // Encontrar nodo origen en lista de listas
+
+                    NodoP origen  = buscaComponente(comp, nr.origen);
+                    NodoP destino = buscaComponente(comp, nr.destino);
+                    if(origen == null && destino == null) // Si no se encuentra ningun nodo entonces se agregan a un nuevo componente
+                    {
+                        nodos = new List<NodoP>();
+                        nodos.Add(nr.origen);
+                        nodos.Add(nr.destino);
+                        comp.Add(nodos);
+                    }
+                    else if( origen != null && destino == null)// Si se encuentra origen, busca su posicion y se agrega al que ya existe
+                    {
+                        int pos = encuentraPosicion(comp, origen);
+                        comp[pos].Add(nr.origen);
+                        comp[pos].Add(nr.destino);
+                        
+
+                    }
+                    else if (origen == null && destino != null)
+                    {
+                        int pos = encuentraPosicion(comp, destino);
+                        comp[pos].Add(nr.origen);
+                        comp[pos].Add(nr.destino);
+                    }
+                    else if(origen != null && destino != null)
+                    {
+                        int posA = encuentraPosicion(comp, origen);
+                        int posB = encuentraPosicion(comp, destino);
+                        if(posA != posB)
+                        {
+                            comp[posA].Add(origen);
+                            comp[posA].Add(destino);
+                            foreach (NodoP np in comp[posB])
+                            {
+                                comp[posA].Add(np);
+                            }
+
+                            comp[posB].Clear();
+                            comp.RemoveAt(posB);
+                            break;
+                        }
+                       
+
+
+
+                    }
+                    /*
+                     i = 0;
+
+                    foreach(List<Arista> busca in componentes)
+                    {
+                        foreach(Arista busca2 in busca)
+                        {
+                            if(busca2.origen == nr.origen)
+                            {
+                                 
+                            }
+                        }
+                        i++;
+                        
+                    }
+                    */
+                }
+            }
+            return comp;
+        }
+        private int encuentraPosicion(List<List<NodoP>> com, NodoP nodo)
+        {
+            int i = 0;
+            foreach(List<NodoP> lnp in com)
+            {
+                foreach(NodoP np in lnp)
+                {
+                    if (np == nodo)
+                        return i;
+                }
+                i++;
+            }
+            return 0;
+        }
+        private NodoP buscaComponente(List<List<NodoP>> comp, NodoP nodo)
+        {
+            foreach(List<NodoP> lnp in comp)
+            {
+                foreach(NodoP np in lnp)
+                {
+                    if (np == nodo)
+                        return np;
+                }
+            }
+            return null;
+        }
+        // ALGORITMO PARA DETECTAR SI UN GRAFO PUEDE LLEGAR A TENER UN CICLO SI SE LE AÑADE UNA ARISTA
+        // Se coloca aux al nodo inicio y desde ahi se empieza a buscar si puede llegar a nodo final
+       
+        private bool encuentraCiclo( Grafo grafo,NodoP inicio, NodoP final)
+        {
+            NodoP aux = inicio;
+            while (aux.aristas.Count > 0)
+            {
+                foreach(Arista nr in aux.aristas)
+                {
+                    if (nr.destino == final)
+                        return true;
+                    else
+                        aux = nr.destino;
+                }
+                
+            }
+            return false;
+        }
         // Metodo encargado de encontrar si dos nodos estan en la misma posición
         public NodoP nodoIgual(Grafo grafo)
         {

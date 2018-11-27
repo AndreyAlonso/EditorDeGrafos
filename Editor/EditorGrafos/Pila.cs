@@ -9,7 +9,7 @@ namespace EditorGrafos
     [Serializable]
     class Pila
     {
-        private List<NodoP> nodos;
+        public List<NodoP> nodos;
         public int tope { get; set; }
         public Pila()
         {

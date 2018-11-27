@@ -114,6 +114,7 @@ namespace EditorGrafos
 
             return nuevo;
         }
+
         #region ALGORTIMO DE DIJKSTRA
 
         public List<List<NodoP>> dijkstra(NodoP inicio)
@@ -180,7 +181,7 @@ namespace EditorGrafos
 
             NodoP aux = null;
             if (p.tope + 1 > 0)
-                aux = encuentraMenor(inicio);
+            aux = encuentraMenor(inicio);
             if (aux != null) // VALIDACIÓN SI ENCONTRO EL PESO MENOR
             {
 

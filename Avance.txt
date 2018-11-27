@@ -178,5 +178,11 @@ Rev.
 	Actualizar el peso al mover grafo o nodos
 	
 
+--------------------------------------------------------------------------------
 
+15 Noviembre 2018
+Descripción:
+	Interfaz:
+	- Se usa un solo boton para ponderar las aristas
+	- Al mover nodos, ya no se quedan en pantalla los combos
 	
