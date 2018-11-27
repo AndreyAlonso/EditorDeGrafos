@@ -712,7 +712,8 @@ namespace EditorGrafos
             {
                 case "complemento":
                     bpar = false;
-
+                    quitaPesos();
+                    quitaNumeric();
                     obtenPropiedades();
                     if (AristaNoDirigida.Enabled == true && AristaDirigida.Enabled == true)
                     {
@@ -721,6 +722,7 @@ namespace EditorGrafos
                         grafo = grafo.complemento(g);
                         asignaPropiedades();
                         AristaDirigida.Enabled = false;
+                        
 
                     }
                     else
@@ -1194,6 +1196,7 @@ namespace EditorGrafos
                             dijkstra.Enabled = false;
                             kruskal.Enabled = false;
                             agregaPeso.Enabled = true;
+                            toolStripButton2.Enabled = true;
 
                         }
                         else if(grafo.tipo == 3) // GRAFO DIRIGIDO
@@ -1209,6 +1212,7 @@ namespace EditorGrafos
                      
                             agregaPeso.Enabled = true;
                             kruskal.Enabled = true;
+                            toolStripButton2.Enabled = true;
                         }
 
                         stream.Close();

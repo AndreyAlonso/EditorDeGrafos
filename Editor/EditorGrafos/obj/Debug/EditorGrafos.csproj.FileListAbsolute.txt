@@ -89,3 +89,4 @@ C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-D
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.csproj.GenerateResource.Cache
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.exe
 C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.pdb
+C:\Users\Andrey Hernandez\Documents\1. Ingenieria en Informatica\Grafos-Agosto-Diciembre-2018\Editor\EditorGrafos\obj\Debug\EditorGrafos.csprojResolveAssemblyReference.cache
