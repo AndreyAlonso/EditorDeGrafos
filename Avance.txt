@@ -186,3 +186,12 @@ Descripción:
 	- Se usa un solo boton para ponderar las aristas
 	- Al mover nodos, ya no se quedan en pantalla los combos
 	
+-----------------------------------------------------------------------------------------------------------------------------------------------
+27 Noviembre 2018
+Descripción:
+	Interfaz:
+	- Se crea boton para algoritmo de Kruskal
+
+	Metodos:
+	- Implementación de kruskal, muestra los componentes de un color diferente al grafo
+

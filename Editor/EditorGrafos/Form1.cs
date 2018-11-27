@@ -17,6 +17,11 @@ namespace EditorGrafos
 {
     public partial class EditorGrafo : Form
     {
+
+
+        // Variables para Kruskal
+        int iKruskal = 0;
+        List<Arista> rel;
         #region Inicialziacion
 
         Grafo grafo;
@@ -633,7 +638,9 @@ namespace EditorGrafos
 
                 case "BorrarGrafo":
                     opcion = 6;
-                 
+                    agregaPeso.BackColor = Color.Gray;
+                    quitaPesos();
+                    quitaNumeric();
                     agregaPeso.Enabled = false;
                     break;
 
@@ -642,6 +649,9 @@ namespace EditorGrafos
                     warnerButton.Enabled = false;
                     quitaNumeric();
                     quitaPesos();
+                    agregaPeso.BackColor = Color.Gray;
+                    quitaPesos();
+                    quitaNumeric();
                     agregaPeso.Enabled = false;
                     deshabilitaBotones();
                     break;
@@ -818,7 +828,7 @@ namespace EditorGrafos
                     algoritmoDijkstra();
                 break;
                 case "kruskal":
-                    MessageBox.Show("Algortimo de Kruskal");
+                    iKruskal = 0;
                     algoritmoKruskal();
                 break;
 
@@ -826,11 +836,12 @@ namespace EditorGrafos
             }
 
         }
+     
         public void algoritmoKruskal()
         {
             GrafoNoDirigido grafoK = new GrafoNoDirigido(grafo);
             List<List<NodoP>> componentes = grafoK.kruskal();
-            List<Arista> rel = new List<Arista>();
+             rel = new List<Arista>();
             Arista temp;
             foreach(List<NodoP> np in componentes)
             {
@@ -838,6 +849,8 @@ namespace EditorGrafos
                 for(int i = 0; i < np.Count; i++)
                 {
                     temp = new Arista(0);
+                    int j = i + 1;
+                    temp.peso = buscaPeso(np[i], np[j]);
                     temp.origen = np[i];
                     i++;
                     temp.destino = np[i];
@@ -845,12 +858,77 @@ namespace EditorGrafos
                 }
                
             }
-            foreach(Arista nr in rel)
+
+            rel = rel.OrderBy(x => x.peso).ToList();
+            Componente componente = new Componente();
+            componente.Show();
+            componente.Next.Click += Next_Click;
+         
+
+        }
+
+       
+        private int buscaPeso(NodoP origen, NodoP destino)
+        {
+            foreach(NodoP np in grafo)
             {
-                MessageBox.Show("Origen " + nr.origen.nombre + " Destino " + nr.destino.nombre);
+                foreach(Arista nr in np.aristas)
+                {
+                    if(nr.origen.nombre == origen.nombre && nr.destino.nombre == destino.nombre)
+                    {
+                        return nr.peso;
+                    }
+                }
+            }
+            return 0;
+        }
+        private void Next_Click(object sender, EventArgs e)
+        {
+            
+            if(iKruskal == rel.Count)
+            {
+
+                asignaPropiedades();
+                foreach (NodoP np in grafo)
+                {
+                    foreach (Arista nr in np.aristas)
+                    {
+                        np.colorN = new SolidBrush(Color.White);
+                        nr.colorA = new Pen(Color.Black, 1);
+                    }
+                }
+                grafo.coloreate();
+                tope = 0;
+
+                Form1_Paint(this, null);
+                iKruskal = 0;
+            }
+             if (iKruskal < rel.Count)
+            {
+                foreach (NodoP np in grafo)
+                {
+                    foreach (Arista nr in np.aristas)
+                    {
+                        if (nr.origen == rel[iKruskal].origen && nr.destino == rel[iKruskal].destino)
+                        {
+
+                            grafo.coloreate();
+                            nr.colorA = new Pen(new SolidBrush(Color.Orange), 8);
+                            break;
+
+
+                        }
+
+
+
+                    }
+                }
+                grafo.ImprimirGrafo(g, true);
+                iKruskal++;
             }
 
         }
+
         public void algoritmoDijkstra()
         {
             
@@ -1053,8 +1131,12 @@ namespace EditorGrafos
             NodoP A = null;
             bool band = false;
             int i = 0;
-
+            iKruskal = 0;
             bpar = false;
+            intercambiaColor = false;
+            agregaPeso.BackColor = Color.Gray;
+            quitaPesos();
+            quitaNumeric();
             if (bpar == false)
                 grafo.ImprimirGrafo(g,bpar);
 
@@ -1220,14 +1302,18 @@ namespace EditorGrafos
         private void numericKn(object sender, EventArgs e)
         {
             
-                obtenPropiedades();
-                grafo = new GrafoNoDirigido(grafo);
-                grafo.tipo = 2;
-                asignaPropiedades();
-                grafo.Clear();
-                grafo.grafoKn((int)numericUpDown1.Value, g);
-                grafo.numN = grafo.Count;
-                Form1_Paint(this, null);
+            obtenPropiedades();
+            grafo = new GrafoNoDirigido(grafo);
+            grafo.tipo = 2;
+            asignaPropiedades();
+            grafo.Clear();
+            grafo.grafoKn((int)numericUpDown1.Value, g);
+            grafo.numN = grafo.Count;
+            quitaNumeric();
+            quitaPesos();
+            intercambiaColor = false;
+            agregaPeso.BackColor = Color.Gray;
+            Form1_Paint(this, null);
             
             
 
@@ -1242,9 +1328,12 @@ namespace EditorGrafos
             grafo.tipo = 2;
             asignaPropiedades();
             grafo.Clear();
-           
+            quitaNumeric();
+            quitaPesos();
             grafo.grafoCn((int)numericUpDown2.Value, g);
             grafo.numN = grafo.Count;
+            intercambiaColor = false;
+            agregaPeso.BackColor = Color.Gray;
             Form1_Paint(this, null);
         }
 
@@ -1259,6 +1348,10 @@ namespace EditorGrafos
             grafo.Clear();
             grafo.grafoWn((int)numericUpDown3.Value, g);
             grafo.numN = grafo.Count;
+            quitaNumeric();
+            quitaPesos();
+            intercambiaColor = false;
+            agregaPeso.BackColor = Color.Gray;
             Form1_Paint(this, null);
         }
 

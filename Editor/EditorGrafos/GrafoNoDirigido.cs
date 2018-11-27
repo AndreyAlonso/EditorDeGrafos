@@ -1041,23 +1041,25 @@ namespace EditorGrafos
                         comp[pos].Add(nr.origen);
                         comp[pos].Add(nr.destino);
                     }
-                    else if(origen != null && destino != null)
+                    else if(origen != null && destino != null) // Existe en ambos
                     {
                         int posA = encuentraPosicion(comp, origen);
                         int posB = encuentraPosicion(comp, destino);
-                        if(posA != posB)
+                        if (posA != posB)
                         {
-                            comp[posA].Add(origen);
-                            comp[posA].Add(destino);
+                            comp[posA].Add(nr.origen);
+                            comp[posA].Add(nr.destino);
                             foreach (NodoP np in comp[posB])
                             {
                                 comp[posA].Add(np);
                             }
-
+                        
                             comp[posB].Clear();
                             comp.RemoveAt(posB);
-                            break;
                         }
+                         //   break;
+                        
+                      
                        
 
 
