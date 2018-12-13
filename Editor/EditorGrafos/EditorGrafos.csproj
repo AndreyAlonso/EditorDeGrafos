@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BosqueAbarcador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BosqueAbarcador.Designer.cs">
+      <DependentUpon>BosqueAbarcador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Componente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Propiedad.cs" />
     <Compile Include="Romano.cs" />
+    <EmbeddedResource Include="BosqueAbarcador.resx">
+      <DependentUpon>BosqueAbarcador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Componente.resx">
       <DependentUpon>Componente.cs</DependentUpon>
     </EmbeddedResource>

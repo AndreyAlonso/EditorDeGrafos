@@ -96,6 +96,7 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.bosqueAbarcador = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -629,7 +630,8 @@
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton3,
             this.toolStripButton4,
-            this.toolStripButton5});
+            this.toolStripButton5,
+            this.bosqueAbarcador});
             this.toolStrip3.Location = new System.Drawing.Point(947, 63);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.Size = new System.Drawing.Size(37, 598);
@@ -730,6 +732,17 @@
             0,
             0});
             this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericWn);
+            // 
+            // bosqueAbarcador
+            // 
+            this.bosqueAbarcador.AccessibleName = "bosqueAbarcador";
+            this.bosqueAbarcador.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bosqueAbarcador.Image = ((System.Drawing.Image)(resources.GetObject("bosqueAbarcador.Image")));
+            this.bosqueAbarcador.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.bosqueAbarcador.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bosqueAbarcador.Name = "bosqueAbarcador";
+            this.bosqueAbarcador.Size = new System.Drawing.Size(34, 36);
+            this.bosqueAbarcador.Text = "Bosque Abarcador en Profundidad";
             // 
             // EditorGrafo
             // 
@@ -833,6 +846,7 @@
         private System.Windows.Forms.ToolStripButton agregaPeso;
         private System.Windows.Forms.ToolStripButton dijkstra;
         private System.Windows.Forms.ToolStripButton kruskal;
+        private System.Windows.Forms.ToolStripButton bosqueAbarcador;
     }
 }
 

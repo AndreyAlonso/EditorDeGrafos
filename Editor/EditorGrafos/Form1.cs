@@ -1288,15 +1288,31 @@ namespace EditorGrafos
                     numericUpDown1.Hide();
                     numericUpDown2.Show();
                     numericUpDown3.Hide();
-                    break;
+                break;
                 case "GrafoWn":
                     
                     numericUpDown1.Hide();
                     numericUpDown2.Hide();
                     numericUpDown3.Show();
-                    break;
+                break;
+                case "bosqueAbarcador":
+                    if(grafo.Count > 0)
+                    {
+                        //MessageBox.Show("Bosque Abarcador en profundidad");
+                        GrafoDirigido gD = new GrafoDirigido(grafo);
+                        gD.bosqueAbarcador();
+                        BosqueAbarcador bap = new BosqueAbarcador();
+                       
+                        bap.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Crea un grafo dirigido");
+                    }
+                  
+                break;
 
-              
+
             }
         }
 
